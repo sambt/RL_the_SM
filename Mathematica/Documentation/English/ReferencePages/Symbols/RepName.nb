@@ -1,0 +1,1697 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     54586,       1687]
+NotebookOptionsPosition[     48292,       1548]
+NotebookOutlinePosition[     50535,       1606]
+CellTagsIndexPosition[     50449,       1601]
+WindowTitle->RepName
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["GROUP MATH SYMBOL", "PacletNameCell",ExpressionUUID->
+     "663ed35f-ba45-4d45-a8cd-99c7d88e1b21"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "Tutorials",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }],ExpressionUUID->"9541ab44-f07e-4e44-ac99-78bda7f2c11a"],
+         TextCell[
+          Row[{"Tutorials", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"GroupMath Tutorial\"\>":>
+       Documentation`HelpLookup["paclet:GroupMath/tutorial/GroupMathDoc"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"Tutorials"]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "e7ebcd8b-a052-46a4-9df3-f2850df10709"],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }],ExpressionUUID->"aa76050d-70f2-42f2-8052-b1a8ebe49cee"],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"RepsUpToDimN\"\>":>
+       Documentation`HelpLookup["paclet:GroupMath/ref/RepsUpToDimN"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "1679ae57-84eb-45f6-91dd-9d070acae84a"],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }],ExpressionUUID->"8ac0e3ba-98bb-40ec-b17b-873d8e44a900"],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"GroupMath/ref/RepName\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["GroupMath/ref/RepName"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/GroupMath/ref/RepName.\
+html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
+            False]]; SelectionMove[
+         DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$26215], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "GroupMath/ref/RepName", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "251e6676-2280-4d15-8670-9a9e733bdeaa"]
+    }], "AnchorBar",ExpressionUUID->"f9af84c2-c322-43bf-b937-5a13d5ab8acc"]}
+  }]], "AnchorBarGrid",
+ CellID->1,ExpressionUUID->"930ca8a7-6de9-4640-aa4e-a7fae7471d59"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell["RepName", "ObjectName",ExpressionUUID->
+  "afc559f4-f470-48a0-9630-97c0ef6f614a"],
+ Cell[BoxData[
+  TemplateBox[{8},
+   "Spacer1"]],ExpressionUUID->"0563db75-2f21-464a-9827-7a09e20c6ac1"],
+ Cell[BoxData[
+ ""], "ObjectNameTranslation",ExpressionUUID->
+  "9487b468-ee74-457b-9083-e2e16f7c4e2c"]
+}], "ObjectNameGrid",ExpressionUUID->"bfaebe85-d8ed-468e-a41f-1dee81409b59"],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"RepName", "[", 
+       RowBox[{"group", ",", "representation"}], "]"}]], "InlineFormula",
+      ExpressionUUID->"177ab39b-13e9-42f0-b593-0e8a317971cb"],
+     " \[LineSeparator]Returns a string with the name of a ",
+     Cell[BoxData[
+     "representation"], "InlineFormula",ExpressionUUID->
+      "b650256f-3ae5-4e86-8bc8-7e39a2f6395e"],
+     " (given by its Dynkin coefficients) of ",
+     Cell[BoxData[
+     "group"], "InlineFormula",ExpressionUUID->
+      "00147ea3-9fdf-4999-b7c1-67edc42d4ea4"]
+    }],ExpressionUUID->"47da87a7-8d5c-4685-9de3-d0f534f2e6e8"]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{"Columns" -> {{None}}, "Rows" -> {{None}}}},
+ CellID->982511436,ExpressionUUID->"127df531-c6fc-4553-bed1-001e1a9768d9"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    TemplateBox[{6},
+     "Spacer1"]],ExpressionUUID->"ef1e69f9-ce13-438f-9bdc-664f8d54649c"],
+   "Details"
+  }], "NotesFrameText",ExpressionUUID->"942b0374-b2f1-42ae-ae3a-dfa24fa9c5ed"],
+  Appearance->{Automatic, None, "Normal", Automatic},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->
+   "Preemptive"]],ExpressionUUID->"d877bc68-d174-479e-83ed-7eb5798d67ec"]], \
+"NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->122048779,ExpressionUUID->"bfbec0b9-8342-4d6d-a8c1-70464e4391fd"],
+
+Cell["", "SectionHeaderSpacer",ExpressionUUID->"0fd2a8ad-0fdb-451f-b790-15adedf23d89"],
+
+Cell[TextData[{
+ Cell[BoxData[
+ "group"], "InlineFormula",ExpressionUUID->
+  "4aebf9b6-a33e-47f1-9d4a-56c6f88abe32"],
+ " should be the ",
+ ButtonBox["Cartan matrix",
+  BaseStyle->"Link",
+  ButtonData->"paclet:GroupMath/ref/CartanMatrix"],
+ " of the intended group and ",
+ Cell[BoxData[
+ "representation"], "InlineFormula",ExpressionUUID->
+  "e4f151b7-5440-48bd-9212-07e2093f4813"],
+ " should be a list of non-negative integers (Dynkin coefficients); a \
+representation can also be identified with the simplified input format (see \
+the ",
+ ButtonBox["GroupMath tutorial",
+  BaseStyle->"Link",
+  ButtonData->"paclet:GroupMath/tutorial/GroupMathDoc"],
+ " page). There is also the possibility of ",
+ Cell[BoxData[
+ "group"], "InlineFormula",ExpressionUUID->
+  "64b0196a-526d-48e8-9831-9fe22bd2ec3b"],
+ " being a list ",
+ Cell[BoxData[
+  RowBox[{"{", 
+   RowBox[{"group1", ",", "group2", ",", "..."}], "}"}]], "InlineFormula",
+  ExpressionUUID->"7f8e4489-4258-4e2d-b905-c925b1d0b2a2"],
+ " and ",
+ Cell[BoxData[
+ "representation"], "InlineFormula",ExpressionUUID->
+  "ed110e6b-328c-4711-84da-a944ce4d4dcc"],
+ " a list ",
+ Cell[BoxData[
+  RowBox[{"{", 
+   RowBox[{"rep_group1", ",", "rep_group2", ",", "..."}], "}"}]], 
+  "InlineFormula",ExpressionUUID->"a000f020-2010-44d6-b835-1926688bb764"],
+ "."
+}], "Notes",
+ CellID->1067943069,ExpressionUUID->"60be50f8-4d7d-46b1-b4f9-2658d871106c"],
+
+Cell["\<\
+For U(1)'s the representation name is just its hypercharge. For simple \
+groups, in general, a representation's name is its dimension. A bar is added \
+for conjugate representations and, if necessary, primes are used to \
+distinguish representations with the same dimension. Finally, due to the \
+intrinsic symmetry of SO(8), special subscripts are added to the \
+representations names.\
+\>", "Notes",
+ CellID->263962871,ExpressionUUID->"0d06c340-22ff-4bb7-853b-101bf24a341e"],
+
+Cell[TextData[{
+ "Which representations get bars and primes is purely a convention. There is \
+no generic, standard convention, so ",
+ Cell[BoxData[
+ "RepName"], "InlineFormula",ExpressionUUID->
+  "9375e5fe-1d77-4f71-b76f-8071b53b4846"],
+ " follows the recipe described in the ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["LieART manual"]],"http://lieart.hepforge.org"},
+   "WebLink",
+   BaseStyle->{"Notes"}]],ExpressionUUID->
+  "cd809194-443e-4b2b-96c0-f6160ece660e"],
+ ". Note that for some cases this will differ from the convention used in the \
+tables of ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["R. Slansky, Phys.Rept. 79 (1981)"]],
+    "http://dx.doi.org/10.1016/0370-1573(81)90092-2"},
+   "WebLink",
+   BaseStyle->{"Notes"}]],ExpressionUUID->
+  "cd41134f-524f-4db7-94c3-d712501cc21c"],
+ ". In particular, for SU(3) the 6 and ",
+ Cell[BoxData[
+  OverscriptBox["6", "_"]], "InlineFormula",ExpressionUUID->
+  "8a2913a8-afb5-4bb3-b6a7-3d465a6caee6"],
+ " of GroupMath are the ",
+ Cell[BoxData[
+  OverscriptBox["6", "_"]], "InlineFormula",ExpressionUUID->
+  "8d38053e-22bc-4a5e-89a0-24f27615d31b"],
+ " and 6 of Slansky; for SO(10) the 126 and ",
+ Cell[BoxData[
+  OverscriptBox["126", "_"]], "InlineFormula",ExpressionUUID->
+  "b5c8e7a7-f5bb-444e-98de-8e490d3e8b59"],
+ " of GroupMath are the ",
+ Cell[BoxData[
+  OverscriptBox["126", "_"]], "InlineFormula",ExpressionUUID->
+  "700f71b1-31d5-46d8-88e3-28be24fe5738"],
+ " and 126 of Slansky."
+}], "Notes",
+ CellID->530874046,ExpressionUUID->"2cf9f7a0-51b1-4cea-a40d-8dbb870a69b7"],
+
+Cell["", "SectionFooterSpacer",ExpressionUUID->"aa602dc6-737e-4bee-8cd4-aca7bce26ccd"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]],ExpressionUUID->"8ebf20a8-5cd1-4137-848f-1e7273464de6"],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(3)", "ExampleCount",ExpressionUUID->
+  "fa4c4e2f-2b23-48e4-9c31-1da253ef1b7b"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1432848,ExpressionUUID->"afe1e3ad-4d24-4dc6-8e87-b1f37bd64b9b"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(3)", "ExampleCount",ExpressionUUID->
+  "3b973c60-786c-481c-9cba-d95577225b67"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->565002526,ExpressionUUID->"55ff68ec-5d57-4693-9540-3891f9c9c413"],
+
+Cell["Representation name of {1,5} of SU(3):", "ExampleText",
+ CellID->432963277,ExpressionUUID->"02be09f3-d0c9-4e54-9e82-cca52a5420a3"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"RepName", "[", 
+  RowBox[{"SU3", ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "5"}], "}"}]}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->493559987,ExpressionUUID->"ab1317b1-e219-4a10-be49-9dcda315b204"],
+
+Cell[BoxData[
+ OverscriptBox[
+  StyleBox["\<\"48\"\>",
+   StripOnInput->False,
+   FontWeight->Bold], "_"]], "Output",
+ ImageSize->{18, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->57557345,ExpressionUUID->"52ab0f99-521b-4079-bbff-b27b9f6b7fcd"]
+}, Open  ]],
+
+Cell["\<\
+One can also use also the simplified input notation for representations:\
+\>", "ExampleText",
+ CellID->148077755,ExpressionUUID->"cba7385b-90e0-4acd-a165-ebf9ca228e16"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"RepName", "[", 
+  RowBox[{"SU3", ",", 
+   RowBox[{"-", "48"}]}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->416405641,ExpressionUUID->"1b664397-3cf9-415f-ac2a-396aece7ca04"],
+
+Cell[BoxData[
+ OverscriptBox[
+  StyleBox["\<\"48\"\>",
+   StripOnInput->False,
+   FontWeight->Bold], "_"]], "Output",
+ CellLabel->"Out[2]=",
+ CellID->63749936,ExpressionUUID->"037764a7-fd04-4f18-98c8-c0b2d24d4b17"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "\t", "ExampleDelimiter",ExpressionUUID->
+   "9d893ec1-a8c2-478f-8853-582c3a2803c0"],
+  $Line = 0; Null]], "ExampleDelimiter",
+ CellID->361050789,ExpressionUUID->"01c80485-c268-476a-913c-51b419b1a2c0"],
+
+Cell["Representation name of {1,5}x{1,0,1,0}x2 of SU(3)xF(4)xU(1):", \
+"ExampleText",
+ CellID->198403277,ExpressionUUID->"d4be0109-ddb1-4b42-9978-465a567b2512"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"RepName", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"SU3", ",", "F4", ",", "U1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", "5"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0", ",", "1", ",", "0"}], "}"}], ",", "2"}], "}"}]}],
+   "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->14877576,ExpressionUUID->"35fb7bb4-1fe0-48b8-80cc-895efe7cfa60"],
+
+Cell[BoxData[
+ RowBox[{
+  OverscriptBox[
+   StyleBox["\<\"48\"\>",
+    StripOnInput->False,
+    FontWeight->Bold], "_"], "\[CircleTimes]", 
+  StyleBox["\<\"8424\"\>",
+   StripOnInput->False,
+   FontWeight->Bold], 
+  "\[CircleTimes]", "\<\"\\!\\(\\*RowBox[{\\\"2\\\"}]\\)\"\>"}]], "Output",
+ ImageSize->{75, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->98466940,ExpressionUUID->"6af4fa14-5ec4-4d47-8a8f-9e8abf85206a"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "\t", "ExampleDelimiter",ExpressionUUID->
+   "41e69973-8103-4b76-995b-957ad8db6e3e"],
+  $Line = 0; Null]], "ExampleDelimiter",
+ CellID->243306540,ExpressionUUID->"f5e8ba11-5007-46f2-bc9c-43514dad4170"],
+
+Cell[TextData[{
+ "List all SO(10) representations smaller than size 100000 (note that there \
+are some differences with ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["R. Slansky, Phys.Rept. 79 (1981)"]],
+    "http://dx.doi.org/10.1016/0370-1573(81)90092-2"},
+   "WebLink",
+   BaseStyle->{"ExampleText"}]],ExpressionUUID->
+  "a458fbf6-05b2-49cf-a2b0-e215ea0cd801"],
+ "; for example the 126/",
+ Cell[BoxData[
+  OverscriptBox["126", "_"]], "InlineFormula",ExpressionUUID->
+  "37d491fe-a065-428a-a60d-764b6fad7a5e"],
+ " are flipped):"
+}], "ExampleText",
+ CellID->449944381,ExpressionUUID->"192fb488-48cd-44d5-9eb6-f030f2187936"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"data", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"#", ",", 
+       RowBox[{"RepName", "[", 
+        RowBox[{"SO10", ",", "#"}], "]"}]}], "}"}], "&"}], "/@", 
+    RowBox[{"RepsUpToDimN", "[", 
+     RowBox[{"SO10", ",", "100000"}], "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Grid", "[", 
+  RowBox[{
+   RowBox[{"Prepend", "[", 
+    RowBox[{"data", ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Style", "[", 
+        RowBox[{"#", ",", 
+         RowBox[{"{", 
+          RowBox[{"Bold", ",", 
+           RowBox[{"Darker", "[", "Red", "]"}]}], "}"}]}], "]"}], "&"}], "/@", 
+      RowBox[{"{", 
+       RowBox[{"\"\<Dynkin coefficients\>\"", ",", "\"\<Name\>\""}], 
+       "}"}]}]}], "]"}], ",", 
+   RowBox[{"Frame", "\[Rule]", "All"}], ",", 
+   RowBox[{"FrameStyle", "\[Rule]", "LightGray"}]}], "]"}]}], "Input",
+ CellLabel->"In[1]:=",
+ CellID->414840562,ExpressionUUID->"2613dd56-763b-4a8f-98bf-aba908dbf218"],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     StyleBox["\<\"Dynkin coefficients\"\>",
+      StripOnInput->False,
+      FontWeight->Bold,
+      FontColor->RGBColor[
+        Rational[2, 3], 0, 0],
+      $CellContext`LineColor -> RGBColor[
+        Rational[2, 3], 0, 0],
+      $CellContext`FrontFaceColor -> RGBColor[
+        Rational[2, 3], 0, 0],
+      $CellContext`BackFaceColor -> RGBColor[
+        Rational[2, 3], 0, 0],
+      $CellContext`GraphicsColor -> RGBColor[
+        Rational[2, 3], 0, 0]], 
+     StyleBox["\<\"Name\"\>",
+      StripOnInput->False,
+      FontWeight->Bold,
+      FontColor->RGBColor[
+        Rational[2, 3], 0, 0],
+      $CellContext`LineColor -> RGBColor[
+        Rational[2, 3], 0, 0],
+      $CellContext`FrontFaceColor -> RGBColor[
+        Rational[2, 3], 0, 0],
+      $CellContext`BackFaceColor -> RGBColor[
+        Rational[2, 3], 0, 0],
+      $CellContext`GraphicsColor -> RGBColor[
+        Rational[2, 3], 0, 0]]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0", ",", "0", ",", "0"}], "}"}], 
+     StyleBox["\<\"1\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0", ",", "0", ",", "0", ",", "0"}], "}"}], 
+     StyleBox["\<\"10\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0", ",", "0", ",", "1"}], "}"}], 
+     StyleBox["\<\"16\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0", ",", "1", ",", "0"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"16\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "1", ",", "0", ",", "0", ",", "0"}], "}"}], 
+     StyleBox["\<\"45\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"2", ",", "0", ",", "0", ",", "0", ",", "0"}], "}"}], 
+     StyleBox["\<\"54\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "1", ",", "0", ",", "0"}], "}"}], 
+     StyleBox["\<\"120\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0", ",", "2", ",", "0"}], "}"}], 
+     StyleBox["\<\"126\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0", ",", "0", ",", "2"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"126\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0", ",", "0", ",", "1", ",", "0"}], "}"}], 
+     StyleBox["\<\"144\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0", ",", "0", ",", "0", ",", "1"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"144\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0", ",", "1", ",", "1"}], "}"}], 
+     StyleBox["\<\"210\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"3", ",", "0", ",", "0", ",", "0", ",", "0"}], "}"}], 
+     StyleBox["\<\"210'\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "1", ",", "0", ",", "0", ",", "0"}], "}"}], 
+     StyleBox["\<\"320\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "1", ",", "0", ",", "0", ",", "1"}], "}"}], 
+     StyleBox["\<\"560\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "1", ",", "0", ",", "1", ",", "0"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"560\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"4", ",", "0", ",", "0", ",", "0", ",", "0"}], "}"}], 
+     StyleBox["\<\"660\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0", ",", "3", ",", "0"}], "}"}], 
+     StyleBox["\<\"672\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0", ",", "0", ",", "3"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"672\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"2", ",", "0", ",", "0", ",", "0", ",", "1"}], "}"}], 
+     StyleBox["\<\"720\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"2", ",", "0", ",", "0", ",", "1", ",", "0"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"720\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "0"}], "}"}], 
+     StyleBox["\<\"770\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0", ",", "1", ",", "0", ",", "0"}], "}"}], 
+     StyleBox["\<\"945\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0", ",", "0", ",", "2", ",", "0"}], "}"}], 
+     StyleBox["\<\"1050\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0", ",", "0", ",", "0", ",", "2"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"1050\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "1", ",", "1", ",", "0"}], "}"}], 
+     StyleBox["\<\"1200\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "1", ",", "0", ",", "1"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"1200\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"2", ",", "1", ",", "0", ",", "0", ",", "0"}], "}"}], 
+     StyleBox["\<\"1386\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0", ",", "1", ",", "2"}], "}"}], 
+     StyleBox["\<\"1440\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0", ",", "2", ",", "1"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"1440\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0", ",", "0", ",", "1", ",", "1"}], "}"}], 
+     StyleBox["\<\"1728\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"5", ",", "0", ",", "0", ",", "0", ",", "0"}], "}"}], 
+     StyleBox["\<\"1782\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"3", ",", "0", ",", "0", ",", "1", ",", "0"}], "}"}], 
+     StyleBox["\<\"2640\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"3", ",", "0", ",", "0", ",", "0", ",", "1"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"2640\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0", ",", "4", ",", "0"}], "}"}], 
+     StyleBox["\<\"2772\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0", ",", "0", ",", "4"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"2772\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "1", ",", "1", ",", "0", ",", "0"}], "}"}], 
+     StyleBox["\<\"2970\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "1", ",", "0", ",", "1", ",", "0"}], "}"}], 
+     StyleBox["\<\"3696\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "1", ",", "0", ",", "0", ",", "1"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"3696\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "1", ",", "0", ",", "2", ",", "0"}], "}"}], 
+     StyleBox["\<\"3696'\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "1", ",", "0", ",", "0", ",", "2"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"3696'\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "2", ",", "0", ",", "0"}], "}"}], 
+     StyleBox["\<\"4125\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0", ",", "0", ",", "0", ",", "0"}], "}"}], 
+     StyleBox["\<\"4290\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"2", ",", "0", ",", "1", ",", "0", ",", "0"}], "}"}], 
+     StyleBox["\<\"4312\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "2", ",", "0", ",", "0", ",", "0"}], "}"}], 
+     StyleBox["\<\"4410\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"3", ",", "1", ",", "0", ",", "0", ",", "0"}], "}"}], 
+     StyleBox["\<\"4608\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"2", ",", "0", ",", "0", ",", "2", ",", "0"}], "}"}], 
+     StyleBox["\<\"4950\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"2", ",", "0", ",", "0", ",", "0", ",", "2"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"4950\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0", ",", "0", ",", "0", ",", "3"}], "}"}], 
+     StyleBox["\<\"5280\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0", ",", "0", ",", "3", ",", "0"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"5280\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "1", ",", "0", ",", "1", ",", "1"}], "}"}], 
+     StyleBox["\<\"5940\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "1", ",", "2", ",", "0"}], "}"}], 
+     StyleBox["\<\"6930\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "1", ",", "0", ",", "2"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"6930\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0", ",", "3", ",", "1"}], "}"}], 
+     StyleBox["\<\"6930'\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0", ",", "1", ",", "3"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"6930'\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "3", ",", "0", ",", "0", ",", "0"}], "}"}], 
+     StyleBox["\<\"7644\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"4", ",", "0", ",", "0", ",", "0", ",", "1"}], "}"}], 
+     StyleBox["\<\"7920\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"4", ",", "0", ",", "0", ",", "1", ",", "0"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"7920\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "1"}], "}"}], 
+     StyleBox["\<\"8064\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "2", ",", "0", ",", "1", ",", "0"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"8064\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"2", ",", "0", ",", "0", ",", "1", ",", "1"}], "}"}], 
+     StyleBox["\<\"8085\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0", ",", "1", ",", "0", ",", "1"}], "}"}], 
+     StyleBox["\<\"8800\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0", ",", "1", ",", "1", ",", "0"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"8800\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0", ",", "2", ",", "2"}], "}"}], 
+     StyleBox["\<\"8910\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"7", ",", "0", ",", "0", ",", "0", ",", "0"}], "}"}], 
+     StyleBox["\<\"9438\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0", ",", "0", ",", "5"}], "}"}], 
+     StyleBox["\<\"9504\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0", ",", "5", ",", "0"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"9504\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "1", ",", "1", ",", "1"}], "}"}], 
+     StyleBox["\<\"10560\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0", ",", "0", ",", "2", ",", "1"}], "}"}], 
+     StyleBox["\<\"11088\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0", ",", "0", ",", "1", ",", "2"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"11088\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"4", ",", "1", ",", "0", ",", "0", ",", "0"}], "}"}], 
+     StyleBox["\<\"12870\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"3", ",", "0", ",", "1", ",", "0", ",", "0"}], "}"}], 
+     StyleBox["\<\"14784\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"2", ",", "1", ",", "0", ",", "0", ",", "1"}], "}"}], 
+     StyleBox["\<\"15120\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"2", ",", "1", ",", "0", ",", "1", ",", "0"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"15120\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"2", ",", "2", ",", "0", ",", "0", ",", "0"}], "}"}], 
+     StyleBox["\<\"16380\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "1", ",", "0", ",", "3", ",", "0"}], "}"}], 
+     StyleBox["\<\"17280\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "1", ",", "0", ",", "0", ",", "3"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"17280\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"3", ",", "0", ",", "0", ",", "2", ",", "0"}], "}"}], 
+     StyleBox["\<\"17325\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"3", ",", "0", ",", "0", ",", "0", ",", "2"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"17325\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "1", ",", "1", ",", "0", ",", "0"}], "}"}], 
+     StyleBox["\<\"17920\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"8", ",", "0", ",", "0", ",", "0", ",", "0"}], "}"}], 
+     StyleBox["\<\"19305\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"5", ",", "0", ",", "0", ",", "1", ",", "0"}], "}"}], 
+     StyleBox["\<\"20592\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"5", ",", "0", ",", "0", ",", "0", ",", "1"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"20592\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0", ",", "0", ",", "4", ",", "0"}], "}"}], 
+     StyleBox["\<\"20790\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0", ",", "0", ",", "0", ",", "4"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"20790\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "1", ",", "0", ",", "2", ",", "0"}], "}"}], 
+     StyleBox["\<\"23040\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "1", ",", "0", ",", "0", ",", "2"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"23040\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"2", ",", "0", ",", "0", ",", "3", ",", "0"}], "}"}], 
+     StyleBox["\<\"23760\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"2", ",", "0", ",", "0", ",", "0", ",", "3"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"23760\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "1", ",", "1", ",", "1", ",", "0"}], "}"}], 
+     StyleBox["\<\"25200\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "1", ",", "1", ",", "0", ",", "1"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"25200\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0", ",", "4", ",", "1"}], "}"}], 
+     StyleBox["\<\"26400\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0", ",", "1", ",", "4"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"26400\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0", ",", "2", ",", "0", ",", "0"}], "}"}], 
+     StyleBox["\<\"27720\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"3", ",", "0", ",", "0", ",", "1", ",", "1"}], "}"}], 
+     StyleBox["\<\"28160\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0", ",", "6", ",", "0"}], "}"}], 
+     StyleBox["\<\"28314\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0", ",", "0", ",", "6"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"28314\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "1", ",", "0", ",", "3"}], "}"}], 
+     StyleBox["\<\"29568\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "1", ",", "3", ",", "0"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"29568\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "2", ",", "0", ",", "1"}], "}"}], 
+     StyleBox["\<\"30800\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "2", ",", "1", ",", "0"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"30800\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"5", ",", "1", ",", "0", ",", "0", ",", "0"}], "}"}], 
+     StyleBox["\<\"31680\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "2", ",", "1", ",", "0", ",", "0"}], "}"}], 
+     StyleBox["\<\"34398\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "1", ",", "0", ",", "1", ",", "2"}], "}"}], 
+     StyleBox["\<\"34992\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "1", ",", "0", ",", "2", ",", "1"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"34992\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "1", ",", "0", ",", "1", ",", "1"}], "}"}], 
+     StyleBox["\<\"36750\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"9", ",", "0", ",", "0", ",", "0", ",", "0"}], "}"}], 
+     StyleBox["\<\"37180\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "3", ",", "0", ",", "0", ",", "0"}], "}"}], 
+     StyleBox["\<\"37632\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"2", ",", "0", ",", "1", ",", "1", ",", "0"}], "}"}], 
+     StyleBox["\<\"38016\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"2", ",", "0", ",", "1", ",", "0", ",", "1"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"38016\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0", ",", "2", ",", "3"}], "}"}], 
+     StyleBox["\<\"39600\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0", ",", "3", ",", "2"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"39600\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"4", ",", "0", ",", "1", ",", "0", ",", "0"}], "}"}], 
+     StyleBox["\<\"42120\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "2", ",", "0", ",", "1", ",", "0"}], "}"}], 
+     StyleBox["\<\"43680\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "2", ",", "0", ",", "0", ",", "1"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"43680\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "2", ",", "0", ",", "2", ",", "0"}], "}"}], 
+     StyleBox["\<\"46800\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "2"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"46800\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"3", ",", "1", ",", "0", ",", "1", ",", "0"}], "}"}], 
+     StyleBox["\<\"48048\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"3", ",", "1", ",", "0", ",", "0", ",", "1"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"48048\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0", ",", "0", ",", "0", ",", "1"}], "}"}], 
+     StyleBox["\<\"48048'\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0", ",", "0", ",", "1", ",", "0"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"48048'\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0", ",", "1", ",", "2", ",", "0"}], "}"}], 
+     StyleBox["\<\"48114\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0", ",", "1", ",", "0", ",", "2"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"48114\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"3", ",", "2", ",", "0", ",", "0", ",", "0"}], "}"}], 
+     StyleBox["\<\"48510\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"2", ",", "0", ",", "0", ",", "1", ",", "2"}], "}"}], 
+     StyleBox["\<\"49280\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"2", ",", "0", ",", "0", ",", "2", ",", "1"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"49280\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"4", ",", "0", ",", "0", ",", "2", ",", "0"}], "}"}], 
+     StyleBox["\<\"50050\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"4", ",", "0", ",", "0", ",", "0", ",", "2"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"50050\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0", ",", "0", ",", "3", ",", "1"}], "}"}], 
+     StyleBox["\<\"50688\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0", ",", "0", ",", "1", ",", "3"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"50688\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "4", ",", "0", ",", "0", ",", "0"}], "}"}], 
+     StyleBox["\<\"52920\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "1", ",", "2", ",", "1"}], "}"}], 
+     StyleBox["\<\"55440\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "1", ",", "1", ",", "2"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"55440\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "1", ",", "0", ",", "4", ",", "0"}], "}"}], 
+     StyleBox["\<\"64350\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "1", ",", "0", ",", "0", ",", "4"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"64350\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0", ",", "0", ",", "2", ",", "2"}], "}"}], 
+     StyleBox["\<\"64680\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"10", ",", "0", ",", "0", ",", "0", ",", "0"}], "}"}], 
+     StyleBox["\<\"68068\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"2", ",", "1", ",", "1", ",", "0", ",", "0"}], "}"}], 
+     StyleBox["\<\"68640\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0", ",", "0", ",", "5", ",", "0"}], "}"}], 
+     StyleBox["\<\"68640'\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0", ",", "0", ",", "0", ",", "5"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"68640'\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "1", ",", "2", ",", "0", ",", "0"}], "}"}], 
+     StyleBox["\<\"70070\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "3", ",", "0", ",", "0"}], "}"}], 
+     StyleBox["\<\"70070'\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "3", ",", "0", ",", "0", ",", "1"}], "}"}], 
+     StyleBox["\<\"70560\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "3", ",", "0", ",", "1", ",", "0"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"70560\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"6", ",", "1", ",", "0", ",", "0", ",", "0"}], "}"}], 
+     StyleBox["\<\"70785\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0", ",", "1", ",", "1", ",", "1"}], "}"}], 
+     StyleBox["\<\"72765\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "2", ",", "0", ",", "1", ",", "1"}], "}"}], 
+     StyleBox["\<\"73710\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0", ",", "7", ",", "0"}], "}"}], 
+     StyleBox["\<\"75504\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0", ",", "0", ",", "7"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"75504\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"3", ",", "0", ",", "0", ",", "0", ",", "3"}], "}"}], 
+     StyleBox["\<\"80080\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"3", ",", "0", ",", "0", ",", "3", ",", "0"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"80080\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"4", ",", "0", ",", "0", ",", "1", ",", "1"}], "}"}], 
+     StyleBox["\<\"81081\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0", ",", "5", ",", "1"}], "}"}], 
+     StyleBox["\<\"84942\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0", ",", "1", ",", "5"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"84942\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"2", ",", "1", ",", "0", ",", "2", ",", "0"}], "}"}], 
+     StyleBox["\<\"90090\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"2", ",", "1", ",", "0", ",", "0", ",", "2"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"90090\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]},
+    {
+     RowBox[{"{", 
+      RowBox[{"2", ",", "0", ",", "0", ",", "4", ",", "0"}], "}"}], 
+     StyleBox["\<\"90090'\"\>",
+      StripOnInput->False,
+      FontWeight->Bold]},
+    {
+     RowBox[{"{", 
+      RowBox[{"2", ",", "0", ",", "0", ",", "0", ",", "4"}], "}"}], 
+     OverscriptBox[
+      StyleBox["\<\"90090'\"\>",
+       StripOnInput->False,
+       FontWeight->Bold], "_"]}
+   },
+   AutoDelete->False,
+   FrameStyle->GrayLevel[0.85],
+   GridBoxFrame->{"Columns" -> {{True}}, "Rows" -> {{True}}},
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Grid"]], "Output",
+ ImageSize->{199, 2709},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->671184676,ExpressionUUID->"6da98861-cd45-4bb0-ab5c-5ba0948e2cbc"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer",ExpressionUUID->"c0f9b910-7769-4c92-a2f3-fd1b9e46969b"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]],ExpressionUUID->"033a2203-555e-4aa3-aa1e-bf5b685097a4"],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704,ExpressionUUID->"81515574-06c1-4454-b1be-c5b0e6f4fcde"],
+
+Cell[TextData[Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["RepsUpToDimN"]],"paclet:GroupMath/ref/RepsUpToDimN"},
+  "RefLink",
+  BaseStyle->{
+   "InlineFormula", FontFamily -> 
+    "Verdana"}]], \
+"InlineFormula",ExpressionUUID->"1da28e92-f2bf-443b-8d92-8034cc5de5e3"]], \
+"SeeAlso",
+ CellID->841019409,ExpressionUUID->"f692c22a-8e1a-4203-82aa-943b1a852301"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]],ExpressionUUID->"12086905-9abe-4589-9b90-64b5bc5a01d3"],
+ "Tutorials"
+}], "TutorialsSection",
+ WholeCellGroupOpener->True,
+ CellID->250839057,ExpressionUUID->"6117fa3e-f0a6-481c-a308-ca7b16c728c1"],
+
+Cell["", "SectionHeaderSpacer",ExpressionUUID->"91c27b24-48f7-4c74-aefe-377c1fd9f610"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["GroupMath Tutorial"]],"paclet:GroupMath/tutorial/GroupMathDoc"},
+  "RefLink",
+  BaseStyle->"Tutorials"]], "Tutorials",
+ CellID->341631938,ExpressionUUID->"aeee870d-4e13-451a-a5ae-fb80d2caa638"]
+}, Open  ]],
+
+Cell[" ", "FooterCell",ExpressionUUID->"b1a0c4a4-767e-41d5-b960-03ad769701a3"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"RepName",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "Mathematica", ButtonData -> "paclet:GroupMath/guide/GroupMath", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2020, 11, 4, 11, 40, 9.9434914}", 
+    "history" -> {"1.0", "", "", ""}, "context" -> "GroupMath`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Group Math Symbol", "language" -> "en", "paclet" -> "GroupMath", 
+    "status" -> "None", "summary" -> 
+    "RepName[group, representation] Returns a string with the name of a \
+representation (given by its Dynkin coefficients) of group", "synonyms" -> {},
+     "tabletags" -> {}, "title" -> "RepName", "titlemodifier" -> "", 
+    "windowtitle" -> "RepName", "type" -> "Symbol", "uri" -> 
+    "GroupMath/ref/RepName", "WorkflowDockedCell" -> ""}, 
+  "SearchTextTranslated" -> "", "NewStyles" -> False},
+CellContext->"Global`",
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 8, 2019)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  TaggingRules -> {"NewStyles" -> False}, FrontEndVersion -> 
+  "12.0 for Microsoft Windows (64-bit) (April 8, 2019)", StyleDefinitions -> 
+  "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[10416, 274, 433, 11, 35, "PrimaryExamplesSection",ExpressionUUID->"afe1e3ad-4d24-4dc6-8e87-b1f37bd64b9b",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1432848]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 50252, 1594}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[579, 21, 4065, 93, 53, "AnchorBarGrid",ExpressionUUID->"930ca8a7-6de9-4640-aa4e-a7fae7471d59",
+ CellID->1],
+Cell[CellGroupData[{
+Cell[4669, 118, 392, 9, 52, "ObjectNameGrid",ExpressionUUID->"bfaebe85-d8ed-468e-a41f-1dee81409b59"],
+Cell[5064, 129, 819, 18, 110, "Usage",ExpressionUUID->"127df531-c6fc-4553-bed1-001e1a9768d9",
+ CellID->982511436]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5920, 152, 855, 21, 37, "NotesSection",ExpressionUUID->"bfbec0b9-8342-4d6d-a8c1-70464e4391fd",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->122048779],
+Cell[6778, 175, 86, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"0fd2a8ad-0fdb-451f-b790-15adedf23d89"],
+Cell[6867, 177, 1382, 38, 70, "Notes",ExpressionUUID->"60be50f8-4d7d-46b1-b4f9-2658d871106c",
+ CellID->1067943069],
+Cell[8252, 217, 486, 8, 70, "Notes",ExpressionUUID->"0d06c340-22ff-4bb7-853b-101bf24a341e",
+ CellID->263962871],
+Cell[8741, 227, 1549, 40, 70, "Notes",ExpressionUUID->"2cf9f7a0-51b1-4cea-a40d-8dbb870a69b7",
+ CellID->530874046],
+Cell[10293, 269, 86, 0, 70, "SectionFooterSpacer",ExpressionUUID->"aa602dc6-737e-4bee-8cd4-aca7bce26ccd"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[10416, 274, 433, 11, 35, "PrimaryExamplesSection",ExpressionUUID->"afe1e3ad-4d24-4dc6-8e87-b1f37bd64b9b",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1432848],
+Cell[CellGroupData[{
+Cell[10874, 289, 308, 7, 29, "ExampleSection",ExpressionUUID->"55ff68ec-5d57-4693-9540-3891f9c9c413",
+ CellID->565002526],
+Cell[11185, 298, 136, 1, 38, "ExampleText",ExpressionUUID->"02be09f3-d0c9-4e54-9e82-cca52a5420a3",
+ CellID->432963277],
+Cell[CellGroupData[{
+Cell[11346, 303, 232, 6, 26, "Input",ExpressionUUID->"ab1317b1-e219-4a10-be49-9dcda315b204",
+ CellID->493559987],
+Cell[11581, 311, 301, 9, 35, "Output",ExpressionUUID->"52ab0f99-521b-4079-bbff-b27b9f6b7fcd",
+ CellID->57557345]
+}, Open  ]],
+Cell[11897, 323, 178, 3, 38, "ExampleText",ExpressionUUID->"cba7385b-90e0-4acd-a165-ebf9ca228e16",
+ CellID->148077755],
+Cell[CellGroupData[{
+Cell[12100, 330, 203, 5, 26, "Input",ExpressionUUID->"1b664397-3cf9-415f-ac2a-396aece7ca04",
+ CellID->416405641],
+Cell[12306, 337, 214, 6, 35, "Output",ExpressionUUID->"037764a7-fd04-4f18-98c8-c0b2d24d4b17",
+ CellID->63749936]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12557, 348, 242, 5, 8, "ExampleDelimiter",ExpressionUUID->"01c80485-c268-476a-913c-51b419b1a2c0",
+ CellID->361050789],
+Cell[12802, 355, 160, 2, 38, "ExampleText",ExpressionUUID->"d4be0109-ddb1-4b42-9978-465a567b2512",
+ CellID->198403277],
+Cell[CellGroupData[{
+Cell[12987, 361, 431, 13, 26, "Input",ExpressionUUID->"35fb7bb4-1fe0-48b8-80cc-895efe7cfa60",
+ CellID->14877576],
+Cell[13421, 376, 473, 14, 35, "Output",ExpressionUUID->"6af4fa14-5ec4-4d47-8a8f-9e8abf85206a",
+ CellID->98466940]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13943, 396, 242, 5, 8, "ExampleDelimiter",ExpressionUUID->"f5e8ba11-5007-46f2-bc9c-43514dad4170",
+ CellID->243306540],
+Cell[14188, 403, 631, 16, 58, "ExampleText",ExpressionUUID->"192fb488-48cd-44d5-9eb6-f030f2187936",
+ CellID->449944381],
+Cell[CellGroupData[{
+Cell[14844, 423, 974, 28, 75, "Input",ExpressionUUID->"2613dd56-763b-4a8f-98bf-aba908dbf218",
+ CellID->414840562],
+Cell[15821, 453, 30957, 1041, 2993, "Output",ExpressionUUID->"6da98861-cd45-4bb0-ab5c-5ba0948e2cbc",
+ CellID->671184676]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[46817, 1499, 86, 0, 70, "SectionFooterSpacer",ExpressionUUID->"c0f9b910-7769-4c92-a2f3-fd1b9e46969b"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[46940, 1504, 260, 7, 70, "SeeAlsoSection",ExpressionUUID->"81515574-06c1-4454-b1be-c5b0e6f4fcde",
+ CellID->1255426704],
+Cell[47203, 1513, 360, 9, 70, "SeeAlso",ExpressionUUID->"f692c22a-8e1a-4203-82aa-943b1a852301",
+ CellID->841019409]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[47600, 1527, 262, 7, 70, "TutorialsSection",ExpressionUUID->"6117fa3e-f0a6-481c-a308-ca7b16c728c1",
+ CellID->250839057],
+Cell[47865, 1536, 86, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"91c27b24-48f7-4c74-aefe-377c1fd9f610"],
+Cell[47954, 1538, 241, 5, 70, "Tutorials",ExpressionUUID->"aeee870d-4e13-451a-a5ae-fb80d2caa638",
+ CellID->341631938]
+}, Open  ]],
+Cell[48210, 1546, 78, 0, 70, "FooterCell",ExpressionUUID->"b1a0c4a4-767e-41d5-b960-03ad769701a3"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

@@ -1,0 +1,35 @@
+[project]
+name = "sm-rl"
+version = "0.1.0"
+description = "RL search over gauge groups + matter content to rediscover the Standard Model quark sector from the gauge-singlet hadron spectrum."
+readme = "README.md"
+requires-python = ">=3.10"
+# Core deps cover the physics + env + reward path (no torch needed).
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.10",
+    "wolframclient>=1.1",
+]
+
+[project.optional-dependencies]
+# Training (tokenizer, transformer policy, PPO) needs torch. Kept optional so
+# clusters can install the CUDA/CPU build they want:  uv sync --extra rl
+rl = ["torch>=2.0"]
+dev = ["pytest>=7.0"]
+
+[tool.setuptools.packages.find]
+include = ["sm_rl*"]
+
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+# Notes
+# -----
+# The physics reward is evaluated by a Mathematica/GroupMath kernel (see
+# sm_rl/physics/engine.py). That is an external, non-pip dependency:
+#   * Wolfram kernel at EngineConfig.kernel_path
+#   * GroupMath.m + spinSinglets.m in EngineConfig.mathematica_dir (the local
+#     `Mathematica/` folder).
+# Everything else (env, state, actions, reward metrics, tokenizer, policy,
+# RL algorithm) is pure Python/torch and unit-testable with a MockEngine.

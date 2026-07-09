@@ -1,0 +1,740 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     27923,        730]
+NotebookOptionsPosition[     19846,        558]
+NotebookOutlinePosition[     22202,        617]
+CellTagsIndexPosition[     22117,        612]
+WindowTitle->ConvertPartitionToDynkinCoef
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["GROUP MATH SYMBOL", "PacletNameCell",ExpressionUUID->
+     "e24c7eef-442d-45bd-8683-b8837f3f4ac7"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "Tutorials",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }],ExpressionUUID->"b5ef2417-f4d5-4a60-a663-fb1958fec5a8"],
+         TextCell[
+          Row[{"Tutorials", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"GroupMath Tutorial\"\>":>
+       Documentation`HelpLookup["paclet:GroupMath/tutorial/GroupMathDoc"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"Tutorials"]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "9b92c01a-85ae-4884-8c6b-a18b2e24408f"],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }],ExpressionUUID->"a76a6007-540f-4deb-8006-dcf2460f27a9"],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"ConvertToPartitionNotation\"\>":>
+       Documentation`HelpLookup[
+       "paclet:GroupMath/ref/ConvertToPartitionNotation"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "f4d5a842-2eb3-4b9a-9997-954f6eb4f417"],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }],ExpressionUUID->"d5e0c763-2a72-45b7-9a89-ec0c33ffc21f"],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->
+         False], {"\<\"GroupMath/ref/ConvertPartitionToDynkinCoef\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["GroupMath/ref/ConvertPartitionToDynkinCoef"]}, Visible -> 
+            False]]; SelectionMove[
+         DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/GroupMath/ref/\
+ConvertPartitionToDynkinCoef.html"], StandardForm]], "Input", 
+              TextClipboardType -> "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$12189], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "GroupMath/ref/ConvertPartitionToDynkinCoef", ".html"]], 
+           None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "55b658bd-c58f-42db-8722-55b3870a9f49"]
+    }], "AnchorBar",ExpressionUUID->"c90949a1-3129-4690-8ce7-207b36d6096c"]}
+  }]], "AnchorBarGrid",
+ CellID->1,ExpressionUUID->"e0394dda-5a9f-4c30-84df-71f021d2b4ae"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell["ConvertPartitionToDynkinCoef", "ObjectName",ExpressionUUID->
+  "89ae3f42-0107-404d-bc6b-df8f8df44d48"],
+ Cell[BoxData[
+  TemplateBox[{8},
+   "Spacer1"]],ExpressionUUID->"e215ec62-de24-4786-938d-2c7b9ad090fc"],
+ Cell[BoxData[
+ ""], "ObjectNameTranslation",ExpressionUUID->
+  "1ba1d23d-fd81-4167-94f4-4fd716306046"]
+}], "ObjectNameGrid",ExpressionUUID->"41f513cb-44a9-4562-be84-0b28c61256b1"],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"ConvertPartitionToDynkinCoef", "[", 
+       RowBox[{"n", ",", "partition"}], "]"}]], "InlineFormula",
+      ExpressionUUID->"a201610c-46e8-4a7c-8fa1-6e04bbcfc208"],
+     " \[LineSeparator]Converts the ",
+     Cell[BoxData[
+     "partition"], "InlineFormula",ExpressionUUID->
+      "8f6380a0-a400-476b-95fd-1d4a5e3b7557"],
+     " to the Dynkin coefficients of the SU(",
+     Cell[BoxData[
+     "n"], "InlineFormula",ExpressionUUID->
+      "67591b61-1ecb-47c8-990b-b195c3e42049"],
+     ") representation with the same Young diagram"
+    }],ExpressionUUID->"7210adba-6ce7-4b5c-a1b3-69391b0b009c"]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{"Columns" -> {{None}}, "Rows" -> {{None}}}},
+ CellID->982511436,ExpressionUUID->"0749f76c-e1f3-40d1-8d03-0d7f50207aea"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    TemplateBox[{6},
+     "Spacer1"]],ExpressionUUID->"38657146-33b5-47bc-93d4-d0de7448eff3"],
+   "Details"
+  }], "NotesFrameText",ExpressionUUID->"a489b05b-bbb4-45f8-abbf-5d8060aa20e2"],
+  Appearance->{Automatic, None, "Normal", Automatic},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->
+   "Preemptive"]],ExpressionUUID->"07e91629-5a94-4be6-a77f-a8208a526877"]], \
+"NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->621730437,ExpressionUUID->"91aac2a9-760e-4459-ba16-41ddf2639bd6"],
+
+Cell["", "SectionHeaderSpacer",ExpressionUUID->"c783c64d-d4e4-4484-a0ce-233f46fa99e3"],
+
+Cell[TextData[{
+ "If ",
+ Cell[BoxData[
+ "partition"], "InlineFormula",ExpressionUUID->
+  "98640d89-c9a9-45dc-9770-62360615ccc3"],
+ "={\[Lambda]1,\[Lambda]2,\[Lambda]3,...,\[Lambda]m}, then its Young diagram \
+has m rows, and therefore n cannot be smaller than m, otherwise this function \
+returns {}."
+}], "Notes",
+ CellID->396044797,ExpressionUUID->"d9d680c3-b8fa-4f50-8df4-8a4d0c123bc2"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["ConvertToPartitionNotation"]],
+    "paclet:GroupMath/ref/ConvertToPartitionNotation"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
+  "b470f113-e514-4f64-bd99-2f61fb4d5a08"],
+ " does the inverse calculation of ",
+ Cell[BoxData[
+ "ConvertPartitionToDynkinCoef"], "InlineFormula",ExpressionUUID->
+  "62085256-34df-4a76-b9e8-905a2f30e171"],
+ ": it converts the Dynkin coefficients of an SU(n) representation into a \
+partition."
+}], "Notes",
+ CellID->1067943069,ExpressionUUID->"7466dd7d-d72b-4175-87bf-ab1717c0716a"],
+
+Cell[TextData[{
+ "So ",
+ Cell[BoxData[
+  RowBox[{"ConvertToPartitionNotation", "[", 
+   RowBox[{"ConvertPartitionToDynkinCoef", "[", 
+    RowBox[{"n", ",", "partition"}], "]"}], "]"}]], "InlineFormula",
+  ExpressionUUID->"daeef807-3fba-4588-848e-b75a062b229a"],
+ " = ",
+ Cell[BoxData[
+ "partition"], "InlineFormula",ExpressionUUID->
+  "d0c341d5-a5dc-455b-b9d9-ce8caaf40a24"],
+ ", for any sufficiently large n. If ",
+ Cell[BoxData[
+ "partition"], "InlineFormula",ExpressionUUID->
+  "fb9a627d-5177-4d55-9847-59e0c6794673"],
+ "={\[Lambda]1,\[Lambda]2,\[Lambda]3,...,\[Lambda]m}, n>=m in all cases, but \
+if n=m, then the columns of the Young diagram of  ",
+ Cell[BoxData[
+ "partition"], "InlineFormula",ExpressionUUID->
+  "194de9c5-8878-4e84-9b4e-dc3e422ae763"],
+ " with m rows can be crossed out. So the above identity is only valid if n>m."
+}], "Notes",
+ CellID->711633375,ExpressionUUID->"8f928a43-111d-47ea-85e6-11c1cdacd92d"],
+
+Cell["", "SectionFooterSpacer",ExpressionUUID->"912be776-3225-4310-9ce5-82179d466273"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]],ExpressionUUID->"c68f4a37-0717-485d-8ab1-4fc573901b90"],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(2)", "ExampleCount",ExpressionUUID->
+  "dd9af4aa-a728-4da6-b15e-9d1ef9efbb30"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->338003063,ExpressionUUID->"2d3bb0cb-1512-402d-a201-1526802cd764"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(2)", "ExampleCount",ExpressionUUID->
+  "d4a933e1-b04b-46be-bff1-76fb66e57db1"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->164327946,ExpressionUUID->"1aab477e-4837-4c0c-a1de-8bef385fbeb9"],
+
+Cell["\<\
+Consider the fundamental/triplet representation of SU(3). It is usually \
+represented as a single-box Young diagram, so it is associated to the \
+partition {1}:\
+\>", "ExampleText",
+ CellID->508965647,ExpressionUUID->"2f2fd874-24dd-4acf-b7ae-6f022dffbc75"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"partition", "=", 
+   RowBox[{"{", "1", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"YoungDiagram", "[", "partition", "]"}]}], "Input",
+ CellLabel->"In[1]:=",
+ CellID->121974385,ExpressionUUID->"569f97fd-7124-4081-86b1-458decfeb50d"],
+
+Cell[BoxData[
+ GraphicsBox[{LineBox[{{0, 0}, {1, 0}}], LineBox[{{0, -1}, {1, -1}}], 
+   LineBox[{{0, 0}, {0, -1}}], LineBox[{{1, 0}, {1, -1}}]},
+  ImageMargins->0,
+  ImagePadding->None,
+  ImageSize->20,
+  PlotRange->{{0, 1.2}, {-1.2, 0}}]], "Output",
+ CellLabel->"Out[1]=",
+ CellID->50351503,ExpressionUUID->"072674c1-607f-4143-b412-5ff6e0e4caae"]
+}, Open  ]],
+
+Cell["\<\
+The Dynkin coefficients associated to the triplet (which are necessary to do \
+calculations with it in GroupMath functions), are therefore\
+\>", "ExampleText",
+ CellID->389364534,ExpressionUUID->"f534b639-20f7-4829-968c-c50ae039b4c2"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ConvertPartitionToDynkinCoef", "[", 
+  RowBox[{"3", ",", "partition"}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->197979858,ExpressionUUID->"3f0b05a6-4b52-45d5-b90e-d228ec08db84"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1", ",", "0"}], "}"}]], "Output",
+ CellLabel->"Out[2]=",
+ CellID->272878531,ExpressionUUID->"88afdf71-3bd7-4d74-98b0-34e07e8b7c6c"]
+}, Open  ]],
+
+Cell["\<\
+The anti-triplet of SU(3) is given by two boxes on top of each other:\
+\>", "ExampleText",
+ CellID->250798557,ExpressionUUID->"dc0bdd79-5438-40a2-8395-156fe01ccb06"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"partition", "=", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "1"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"YoungDiagram", "[", "partition", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"ConvertPartitionToDynkinCoef", "[", 
+  RowBox[{"3", ",", "partition"}], "]"}]}], "Input",
+ CellLabel->"In[3]:=",
+ CellID->287314498,ExpressionUUID->"e3847501-a98f-4e6d-a894-5d47b55b8fa4"],
+
+Cell[BoxData[
+ GraphicsBox[{LineBox[{{0, 0}, {1, 0}}], LineBox[{{0, -1}, {1, -1}}], 
+   LineBox[{{0, -2}, {1, -2}}], LineBox[{{0, 0}, {0, -2}}], 
+   LineBox[{{1, 0}, {1, -2}}]},
+  ImageMargins->0,
+  ImagePadding->None,
+  ImageSize->20,
+  PlotRange->{{0, 1.2}, {-2.2, 0}}]], "Output",
+ CellLabel->"Out[3]=",
+ CellID->230203224,ExpressionUUID->"0eaccba1-8647-4c55-998f-4b0e6916d2c5"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0", ",", "1"}], "}"}]], "Output",
+ CellLabel->"Out[3]=",
+ CellID->431797382,ExpressionUUID->"4c5a82a0-6408-4137-8111-cea866aad3ce"]
+}, Open  ]],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["ConvertToPartitionNotation"]],
+    "paclet:GroupMath/ref/ConvertToPartitionNotation"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
+  "b399397c-44b6-4890-b538-ef60d57cd10a"],
+ " performs the inverse computation:"
+}], "ExampleText",
+ CellID->458547945,ExpressionUUID->"c375b70b-b1dc-4d61-8678-1f7216aca488"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ConvertToPartitionNotation", "[", 
+  RowBox[{"{", 
+   RowBox[{"0", ",", "1"}], "}"}], "]"}]], "Input",
+ CellLabel->"In[4]:=",
+ CellID->123499176,ExpressionUUID->"c663494b-51c7-4fe5-a7c8-d96c6387e515"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1", ",", "1"}], "}"}]], "Output",
+ CellLabel->"Out[4]=",
+ CellID->347281504,ExpressionUUID->"df8b0327-9f2d-48ed-bc28-a6dc12d3ed54"]
+}, Open  ]],
+
+Cell["is the same as the partition={1,1} we started with.", "ExampleText",
+ CellID->160158747,ExpressionUUID->"fc4e8128-d02c-49b1-8c0c-97e5a6d7719d"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "\t", "ExampleDelimiter",ExpressionUUID->
+   "a326d8eb-6fef-40c2-99a0-df59afebfb2a"],
+  $Line = 0; Null]], "ExampleDelimiter",
+ CellID->301562825,ExpressionUUID->"4650ecab-1fd3-48bc-97b4-e3273c6f1b71"],
+
+Cell["Another example:", "ExampleText",
+ CellID->164283295,ExpressionUUID->"a8bb6491-0b87-4152-a565-311e5f9ad676"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"partition", "=", 
+   RowBox[{"{", 
+    RowBox[{"10", ",", "3", ",", "3", ",", "3", ",", "1"}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"YoungDiagram", "[", "partition", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"ConvertPartitionToDynkinCoef", "[", 
+  RowBox[{"6", ",", "partition"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"ConvertToPartitionNotation", "[", "%", "]"}]}], "Input",
+ CellLabel->"In[1]:=",
+ CellID->224462142,ExpressionUUID->"087d7351-72ae-465c-a019-928277493bc0"],
+
+Cell[BoxData[
+ GraphicsBox[{LineBox[{{0, 0}, {10, 0}}], LineBox[{{0, -1}, {10, -1}}], 
+   LineBox[{{0, -2}, {3, -2}}], LineBox[{{0, -3}, {3, -3}}], 
+   LineBox[{{0, -4}, {3, -4}}], LineBox[{{0, -5}, {1, -5}}], 
+   LineBox[{{0, 0}, {0, -5}}], LineBox[{{1, 0}, {1, -5}}], 
+   LineBox[{{2, 0}, {2, -4}}], LineBox[{{3, 0}, {3, -4}}], 
+   LineBox[{{4, 0}, {4, -1}}], LineBox[{{5, 0}, {5, -1}}], 
+   LineBox[{{6, 0}, {6, -1}}], LineBox[{{7, 0}, {7, -1}}], 
+   LineBox[{{8, 0}, {8, -1}}], LineBox[{{9, 0}, {9, -1}}], 
+   LineBox[{{10, 0}, {10, -1}}]},
+  ImageMargins->0,
+  ImagePadding->None,
+  ImageSize->200,
+  PlotRange->{{0, 10.2}, {-5.2, 0}}]], "Output",
+ CellLabel->"Out[1]=",
+ CellID->435503115,ExpressionUUID->"b4281e6d-703e-4be3-8e12-785f3aaf8ad5"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"7", ",", "0", ",", "0", ",", "2", ",", "1"}], "}"}]], "Output",
+ CellLabel->"Out[1]=",
+ CellID->203443406,ExpressionUUID->"e080966e-5f53-4089-99a7-26031e4eb640"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"10", ",", "3", ",", "3", ",", "3", ",", "1"}], "}"}]], "Output",
+ CellLabel->"Out[1]=",
+ CellID->723905989,ExpressionUUID->"adaf998d-88f9-465e-83b9-87baeec9a158"]
+}, Open  ]],
+
+Cell["\<\
+The partition has 5 rows, so if we consider now the group SU(5), the first \
+column can be crossed out, so \
+ConvertToPartitionNotation[ConvertPartitionToDynkinCoef[5,partition]] is not \
+the same as partition:\
+\>", "ExampleText",
+ CellID->619523943,ExpressionUUID->"1d9dad59-80e4-4156-9b8c-482976eb510d"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ConvertPartitionToDynkinCoef", "[", 
+  RowBox[{"5", ",", "partition"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"partition2", "=", 
+  RowBox[{
+  "ConvertToPartitionNotation", "[", "%", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"YoungDiagram", "[", "partition2", "]"}]}], "Input",
+ CellLabel->"In[2]:=",
+ CellID->144565193,ExpressionUUID->"c01daeee-6df5-41f4-b879-feb122a6db19"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"7", ",", "0", ",", "0", ",", "2"}], "}"}]], "Output",
+ CellLabel->"Out[2]=",
+ CellID->549471015,ExpressionUUID->"fed24287-6d58-405b-bd8a-4cc42742b586"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"9", ",", "2", ",", "2", ",", "2"}], "}"}]], "Output",
+ CellLabel->"Out[2]=",
+ CellID->442994926,ExpressionUUID->"d6d62ab2-6acf-49e0-a69b-69b2ecbad690"],
+
+Cell[BoxData[
+ GraphicsBox[{LineBox[{{0, 0}, {9, 0}}], LineBox[{{0, -1}, {9, -1}}], 
+   LineBox[{{0, -2}, {2, -2}}], LineBox[{{0, -3}, {2, -3}}], 
+   LineBox[{{0, -4}, {2, -4}}], LineBox[{{0, 0}, {0, -4}}], 
+   LineBox[{{1, 0}, {1, -4}}], LineBox[{{2, 0}, {2, -4}}], 
+   LineBox[{{3, 0}, {3, -1}}], LineBox[{{4, 0}, {4, -1}}], 
+   LineBox[{{5, 0}, {5, -1}}], LineBox[{{6, 0}, {6, -1}}], 
+   LineBox[{{7, 0}, {7, -1}}], LineBox[{{8, 0}, {8, -1}}], 
+   LineBox[{{9, 0}, {9, -1}}]},
+  ImageMargins->0,
+  ImagePadding->None,
+  ImageSize->180,
+  PlotRange->{{0, 9.2}, {-4.2, 0}}]], "Output",
+ CellLabel->"Out[2]=",
+ CellID->25308339,ExpressionUUID->"8dc70bd2-4b9f-4698-b537-a9f8154950c8"]
+}, Open  ]],
+
+Cell["\<\
+If we reduce further the size of the special unitary group, to SU(4) for \
+example, then it is impossible to anti-symmetrize the 5 boxes in the first \
+column:\
+\>", "ExampleText",
+ CellID->10335410,ExpressionUUID->"a3ecea56-4300-4772-b6be-62b4e964e0bd"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ConvertPartitionToDynkinCoef", "[", 
+  RowBox[{"4", ",", "partition"}], "]"}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->11781245,ExpressionUUID->"ccec4c93-114e-4f67-9723-a68a2f8eb1af"],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellLabel->"Out[3]=",
+ CellID->50206683,ExpressionUUID->"3b18dee2-8566-47e5-b464-77fdb395bb3d"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer",ExpressionUUID->"3ee72ae1-b98d-46b1-8160-b2526b255aa8"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]],ExpressionUUID->"a19df801-40f0-400c-90b5-81b805d481c2"],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704,ExpressionUUID->"ed0b8eba-7ec2-4521-a664-09d6e5a68ba2"],
+
+Cell[TextData[Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["ConvertToPartitionNotation"]],
+   "paclet:GroupMath/ref/ConvertToPartitionNotation"},
+  "RefLink",
+  BaseStyle->{
+   "InlineFormula", FontFamily -> 
+    "Verdana"}]], \
+"InlineFormula",ExpressionUUID->"a0d61171-0091-4ce2-a317-92dc4d2fc6c6"]], \
+"SeeAlso",
+ CellID->1038487239,ExpressionUUID->"d37d4fcc-2f4d-4527-b9bb-f15192a0170c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]],ExpressionUUID->"3a67684a-d42b-422a-9d14-39198cc4372a"],
+ "Tutorials"
+}], "TutorialsSection",
+ WholeCellGroupOpener->True,
+ CellID->250839057,ExpressionUUID->"1310f07f-e686-47fb-a0e0-8a4d9fcfbe3a"],
+
+Cell["", "SectionHeaderSpacer",ExpressionUUID->"789578b3-1011-42fd-994d-da5a455f0fa5"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["GroupMath Tutorial"]],"paclet:GroupMath/tutorial/GroupMathDoc"},
+  "RefLink",
+  BaseStyle->"Tutorials"]], "Tutorials",
+ CellID->341631938,ExpressionUUID->"26c3ac17-09d4-44a4-bb69-53a82299e33f"]
+}, Open  ]],
+
+Cell[" ", "FooterCell",ExpressionUUID->"bb0c1dab-d045-48ae-9f3a-0594cccba80e"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"ConvertPartitionToDynkinCoef",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "Mathematica", ButtonData -> "paclet:GroupMath/guide/GroupMath", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2020, 11, 4, 11, 38, 35.6465173}", 
+    "history" -> {"1.0", "", "", ""}, "context" -> "GroupMath`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Group Math Symbol", "language" -> "en", "paclet" -> "GroupMath", 
+    "status" -> "None", "summary" -> 
+    "ConvertPartitionToDynkinCoef[n, partition] Converts the partition to the \
+Dynkin coefficients of the SU(n) representation with the same Young diagram", 
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> 
+    "ConvertPartitionToDynkinCoef", "titlemodifier" -> "", "windowtitle" -> 
+    "ConvertPartitionToDynkinCoef", "type" -> "Symbol", "uri" -> 
+    "GroupMath/ref/ConvertPartitionToDynkinCoef", "WorkflowDockedCell" -> ""},
+   "SearchTextTranslated" -> "", "NewStyles" -> False},
+CellContext->"Global`",
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 8, 2019)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  TaggingRules -> {"NewStyles" -> False}, FrontEndVersion -> 
+  "12.0 for Microsoft Windows (64-bit) (April 8, 2019)", StyleDefinitions -> 
+  "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[9164, 239, 435, 11, 35, "PrimaryExamplesSection",ExpressionUUID->"2d3bb0cb-1512-402d-a201-1526802cd764",
+   CellTags->"PrimaryExamplesSection",
+   CellID->338003063]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 21919, 605}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[600, 21, 4222, 97, 53, "AnchorBarGrid",ExpressionUUID->"e0394dda-5a9f-4c30-84df-71f021d2b4ae",
+ CellID->1],
+Cell[CellGroupData[{
+Cell[4847, 122, 413, 9, 52, "ObjectNameGrid",ExpressionUUID->"41f513cb-44a9-4562-be84-0b28c61256b1"],
+Cell[5263, 133, 851, 19, 131, "Usage",ExpressionUUID->"0749f76c-e1f3-40d1-8d03-0d7f50207aea",
+ CellID->982511436]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6151, 157, 855, 21, 37, "NotesSection",ExpressionUUID->"91aac2a9-760e-4459-ba16-41ddf2639bd6",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->621730437],
+Cell[7009, 180, 86, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"c783c64d-d4e4-4484-a0ce-233f46fa99e3"],
+Cell[7098, 182, 389, 9, 70, "Notes",ExpressionUUID->"d9d680c3-b8fa-4f50-8df4-8a4d0c123bc2",
+ CellID->396044797],
+Cell[7490, 193, 618, 15, 70, "Notes",ExpressionUUID->"7466dd7d-d72b-4175-87bf-ab1717c0716a",
+ CellID->1067943069],
+Cell[8111, 210, 927, 22, 70, "Notes",ExpressionUUID->"8f928a43-111d-47ea-85e6-11c1cdacd92d",
+ CellID->711633375],
+Cell[9041, 234, 86, 0, 70, "SectionFooterSpacer",ExpressionUUID->"912be776-3225-4310-9ce5-82179d466273"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[9164, 239, 435, 11, 35, "PrimaryExamplesSection",ExpressionUUID->"2d3bb0cb-1512-402d-a201-1526802cd764",
+ CellTags->"PrimaryExamplesSection",
+ CellID->338003063],
+Cell[CellGroupData[{
+Cell[9624, 254, 308, 7, 29, "ExampleSection",ExpressionUUID->"1aab477e-4837-4c0c-a1de-8bef385fbeb9",
+ CellID->164327946],
+Cell[9935, 263, 266, 5, 57, "ExampleText",ExpressionUUID->"2f2fd874-24dd-4acf-b7ae-6f022dffbc75",
+ CellID->508965647],
+Cell[CellGroupData[{
+Cell[10226, 272, 273, 6, 43, "Input",ExpressionUUID->"569f97fd-7124-4081-86b1-458decfeb50d",
+ CellID->121974385],
+Cell[10502, 280, 347, 8, 41, "Output",ExpressionUUID->"072674c1-607f-4143-b412-5ff6e0e4caae",
+ CellID->50351503]
+}, Open  ]],
+Cell[10864, 291, 244, 4, 57, "ExampleText",ExpressionUUID->"f534b639-20f7-4829-968c-c50ae039b4c2",
+ CellID->389364534],
+Cell[CellGroupData[{
+Cell[11133, 299, 210, 4, 26, "Input",ExpressionUUID->"3f0b05a6-4b52-45d5-b90e-d228ec08db84",
+ CellID->197979858],
+Cell[11346, 305, 171, 4, 35, "Output",ExpressionUUID->"88afdf71-3bd7-4d74-98b0-34e07e8b7c6c",
+ CellID->272878531]
+}, Open  ]],
+Cell[11532, 312, 175, 3, 38, "ExampleText",ExpressionUUID->"dc0bdd79-5438-40a2-8395-156fe01ccb06",
+ CellID->250798557],
+Cell[CellGroupData[{
+Cell[11732, 319, 411, 9, 59, "Input",ExpressionUUID->"e3847501-a98f-4e6d-a894-5d47b55b8fa4",
+ CellID->287314498],
+Cell[12146, 330, 381, 9, 58, "Output",ExpressionUUID->"0eaccba1-8647-4c55-998f-4b0e6916d2c5",
+ CellID->230203224],
+Cell[12530, 341, 171, 4, 35, "Output",ExpressionUUID->"4c5a82a0-6408-4137-8111-cea866aad3ce",
+ CellID->431797382]
+}, Open  ]],
+Cell[12716, 348, 410, 10, 70, "ExampleText",ExpressionUUID->"c375b70b-b1dc-4d61-8678-1f7216aca488",
+ CellID->458547945],
+Cell[CellGroupData[{
+Cell[13151, 362, 224, 5, 70, "Input",ExpressionUUID->"c663494b-51c7-4fe5-a7c8-d96c6387e515",
+ CellID->123499176],
+Cell[13378, 369, 171, 4, 35, "Output",ExpressionUUID->"df8b0327-9f2d-48ed-bc28-a6dc12d3ed54",
+ CellID->347281504]
+}, Open  ]],
+Cell[13564, 376, 149, 1, 70, "ExampleText",ExpressionUUID->"fc4e8128-d02c-49b1-8c0c-97e5a6d7719d",
+ CellID->160158747],
+Cell[CellGroupData[{
+Cell[13738, 381, 242, 5, 70, "ExampleDelimiter",ExpressionUUID->"4650ecab-1fd3-48bc-97b4-e3273c6f1b71",
+ CellID->301562825],
+Cell[13983, 388, 114, 1, 70, "ExampleText",ExpressionUUID->"a8bb6491-0b87-4152-a565-311e5f9ad676",
+ CellID->164283295],
+Cell[CellGroupData[{
+Cell[14122, 393, 525, 11, 70, "Input",ExpressionUUID->"087d7351-72ae-465c-a019-928277493bc0",
+ CellID->224462142],
+Cell[14650, 406, 750, 15, 123, "Output",ExpressionUUID->"b4281e6d-703e-4be3-8e12-785f3aaf8ad5",
+ CellID->435503115],
+Cell[15403, 423, 201, 4, 35, "Output",ExpressionUUID->"e080966e-5f53-4089-99a7-26031e4eb640",
+ CellID->203443406],
+Cell[15607, 429, 202, 4, 35, "Output",ExpressionUUID->"adaf998d-88f9-465e-83b9-87baeec9a158",
+ CellID->723905989]
+}, Open  ]],
+Cell[15824, 436, 316, 6, 70, "ExampleText",ExpressionUUID->"1d9dad59-80e4-4156-9b8c-482976eb510d",
+ CellID->619523943],
+Cell[CellGroupData[{
+Cell[16165, 446, 402, 8, 70, "Input",ExpressionUUID->"c01daeee-6df5-41f4-b879-feb122a6db19",
+ CellID->144565193],
+Cell[16570, 456, 191, 4, 35, "Output",ExpressionUUID->"fed24287-6d58-405b-bd8a-4cc42742b586",
+ CellID->549471015],
+Cell[16764, 462, 191, 4, 35, "Output",ExpressionUUID->"d6d62ab2-6acf-49e0-a69b-69b2ecbad690",
+ CellID->442994926],
+Cell[16958, 468, 683, 14, 103, "Output",ExpressionUUID->"8dc70bd2-4b9f-4698-b537-a9f8154950c8",
+ CellID->25308339]
+}, Open  ]],
+Cell[17656, 485, 264, 5, 70, "ExampleText",ExpressionUUID->"a3ecea56-4300-4772-b6be-62b4e964e0bd",
+ CellID->10335410],
+Cell[CellGroupData[{
+Cell[17945, 494, 209, 4, 70, "Input",ExpressionUUID->"ccec4c93-114e-4f67-9723-a68a2f8eb1af",
+ CellID->11781245],
+Cell[18157, 500, 142, 3, 35, "Output",ExpressionUUID->"3b18dee2-8566-47e5-b464-77fdb395bb3d",
+ CellID->50206683]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[18338, 508, 86, 0, 70, "SectionFooterSpacer",ExpressionUUID->"3ee72ae1-b98d-46b1-8160-b2526b255aa8"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18461, 513, 260, 7, 70, "SeeAlsoSection",ExpressionUUID->"ed0b8eba-7ec2-4521-a664-09d6e5a68ba2",
+ CellID->1255426704],
+Cell[18724, 522, 393, 10, 70, "SeeAlso",ExpressionUUID->"d37d4fcc-2f4d-4527-b9bb-f15192a0170c",
+ CellID->1038487239]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19154, 537, 262, 7, 70, "TutorialsSection",ExpressionUUID->"1310f07f-e686-47fb-a0e0-8a4d9fcfbe3a",
+ CellID->250839057],
+Cell[19419, 546, 86, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"789578b3-1011-42fd-994d-da5a455f0fa5"],
+Cell[19508, 548, 241, 5, 70, "Tutorials",ExpressionUUID->"26c3ac17-09d4-44a4-bb69-53a82299e33f",
+ CellID->341631938]
+}, Open  ]],
+Cell[19764, 556, 78, 0, 70, "FooterCell",ExpressionUUID->"bb0c1dab-d045-48ae-9f3a-0594cccba80e"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

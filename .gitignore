@@ -1,0 +1,18 @@
+.vscode/
+
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# environments (uv manages its own .venv; don't ship a stale one)
+.venv/
+.uv/
+
+# checkpoints / caches / logs produced by runs
+*.pt
+*.ckpt
+*.pkl
+runs/
+logs/

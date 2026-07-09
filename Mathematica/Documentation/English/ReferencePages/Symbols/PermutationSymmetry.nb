@@ -1,0 +1,1670 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     68574,       1660]
+NotebookOptionsPosition[     57965,       1436]
+NotebookOutlinePosition[     61106,       1511]
+CellTagsIndexPosition[     60984,       1505]
+WindowTitle->PermutationSymmetry
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["GROUP MATH SYMBOL", "PacletNameCell",ExpressionUUID->
+     "2713290f-3b22-4e05-bc3b-28cdc652ed6e"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "Tutorials",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }],ExpressionUUID->"24f7f301-0129-4758-987e-309ac6164ccb"],
+         TextCell[
+          Row[{"Tutorials", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"GroupMath Tutorial\"\>":>
+       Documentation`HelpLookup["paclet:GroupMath/tutorial/GroupMathDoc"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"Tutorials"]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "87540850-dc23-4960-b53a-c768ffcdb6d8"],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }],ExpressionUUID->"697bef89-7595-47e6-b74b-da9823805ba6"],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"Plethysms\"\>":>Documentation`HelpLookup[
+       "paclet:GroupMath/ref/Plethysms"], \
+"\<\"PermutationSymmetryOfInvariants\"\>":>Documentation`HelpLookup[
+       "paclet:GroupMath/ref/PermutationSymmetryOfInvariants"], \
+"\<\"ReduceRepProduct\"\>":>Documentation`HelpLookup[
+       "paclet:GroupMath/ref/ReduceRepProduct"], "\<\"SnIrrepDim\"\>":>
+       Documentation`HelpLookup["paclet:GroupMath/ref/SnIrrepDim"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "5fc19429-cf28-4ae7-b7a9-30eb13a8e16a"],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }],ExpressionUUID->"d0278617-6646-404f-b0f0-aeb76fa9e3e7"],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"GroupMath/ref/PermutationSymmetry\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["GroupMath/ref/PermutationSymmetry"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/GroupMath/ref/\
+PermutationSymmetry.html"], StandardForm]], "Input", TextClipboardType -> 
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$21200], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "GroupMath/ref/PermutationSymmetry", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "61103288-fd9f-429d-8e54-4cb504735b47"]
+    }], "AnchorBar",ExpressionUUID->"380d585a-e657-4388-b06d-e1241ba00414"]}
+  }]], "AnchorBarGrid",
+ CellID->1,ExpressionUUID->"f14f5ed2-f7b7-46a8-849f-48b0a97e4857"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell["PermutationSymmetry", "ObjectName",ExpressionUUID->
+  "6ee9c606-d339-4ead-a927-f70a464b9e7f"],
+ Cell[BoxData[
+  TemplateBox[{8},
+   "Spacer1"]],ExpressionUUID->"22abdf01-1218-4683-9bc7-ec7e80023c0b"],
+ Cell[BoxData[
+ ""], "ObjectNameTranslation",ExpressionUUID->
+  "314ceeac-70ba-4957-b523-c5fd18a999bb"]
+}], "ObjectNameGrid",ExpressionUUID->"353a53c8-9fce-4515-a2c2-c3469217d525"],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"PermutationSymmetry", "[", 
+       RowBox[{
+        RowBox[{"gauge", " ", "group"}], ",", 
+        RowBox[{"list", " ", "of", " ", "representations"}]}], "]"}]], 
+      "InlineFormula",ExpressionUUID->"88314c5c-8791-491b-adae-3d8435d25083"],
+     " \[LineSeparator]Computes the irreducible parts (irreps) in the product \
+of the representations of the gauge group provided, together with the \
+information on how these irreps change under a permutation of the \
+representations being multiplied"
+    }],ExpressionUUID->"8e647777-96cb-4930-89be-e3b05dcfbcdd"]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{"Columns" -> {{None}}, "Rows" -> {{None}}}},
+ CellID->982511436,ExpressionUUID->"7411f0e1-2f49-4f47-bf01-670126efddbf"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    TemplateBox[{6},
+     "Spacer1"]],ExpressionUUID->"804ee3f4-c35f-4410-80dc-6650f7075f67"],
+   "Details"
+  }], "NotesFrameText",ExpressionUUID->"92975533-4c1c-41a8-b9ed-75abe5ca4cee"],
+  Appearance->{Automatic, None, "Normal", Automatic},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->
+   "Preemptive"]],ExpressionUUID->"200c8924-221b-470f-9ed6-12e9b4bd5c16"]], \
+"NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->16361843,ExpressionUUID->"1a3db189-bfa4-4bdc-bb6d-85122b7c6828"],
+
+Cell["", "SectionHeaderSpacer",ExpressionUUID->"7a6883dd-81e9-4d07-be9f-7939e3b17bac"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  RowBox[{"gauge", " ", "group"}]], "InlineFormula",ExpressionUUID->
+  "464e2939-50f6-448b-90af-14f49e42847f"],
+ " can be a list of simple/abelian groups (see ",
+ ButtonBox["Cartan matrix",
+  BaseStyle->"Link",
+  ButtonData->"paclet:GroupMath/ref/CartanMatrix"],
+ ")."
+}], "Notes",
+ CellID->1067943069,ExpressionUUID->"bebaddde-dfff-4487-9492-0b8386dfe264"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  RowBox[{"list", " ", "of", " ", "representations"}]], "InlineFormula",
+  ExpressionUUID->"3b43b804-7f43-43a8-8bc5-210fd776efa2"],
+ " must be a list of representations of the gauge group. The simplified input \
+format for representations can be used (see the ",
+ ButtonBox["GroupMath tutorial",
+  BaseStyle->"Link",
+  ButtonData->"paclet:GroupMath/tutorial/GroupMathDoc"],
+ " page)."
+}], "Notes",
+ CellID->53448704,ExpressionUUID->"267ad00f-b463-46dc-86fb-a6f8c52409bd"],
+
+Cell[TextData[{
+ "This function is a more complicated version of ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Plethysms"]],"paclet:Susyno/ref/Plethysms"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
+  "9b72a90e-6898-4489-b97b-5e6967e59e32"],
+ ", which can handle gauge groups which are not simple, and also product of \
+representations which need not be the same. This function can also be seen as \
+a generalization of ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["PermutationSymmetryOfInvariants"]],
+    "paclet:GroupMath/ref/PermutationSymmetryOfInvariants"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
+  "6df515f7-d24d-4db6-b1fd-aad97d4028ca"],
+ ": this latter function deals only with the gauge invariant parts of the \
+product of the representations given as input. Also, this function gives more \
+information that ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["ReduceRepProduct"]],"paclet:GroupMath/ref/ReduceRepProduct"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
+  "29e4d124-7dec-450b-b54c-0a58074e4a2f"],
+ ", which completely ignores what happens under a permutation of equal \
+representations."
+}], "Notes",
+ CellID->330094259,ExpressionUUID->"96a8d4fc-e861-4958-8c4a-83bd4e6249e6"],
+
+Cell[TextData[{
+ "Consider a product ",
+ Cell[BoxData[
+  RowBox[{
+   RowBox[{
+    SubscriptBox["R", "1"], " ", "x", " ", 
+    SubscriptBox["R", "2"], " ", "x"}], " ", "..."}]], "InlineFormula",
+  ExpressionUUID->"ddd15e64-9079-418a-8e44-a0b8d2607c66"],
+ " of representations of a gauge group G. We can break it down into \
+irreducible components of G, but we can go further and break it down into \
+irreducible components of G x S where S is a permutation group ",
+ Cell[BoxData[
+  RowBox[{
+   RowBox[{
+    SubscriptBox["S", "n"], 
+    SubscriptBox["xS", 
+     RowBox[{"n", "'"}]], "x"}], "..."}]], "InlineFormula",ExpressionUUID->
+  "47c78c8f-e2db-440e-b306-e6ad2cdfc3ca"],
+ " which exchanges equal ",
+ Cell[BoxData[
+  SubscriptBox["R", "i"]], "InlineFormula",ExpressionUUID->
+  "f7f0a5ef-51dc-42f8-8b11-acc1ac08beab"],
+ " factors."
+}], "Notes",
+ CellID->606738545,ExpressionUUID->"b4244b70-6cb3-433d-8248-340dc635129d"],
+
+Cell[TextData[{
+ "The output of ",
+ Cell[BoxData[
+ "PermutationSymmetry"], "InlineFormula",ExpressionUUID->
+  "e4315c0e-4a23-4e67-8b22-7882ff7355e8"],
+ " is rather complex, with many parenthesis (see the examples below). It is \
+made of two lists: {",
+ Cell[BoxData[
+ "indices"], "InlineFormula",ExpressionUUID->
+  "ee78dbcd-53d2-4266-835c-669cb1262d3b"],
+ ", ",
+ Cell[BoxData[
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"gauge", " ", "group", "\[Times]", "permutation", " ", "group"}], 
+    ")"}], " ", "representations"}]], "InlineFormula",ExpressionUUID->
+  "7877a27a-2932-453f-ba81-0a8cfbd5816d"],
+ " }. The first one (",
+ Cell[BoxData[
+ "indices"], "InlineFormula",ExpressionUUID->
+  "6ed3474c-ae05-4ae5-9ef6-78e7b0065d54"],
+ ") indicates the position of equal representations in the  input list. So ",
+ Cell[BoxData[
+ "indices"], "InlineFormula",ExpressionUUID->
+  "e80e91ea-f704-4931-ad4b-b6a4e23e4d30"],
+ "={",
+ Cell[BoxData[
+ "G1"], "InlineFormula",ExpressionUUID->
+  "8897cbea-9d56-4349-8efe-eed7054c88d0"],
+ ", ",
+ Cell[BoxData[
+ "G2"], "InlineFormula",ExpressionUUID->
+  "d8ec8a2e-19f4-45af-b3a9-823a795ba42c"],
+ ", \[CenterEllipsis]} where each ",
+ Cell[BoxData[
+ "Gi"], "InlineFormula",ExpressionUUID->
+  "d92aadfe-e4b3-498c-86cc-57c72055fb0b"],
+ " lists the positions of a group of equal representations. For example, if \
+the input list is {",
+ Cell[BoxData[
+  SubscriptBox["R", "1"]], "InlineFormula",ExpressionUUID->
+  "88810728-529e-4659-910f-b28f4fc31d18"],
+ ", ",
+ Cell[BoxData[
+  SubscriptBox["R", "2"]], "InlineFormula",ExpressionUUID->
+  "c538b010-ddf2-46a3-98cc-5ef9d00d55ad"],
+ ",",
+ Cell[BoxData[
+  SubscriptBox["R", "1"]], "InlineFormula",ExpressionUUID->
+  "4ef9fe4c-6a94-4ebe-8b0a-b3facd476c86"],
+ ", ",
+ Cell[BoxData[
+  SubscriptBox["R", "2"]], "InlineFormula",ExpressionUUID->
+  "e12442cc-b55f-4add-b1e3-a9ece2a8b1bb"],
+ "} for some representation ",
+ Cell[BoxData[
+  SubscriptBox["R", "1"]], "InlineFormula",ExpressionUUID->
+  "e42bce13-33a5-448e-8023-0653895327d0"],
+ ", ",
+ Cell[BoxData[
+  SubscriptBox["R", "2"]], "InlineFormula",ExpressionUUID->
+  "eeba008c-5174-49bf-a212-9060c71bb41c"],
+ " of the gauge group, ",
+ Cell[BoxData[
+ "indices"], "InlineFormula",ExpressionUUID->
+  "8bf28984-85ea-49ff-ad30-7651a400873e"],
+ " will be {{1,3},{2,4}} (the representations in positions 1 and 3 are the \
+same, as well as the ones in the positions 2 and 4). The second list (",
+ Cell[BoxData[
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"gauge", " ", "group", "*", "Sn"}], ")"}], " ", 
+   "representations"}]], "InlineFormula",ExpressionUUID->
+  "2e43e36c-213b-415d-ac6c-295197c9d9fe"],
+ ") is itself a list ",
+ Cell[BoxData[
+  RowBox[{"{", 
+   RowBox[{"Rep1", ",", " ", "Rep2", ",", " ", "\[CenterEllipsis]"}], "}"}]], 
+  "InlineFormula",ExpressionUUID->"df073a40-166f-48d2-a6b6-c3df7944df35"],
+ " with the breakdown of the product of representations being multiplied into \
+irreducible representations of ",
+ Cell[BoxData[
+ "RepI"], "InlineFormula",ExpressionUUID->
+  "f9a22355-2b6d-4ccf-9405-34602c9463fd"],
+ " of the gauge group (G) x the relevant permutation group (S=",
+ Cell[BoxData[
+  RowBox[{
+   RowBox[{
+    SubscriptBox["S", "n"], 
+    SubscriptBox["xS", 
+     RowBox[{"n", "'"}]], "x"}], "..."}]], "InlineFormula",ExpressionUUID->
+  "6c9e8f26-072d-413b-8585-fa7358e694fc"],
+ "). \[LineSeparator]\[LineSeparator]So the ",
+ Cell[BoxData[
+ "RepI"], "InlineFormula",ExpressionUUID->
+  "85416da1-0250-462e-b1ca-8f216138235d"],
+ " are irreducible representations of GxS (including information about their \
+multiplicity). Specifically, each ",
+ Cell[BoxData[
+ "RepI"], "InlineFormula",ExpressionUUID->
+  "ddd69bfe-bb63-43e4-b929-1e21a5a0c4fe"],
+ " is of the form ",
+ Cell[BoxData[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"GaugeGroupIrrep", ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"SnRepI", "-", "G1"}], ",", " ", 
+        RowBox[{"SnRepI", "-", "G2"}], ",", " ", "\[CenterEllipsis]"}], 
+       "}"}]}], "}"}], ",", " ", "multiplicity"}], "}"}]], "InlineFormula",
+  ExpressionUUID->"f8904084-5edd-4a15-9d73-5bf2f6ae6861"],
+ " where ",
+ Cell[BoxData[
+ "GaugeGroupIrrep"], "InlineFormula",ExpressionUUID->
+  "c16b618c-0565-44a3-9eaf-f148360aa04d"],
+ " is the gauge group irrep, and each ",
+ Cell[BoxData[
+  RowBox[{"SnRepI", "-", "Gj"}]], "InlineFormula",ExpressionUUID->
+  "b3872283-d00f-477c-bca5-60892c98c6b7"],
+ " is the irreducible representation of an ",
+ Cell[BoxData[
+  SubscriptBox["S", "n"]], "InlineFormula",ExpressionUUID->
+  "174f79e0-29c9-4d94-81d5-70b2315adc19"],
+ " associated to the  the grouping ",
+ Cell[BoxData[
+ "Gj"], "InlineFormula",ExpressionUUID->
+  "bbc8304d-c1ee-4fe1-a6ae-d9d48c7e830a"],
+ " of same representations in the product ",
+ Cell[BoxData[
+  RowBox[{"list", " ", "of", " ", "representations"}]], "InlineFormula",
+  ExpressionUUID->"db9f3923-a0f5-4666-a03b-1c91d831dfb9"],
+ ".",
+ Cell[BoxData[
+ "multiplicity"], "InlineFormula",ExpressionUUID->
+  "78635af9-21ba-44e2-9ab6-da038d79320e"],
+ " indicates how many times such an irrep of the (gauge group \[Times] \
+permutation group) is contained in the product of the representations of the \
+gauge group provided (i.e. ",
+ Cell[BoxData[
+  RowBox[{"list", " ", "of", " ", "representations"}]], "InlineFormula",
+  ExpressionUUID->"a6db8d8b-25e0-445c-afb3-3a5bc5935d07"],
+ ")."
+}], "Notes",
+ CellID->463020107,ExpressionUUID->"a054d23f-698c-4488-9339-adabf7b0685a"],
+
+Cell[TextData[{
+ Cell[BoxData[
+ "PermutationSymmetry"], "InlineFormula",ExpressionUUID->
+  "14193a08-1a27-49de-945d-f760572fb6b1"],
+ " is related to the ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Plethysms"]],"paclet:GroupMath/ref/Plethysms"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
+  "dccb4166-4867-4db2-9f0a-efb3af4bf755"],
+ " function, which follows the algorithm described in ",
+ StyleBox["M. A. A. van Leeuwen, A. M. Cohen, and B. Lisser, LiE, A Package \
+for Lie Group Computations. Computer Algebra Nederland, 1992",
+  FontSlant->"Italic"],
+ "."
+}], "Notes",
+ CellID->1034945,ExpressionUUID->"b2d59e74-73eb-47ec-a031-431f41b8f44e"],
+
+Cell["", "SectionFooterSpacer",ExpressionUUID->"f2479fed-080c-47af-a5ac-1cf09bbd4533"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]],ExpressionUUID->"4a477257-af88-49c0-86e6-75993b1e39d6"],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(4)", "ExampleCount",ExpressionUUID->
+  "eee3a663-0fd4-452b-ac1d-c04f6ff1b923"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->474419127,ExpressionUUID->"7e952d0d-8834-4b0c-a5ba-e03f1fe06dba"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(4)", "ExampleCount",ExpressionUUID->
+  "952f8a80-255f-4264-9c52-5c6342dc14c7"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->642343748,ExpressionUUID->"85ba9e52-695c-4246-8d4f-d83b92ad3d16"],
+
+Cell["\<\
+Consider gauge groups with a single factor\[LongDash]for example SU(2). We \
+shall consider a product of two doublets and two quadruplets.\
+\>", "ExampleText",
+ CellID->21576093,ExpressionUUID->"05e47a57-dfbc-453c-9eef-86cb2efb8947"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PermutationSymmetry", "[", 
+  RowBox[{"SU2", ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "2", ",", "4", ",", "4"}], "}"}]}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->39678609,ExpressionUUID->"dba446f6-54eb-47ea-af7c-f54b33748cb2"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", "2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"3", ",", "4"}], "}"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", "8", "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", "2", "}"}], ",", 
+           RowBox[{"{", "2", "}"}]}], "}"}]}], "}"}], ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", "4", "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", "2", "}"}], ",", 
+           RowBox[{"{", "2", "}"}]}], "}"}]}], "}"}], ",", "2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", "4", "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", "2", "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"1", ",", "1"}], "}"}]}], "}"}]}], "}"}], ",", "1"}], 
+      "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", "4", "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"1", ",", "1"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"1", ",", "1"}], "}"}]}], "}"}]}], "}"}], ",", "1"}], 
+      "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", "6", "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", "2", "}"}], ",", 
+           RowBox[{"{", "2", "}"}]}], "}"}]}], "}"}], ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", "6", "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", "2", "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"1", ",", "1"}], "}"}]}], "}"}]}], "}"}], ",", "1"}], 
+      "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", "6", "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"1", ",", "1"}], "}"}], ",", 
+           RowBox[{"{", "2", "}"}]}], "}"}]}], "}"}], ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", "0", "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", "2", "}"}], ",", 
+           RowBox[{"{", "2", "}"}]}], "}"}]}], "}"}], ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", "0", "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"1", ",", "1"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"1", ",", "1"}], "}"}]}], "}"}]}], "}"}], ",", "1"}], 
+      "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", "2", "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", "2", "}"}], ",", 
+           RowBox[{"{", "2", "}"}]}], "}"}]}], "}"}], ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", "2", "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", "2", "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"1", ",", "1"}], "}"}]}], "}"}]}], "}"}], ",", "2"}], 
+      "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", "2", "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"1", ",", "1"}], "}"}], ",", 
+           RowBox[{"{", "2", "}"}]}], "}"}]}], "}"}], ",", "1"}], "}"}]}], 
+    "}"}]}], "}"}]], "Output",
+ CellLabel->"Out[1]=",
+ CellID->119770292,ExpressionUUID->"f2a15851-4a35-4a7c-ad74-6e6b1a23ec6a"]
+}, Open  ]],
+
+Cell[TextData[{
+ "We now carefully look at the output. The first part of it is {{1, 2}, {3, \
+4}}, and it tells us that there are two groups of equal representations in \
+the product: representation #1 and #2 are equal (group1), and representations \
+#3 and #4 are also the same (group2). This is manifestly true by looking at \
+the input (the {SU2} representations are {{{1}}, {{1}}, {{2}}, {{2}}}). The \
+next part of the output contains the following items:\[LineSeparator]\
+\[LineSeparator]{{{8},{{2},{2}}},1}\n{{{4},{{2},{2}}},2}\n\
+{{{4},{{2},{1,1}}},1}\n{{{4},{{1,1},{1,1}}},1}\n{{{6},{{2},{2}}},1}\n\
+{{{6},{{2},{1,1}}},1}\n{{{6},{{1,1},{2}}},1}\n{{{0},{{2},{2}}},1}\n\
+{{{0},{{1,1},{1,1}}},1}\n{{{2},{{2},{2}}},1}\n{{{2},{{2},{1,1}}},2}\n\
+{{{2},{{1,1},{2}}},1}}\[LineSeparator]\[LineSeparator]They all follow the \
+form {<SU(2) representation>, {<",
+ Cell[BoxData[
+  SubscriptBox["S", "2"]], "InlineFormula",ExpressionUUID->
+  "336be7f4-5ef3-4fe4-93c9-c2c0dd94ecd1"],
+ " representation induced by a permutation of the fields in group1 (rep #1 \
+and rep #2)>,<",
+ Cell[BoxData[
+  SubscriptBox["S", "2"]], "InlineFormula",ExpressionUUID->
+  "e50941ea-48f4-4671-aa18-8e9aa6fdfd35"],
+ " representation induced by a permutation of the fields in group2 (rep #3 \
+and rep #4)>}, <multiplicity>}",
+ StyleBox[". \[LineSeparator]\[LineSeparator]", "TR"],
+ "For example, {{{8}, {{2}, {2}}}, 1} tells us that in the product 2 x 2 x 4 \
+x 4 of SU(2) representations there is an {8} (the 9-dim irrep of SU(2)), and \
+it is in a symmetric combination of the 2's (i.e., it is in the  \
+representation {2} of the permutation group ",
+ Cell[BoxData[
+  SubscriptBox["S", "2"]], "InlineFormula",ExpressionUUID->
+  "04d57b99-0f76-4d90-ba52-7c08322be0db"],
+ "), and it is also in a symmetric combination of the 4's  (again, \
+symbolically this is the same as saying that it is in the representation {2} \
+of the permutation group ",
+ Cell[BoxData[
+  SubscriptBox["S", "2"]], "InlineFormula",ExpressionUUID->
+  "721baaac-7337-480f-9e4d-79be12387f10"],
+ ").\[LineSeparator]\[LineSeparator]Another example: {{{6}, {{2}, {1, 1}}}, \
+1}. It means that in the product 2 x 2 x 4 x 4 of SU(2) there is one \
+representation {6} of SU(2) (7-dimensional), which is symmetric under a \
+permutation of the 2's (irrep {2} of ",
+ Cell[BoxData[
+  SubscriptBox["S", "2"]], "InlineFormula",ExpressionUUID->
+  "8500f5f2-9334-4fbb-9937-81da559f7abe"],
+ ") and antisymmetric under a permutation of the 4's (irrep {1,1} of ",
+ Cell[BoxData[
+  SubscriptBox["S", "2"]], "InlineFormula",ExpressionUUID->
+  "2fa5aac7-6e46-4e1b-a201-15bd3168aadc"],
+ ")."
+}], "ExampleText",
+ CellID->151918977,ExpressionUUID->"1eda89cf-0324-4b0a-8704-0ace2e323d51"],
+
+Cell["\<\
+The option UseName can be used to convert the representations of the Lie \
+group to names, and the representations of the permutation group into Young \
+diagrams:\
+\>", "ExampleText",
+ CellID->212221805,ExpressionUUID->"e8e4d2f8-a9f5-4116-bfd4-5d5cfe7ab527"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PermutationSymmetry", "[", 
+  RowBox[{"SU2", ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "2", ",", "4", ",", "4"}], "}"}], ",", 
+   RowBox[{"UseName", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->440084367,ExpressionUUID->"3ef7c26e-9c57-480f-ab81-7cc73c5de432"],
+
+Cell[BoxData[
+ GraphicsBox[
+  TagBox[RasterBox[CompressedData["
+1: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
+AQAAAAAAgCO/AYDtAII=
+    "], {{0, 89}, {561, 0}}, {0, 255},
+    ColorFunction->RGBColor],
+   BoxForm`ImageTag["Byte", ColorSpace -> "RGB", Interleaving -> True],
+   Selectable->False],
+  DefaultBaseStyle->"ImageGraphics",
+  ImageSize->Automatic,
+  ImageSizeRaw->{561, 89},
+  PlotRange->{{0, 561}, {0, 89}}]], "Output",
+ CellTags->"RasterizedOutput",
+ CellLabel->"Out[2]=",
+ CellID->517717158,ExpressionUUID->"dc512717-20ba-4014-8021-a68665a03e1d"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "\t", "ExampleDelimiter",ExpressionUUID->
+   "05dd4716-f2ff-45ab-bdcf-c317774cfaa3"],
+  $Line = 0; Null]], "ExampleDelimiter",
+ CellID->87747050,ExpressionUUID->"7e9d7767-b70b-4cf1-89e7-de0e8e69d5f5"],
+
+Cell["\<\
+Consider now the product of 3 triplets of SU3 with a singlet:\
+\>", "ExampleText",
+ CellID->425739455,ExpressionUUID->"10599fb5-add3-4b5d-9aaa-8da06d359985"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PermutationSymmetry", "[", 
+  RowBox[{"SU3", ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "3", ",", "1", ",", "3"}], "}"}]}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->631183171,ExpressionUUID->"45015f7e-976e-4766-851b-73abddee2e0d"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", "2", ",", "4"}], "}"}], ",", 
+     RowBox[{"{", "3", "}"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"3", ",", "0"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", "3", "}"}], ",", 
+           RowBox[{"{", "1", "}"}]}], "}"}]}], "}"}], ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"1", ",", "1"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"2", ",", "1"}], "}"}], ",", 
+           RowBox[{"{", "1", "}"}]}], "}"}]}], "}"}], ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"0", ",", "0"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"1", ",", "1", ",", "1"}], "}"}], ",", 
+           RowBox[{"{", "1", "}"}]}], "}"}]}], "}"}], ",", "1"}], "}"}]}], 
+    "}"}]}], "}"}]], "Output",
+ CellLabel->"Out[1]=",
+ CellID->28762495,ExpressionUUID->"2fe135e4-251b-4a1f-8ce7-def3c6d86bb8"]
+}, Open  ]],
+
+Cell[TextData[{
+ "The output informs us that representations #1, #2, #4 are equal (group1), \
+and then there is representation #3. The product 3 x 3 x 1 x 3 of SU(3) \
+representations breaks down in representations of SU(3)x",
+ Cell[BoxData[
+  SubscriptBox["S", "3"]], "InlineFormula",ExpressionUUID->
+  "3b289399-6b63-4faf-94c0-89330e7b6e24"],
+ "x",
+ Cell[BoxData[
+  SubscriptBox["S", "1"]], "InlineFormula",ExpressionUUID->
+  "e21a5c28-0a0b-41b1-a3ac-2ff153b55a22"],
+ " as follows:\[LineSeparator]{{{3, 0}, {{3}, {1}}}, 1}\[LineSeparator]{{{1, \
+1}, {{2, 1}, {1}}}, 1}\[LineSeparator]{{{0, 0}, {{1, 1, 1}, {1}}}, 1}\
+\[LineSeparator]\[LineSeparator]In words, there is one {3, 0}x{3}x{1}, one \
+{1, 1}x{2,1}x{1}, and one {0, 0}x{1,1,1}x{1} representation of the SU(3)x",
+ Cell[BoxData[
+  SubscriptBox["S", "3"]], "InlineFormula",ExpressionUUID->
+  "14b47173-5d12-4682-86b0-e4185b2042de"],
+ "x",
+ Cell[BoxData[
+  SubscriptBox["S", "1"]], "InlineFormula",ExpressionUUID->
+  "aad383d8-4782-49c3-9d62-c398f2f8de85"],
+ " group. Note that it would be wrong to think that there is only one {1,1} \
+representation of SU(3) in the product because the representation {2,1} of ",
+ Cell[BoxData[
+  SubscriptBox["S", "3"]], "InlineFormula",ExpressionUUID->
+  "03ef1404-2f99-499c-b36c-7de2291373e7"],
+ " is 2-dimensional:"
+}], "ExampleText",
+ CellID->651730668,ExpressionUUID->"78691354-fc05-4d5a-b7d5-98081cee4eb2"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SnIrrepDim", "[", 
+  RowBox[{"{", 
+   RowBox[{"2", ",", "1"}], "}"}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->324641701,ExpressionUUID->"c13d9068-5769-4344-896c-58b3c13afc03"],
+
+Cell[BoxData["2"], "Output",
+ CellLabel->"Out[2]=",
+ CellID->480796244,ExpressionUUID->"67bd67c9-05ed-4247-84f2-be2dfdb8166c"]
+}, Open  ]],
+
+Cell[TextData[{
+ "Indeed, using the ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["ReduceRepProduct"]],"paclet:GroupMath/ref/ReduceRepProduct"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
+  "3b02188f-3abd-49f6-8d0c-9bdd8034ceb9"],
+ " function which deals only with the decomposition into irreducible \
+representations of the gauge group (SU(3) in this case), we get"
+}], "ExampleText",
+ CellID->289351674,ExpressionUUID->"16af254b-71b3-47b0-a115-bc5477e6bfad"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ReduceRepProduct", "[", 
+  RowBox[{"SU3", ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "3", ",", "1", ",", "3"}], "}"}]}], "]"}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->216308175,ExpressionUUID->"0df88bf5-4d5a-46e2-b7e3-c8d0feccbac5"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"3", ",", "0"}], "}"}], ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", "1"}], "}"}], ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0"}], "}"}], ",", "1"}], "}"}]}], "}"}]], "Output",
+ CellLabel->"Out[3]=",
+ CellID->413584636,ExpressionUUID->"6ae3fedd-f125-4418-bb09-ac598c94312c"]
+}, Open  ]],
+
+Cell["The dimensions add up:", "ExampleText",
+ CellID->176196727,ExpressionUUID->"3130bb85-a716-4dbe-b62e-f293f88f8f37"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"DimR", "[", 
+    RowBox[{"SU3", ",", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0"}], "}"}]}], "]"}], "^", "3"}], " ", 
+  RowBox[{"DimR", "[", 
+   RowBox[{"SU3", ",", 
+    RowBox[{"{", 
+     RowBox[{"0", ",", "0"}], "}"}]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"DimR", "[", 
+   RowBox[{"SU3", ",", 
+    RowBox[{"{", 
+     RowBox[{"3", ",", "0"}], "}"}]}], "]"}], "+", 
+  RowBox[{"2", " ", 
+   RowBox[{"DimR", "[", 
+    RowBox[{"SU3", ",", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "1"}], "}"}]}], "]"}]}], "+", 
+  RowBox[{"DimR", "[", 
+   RowBox[{"SU3", ",", 
+    RowBox[{"{", 
+     RowBox[{"0", ",", "0"}], "}"}]}], "]"}]}]}], "Input",
+ CellLabel->"In[4]:=",
+ CellID->100031268,ExpressionUUID->"ce0066e3-96ca-4a7e-abc1-8039eb6f2c79"],
+
+Cell[BoxData["27"], "Output",
+ CellLabel->"Out[4]=",
+ CellID->833208423,ExpressionUUID->"66419778-adab-4ad8-a245-04df2c5ea52e"],
+
+Cell[BoxData["27"], "Output",
+ CellLabel->"Out[4]=",
+ CellID->44845570,ExpressionUUID->"98769496-1854-4e86-917d-da0b303c7f5f"]
+}, Open  ]],
+
+Cell["\<\
+Here is the same result as before, using now the UseName\[Rule]True option:\
+\>", "ExampleText",
+ CellID->89086483,ExpressionUUID->"1c7936ff-7217-4396-b450-13717d545632"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PermutationSymmetry", "[", 
+  RowBox[{"SU3", ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "3", ",", "1", ",", "3"}], "}"}], ",", 
+   RowBox[{"UseName", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[5]:=",
+ CellID->111586721,ExpressionUUID->"00e0c6bc-dbe5-4d09-bda1-cd88d946e6d4"],
+
+Cell[BoxData[
+ GraphicsBox[
+  TagBox[RasterBox[CompressedData["
+1:eJztnU9u1TAQxiPYsGTLDm6BumPJFsQBWtFUbIrUIiFukdPkMjlMyb++JvbY
+mXHGTux+PwlEp89jeybj78XOe3y6+f2tflNV1eO7/q9v13+/PDxc//v+vv/h
+x/3jr7v7259f7//c3t0+fL552xs/9n8+9K8f/v0EAAAAAAAAAAAAALKl8nL0
+6AAAAGSARy8gJQAAADhASta0Td00bXf0MF4DCDUAUSFLTLHuVq6SSUnXtY01
+A9IY27+n0/4XWNrSgFADEBWyxBTrznCV+K4k8exUjCAGCHWhkFlVTPWLK/85
+b7Ij4HQTFlK2lHQtcTdAGmP7J41Y35KBUBdI29R2VZFGDf9ha5e+lAybHOYE
+SaOifw6QkjT+ISXHglCXRxZrVzHL2iZZpCOYXKWko8ykMVOSz+VcoS4plceR
+xdpVzLK2SRbpCCZHKema2j6kt4xdczVsw9ataLhTo6q6kuZ3arnubbgTFnV/
+8bWcy2VM1rBI/6Gd7gh137g2B7cYtSwFlv/gHfj9m/NcJ2qJcFy0qjk1jWPu
+wlKVWEr4OVVa1pxrSFwpsaspyH/SEjgo5julhGHsx9OnYhiVpDj6188v75Mp
+SuXYU10Ta4DaJTcPyxQrtXcCwc9CUPI7FMP84+KfYSNRX6BEdcT8lUYifBdt
+tJwO6Zm7GxMpEpP0UsL8Vbbp2PFmNs5dycljHl9KLgMTvyUOaTm/2lrotaVk
+CvSm/7RSMs16JRjLNWkqDVFdvFYpmRull5K5v/OJfrCTnNNhVlOw/9cQc7ax
+I+/rE0gJoQpOLr3Ek5LnPQjr8tJM365Qry7+yw9jaBrpm11Iidra1VI5NYyL
+DS5psRiukI4NV0SJkcYwKTFdpY45e3pbOGLO9m8Zxw1i6oIgrKQxVEqGZuxE
+Lvqg9CfgUI2ey3MPxsB0TvL2h5qQkmbeOhHum1j+s5ASvSNVx0UbciFRSbWM
+y6M4mZhYrk6UDt7cGTjSIXZFlpij7kKkhHCVOuZqj5671m2+/7Vx+gi83Y0g
+JSFSItIRsxDtahxGJnsayXV5jVhaQvqXdqoQanuDq1oorCCitv88pEQlEWMb
+x9olddV1RFIto7UXyX8PZfs3K4ENc0rCdLBXbh+edEhckSXmqLsQKaFcJZcS
+raC71m2+f9sYYYNrsTdMjNWlI95WixcxNrgYrnzH7qaS8G7ktzvV3OBaLlDm
++iSfflwp8Y5Hf0eFkwjmjgonkpsbXJaUvDiU+1dYu0pOx74NLrn/xCXQ1y25
+glgbNYEx5/p3GOlaYD3B5bhR8L31Wj4WyW+1bM6QEoYr4mB0IvishNOpTqif
+O3kZtSF+0ulHlhLvePTXLl937otW50Kijc5nzVNlakXZ6dg+unJUU5D/8ktA
+Ytz3BBfJ4ulHAWGtyEltu+Lvi7MjGdhphA9ViUcSV0q849GvoxNcSIqVEuGR
+IaTD2TpaOvKN+f6PKAYeqQU8mBrcampqHCEzXbHP9Fjn4sxOdUNNEjb9KgLM
+8XCcTJ4UE0GGRDGnnLUrzP9OKdFLB2uF2ZGOQFfp05GwBFLHXGp0xLkjnxxW
+/JC+BnvGw2mrHIQzhfpsqfQTO0TKOS3mmzo84ItTnpKnI8cvTgExQKjLo+y1
+ywOk5AlSsgbrWzIQ6vIYvs2M2J8kjCr+zyIlqt9Nx/XPAFKSxj+k5FgQ6iLp
+utb+OApp3O//HFJyzjuSAUhJGv+QkmNBqMFO+Ee0r5OypSTx7MSdTl84jjUu
+AQg1AFEhS0yx7tauEkpJN/bMMcb2v9Ep1rdkINQARCX2fyV3iJSwjbH9Y/0C
+AABNznF0BQAAIGNwdAUAAAAAAAAAh/MfZwq+cQ==
+    "], {{0, 32}, {537, 0}}, {0, 255},
+    ColorFunction->RGBColor],
+   BoxForm`ImageTag["Byte", ColorSpace -> "RGB", Interleaving -> True],
+   Selectable->False],
+  DefaultBaseStyle->"ImageGraphics",
+  ImageSize->Automatic,
+  ImageSizeRaw->{537, 32},
+  PlotRange->{{0, 537}, {0, 32}}]], "Output",
+ CellTags->"RasterizedOutput",
+ CellLabel->"Out[5]=",
+ CellID->637869036,ExpressionUUID->"d0f038a2-f57d-4da6-8bee-f3404b6a0fc7"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "\t", "ExampleDelimiter",ExpressionUUID->
+   "8a72296b-35cb-4f4e-a847-a7259e5679f6"],
+  $Line = 0; Null]], "ExampleDelimiter",
+ CellID->704102152,ExpressionUUID->"f6ee72ea-169a-4599-826e-3bd3861959a3"],
+
+Cell["An example with SO(10):", "ExampleText",
+ CellID->544317391,ExpressionUUID->"b3d516ba-f2a4-43d0-b1a7-f821a631a230"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PermutationSymmetry", "[", 
+  RowBox[{"SO10", ",", 
+   RowBox[{"{", 
+    RowBox[{"10", ",", "10", ",", "10", ",", "10"}], "}"}], ",", 
+   RowBox[{"UseName", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->419989149,ExpressionUUID->"5cb3eed5-d878-47f4-9364-a376a55e9c3d"],
+
+Cell[BoxData[
+ GraphicsBox[
+  TagBox[RasterBox[CompressedData["
+1:eJztnV3OrLgRhlvJTa6ibCG7iPoul7mdKAuYUU6PcnMinYkUZReshs2wGEID
+X7eBwpQLG2z6eaQZfae6KZvXVS7+Gv/5l3//9Pjd7Xb77Q/d/376+b9//fHj
+5//9/U/dP/7x/bd//fr92z//9v0/33799uMvv/z++bXuvz9233/+3QIAAGip
+q0dV1c3Z3QAAgEypq4oiAQAAHqgUAADgh0oBAAB+qBQAAOBntVI0klk0AgDA
+pRErRVM9lk9DLYxNdb91POqQ9saNbre7/lzmtU3YZs620z423U4vOi0aAQBg
+pVIojN0M3E3az3k4pFJ03x+/Xj+CJ/1xs8D2bo/HcpumFh4LFo0AAGCtFAOh
+lWLvlkN9CmxDqC5UCgAANY14yeWAShF4ctB93XLNqm+CSgEAYKa/NC/NmIJV
+NForxXMzy7WngItWTs+koqQ/lQIA+GSehUI4oxDrx1pRMVQKe5l4oiwV7k3w
+kUk/n/uzeJBLNAIAfDoJrj71F4rWysdqmfBuNfmau7lqqx1Xn5S9AgC4NHVt
+qxSzg3ZnNu0/WTnu/7rdYN5q9g3fVu7m1kqh8g8AcHH2Pfsku3xYjsOP3Ep/
+R9voHwDgSqz88k66p614N/lwpmH7ddwxWw2bau7Z7/APAHApVs4UGukAWzQW
+x4V3DQAgCTwZCgAAfqgUAADgh0oBAAB+qBQAALDB8DJxqgUAAHihUgAAAAAA
+AAAAwIHU1UPxk2wAAPhUeCAKAAD8UCkA9iEmUMSsmriar8Wi5oS+woWgUgDY
+qauH8FpiyRjJ/2vOX6L5qF/TTFrXK9I0ENEVZAWVAsBM6qV3l652Voo2/cry
+vIHzkqxGtfi7i1N+jMEvQPykHin0X4dKscTu6pQ5h/DWsbJoxUNYX3thfC+G
+5yztIBidRfPCV+KeNGq+SGvD6UctrC0rGjd36C7pYHE1uFON1LCWoGEBDvT3
+o60UVv0zrhQrSlorhSKSp8toThoePgoWmPDWY14IT1x3WjI+beMQOn/aunfb
+nSbmj2LkVzeO3e5LK5Jb80szUq9CvX+mQv8ZB+vf5lIpTlFydVXKfl6538MF
+Jrz1GCtFH/2LyiUYXZthablrDeW40eH51bUWXqQl/+g/42D921wqxbhRFpVi
+kLauPr5SjBulqRSNeFayPWrD6FRfp4NDzyTjK0P6HaikAuODofSjLvRUivdG
+MfWvpfQRjFb9F64+vFJ8Mbm0/fxHQ6UYN0pQKfqrV1L/tpeeHgbtXSD6PyXj
+u3o87eKpiLeDUR8R3PVRtJuX8lBaXKkWCR+9W2Yq9N/ypF6E3qa/4CqCmAHd
+3uqfqKTBVUAkP3lNOe8JxVApCG+ty+ejz8I4S/VjbpwE/tc/JOP0FktYvix7
+cuZQPnuzeE5CNG6wll/BrlQjNWKZqdDf76cR8kc0tib9ZVc3K47jgLjx93Bd
+yTBXwT2azi4uQcehhHeAW9vVJ/k+tWR0TiP6P510EW+Ke3tSwOnh9k6pTw/D
+9Vk3SjMV+u91te/qk8n/fjEzVTLkmFpQc3lOQXjvdTX9uhjqmlETn30Vje/r
+i9OhnFcOqXvFDaVvp2aHQJNRCnQ1ohipWaPzB5rR3+Rq5GD92yMrRXZKOvcp
+lr6WlYLwtrsSMD8lG4PVx97WGi1gKBU7JWJztW+k0H+vq4P1bw+9o12QkrJL
+wjuiq5Vf3kW65bWO8onZWaO3Y3E7ornlZngMeKcr80ihfxRX5vnN7P92SKXY
+oaTRVdw5h/CO7molqhspnERjak5pVNOHiB3b4yrnvsUi333kbR5LrK5OmXMI
+by0JrikBfApUiiUZzL0QHyoFgJnni4OEayaCMZb/vZUi2iuGVojoCnKCSgGw
+h+7cfvmcumiM4n9fpeB8AoxQKQAKIsb9U4BwhhfvUi0AAMALlQIAAAAAAAAA
+AAAAADJDfg/VYY3u+qn81hMgqfdtn6tSlT9sBwqUVw8psLZ1ASlQvvKB1NVD
+eKeUZEzW6C3lW7n61Tnm+yIabdhdXUJ55DVCCrQXSQHPR/kqH85Rr5P1+U86
+WG2uP0O6jPLIa4AUaC+UAp6P8lTeAIO1nw9PE+Q1QAq0F0oBz0d5Km8gcAH0
+2YvOh49yXwA90mBNF4Dd5erJZZQvVt7B9JjqONFcWqVr0sX3ojKBQ0EKtIEr
+Oc5WZF7Ji+BGP1N5A8r5ShyNfu3Ce/AC6EUOVjdS43q+B1eK/JUvVt73PC/q
+OFsDeOyYswpw4LKTvp6QAh7jItqNq/yI/j9TeQP2+WpIpHqxWGF4oyUM1rhR
+FpUiM+VLlrdrTVr5+qszbqVwysN84XgDpECrrBRCtH9apRg3OrlSbC8l757r
+vQbraznb5bK24Y1+5mBdRvli5R1t80rxvqLk9MUZitE6bFc9lt81dI8UWDGK
+0S7mhbHRz1Te0HjQUoWvQ6v38ZRhvlr4Tz1Y8VZklAfL4upKypct79o5xeSk
+YrrIfd/HYbqyXYciBXRd2oz24AuAKG+h6RpZrEYiGr8Ys2qaN2GHVIL/ua8Y
+TNusBTVF41bnVwYr1FXxyk8dFy3vaqV4z1PuhaZX/Zhst+5E171dsX7ZMVJE
+e5DwKL8D9Ul6b18Oy7LWK8p8lBNAPdoTwO2eq08Aw0XwGNvMlL/Zzq8zlXd1
+rnk3sqgUr5MK5z7G/PkpUiBmCnjOKVwzyqtcWQh7VnM5VssRdE/adY3mMli+
+ns8ObybjEOhqpFzljZUiO3lnjb7vUy+74Zrf7TrWaY9JgVhj5HqT7lMIh08o
+vy2CgQQ/ftl+MiHTwbI+U2FzVa7yxkpRvLx6SAGVq3JTQE+eyhuIO1hD8dss
+ZxkOlrLnGv82ETxGVR8OVN5QKUqXVw8poHdVbgoE9CpL5Q2U+4N6PXn+oL5c
+5a3nFEYKklcPKdCWnAJ68lTeAIOVyP8m5SpPpdgPKdCWnAJ68lTe0lD1WA6M
+aEzXaNrB6p8iUxkj+tdsV6zyk4+Q1wQp0JacAurGMlXe2FpTN8vxkoyJGk05
+WFmX9EKVdz5CXjukQFtsCijbyVn5Erl5Obt3V8avPINyGKh9FigPAAAAAAAA
+AAAAAAAAAAAAAAAZwqNNAADgx1MOqBQAANBSKQAAYAsqxZXQ/jCYy4xQMsT5
+8VAproRtNBloKAvi/HgQ9kqQQfAJEOfHg7DxqKtHVc3fSSgaUzW6M4Oa56t3
+550VjTYiuoJDOCWkt3ty6TgvWPNThE3daHTKXUxk9lHqHclnERzwk88aRp8T
+5xfQ/BRh89Ftk8tUiozfBS9ud0osvBvdf3c19V6ZXeWTfZ8T5zlrrnxU4BRh
+UzcaESqFEqOr7lR4uZ1oTM200f2a9yfK870QjTbMrnKetda+WXqcX0BzKoUf
+KoWSj80gz0doHtQTND8AKkUiqBRKPjaDPB+heVBP0PwAqBSJUA9x/Xhe2Lt/
+fTD884tH2KrfQdcSj73M2FR3eYdSZdBUyLFl0fjunUHynGetwzVvXYXv0gfE
+eRgazVeDt9d4MgxnxPkpwl6vUjwH836/TzModBDX/NtmrRkxNO9GudvB51gf
+Omt9mR9ChLnGfhCGTZ0/bT3JplKcobkjap/Y75aJ82Rx3ik5tDaJ81dNcKL5
+nDg/RdirVYphvOrq6hk0bnROpRCTwjG6c9qQX0EplGulGDc6UvNJdXD/QZwf
+cvVpWgm6LkxC/6w4P0XYcipFU1XLNJgZmzFzmnkGrZy/BzcaJ4MUe6L1JA60
+xVVb18JGkrHPibmQE+Mrnfr+VdNj4eCeXLdSKAJhfk4x/E2c73AV0KnlIdHE
+si/O7ZqfImy8RpPyfA5xkYpz47vETzLojXjRJKjRKBkU74FUeaAtrhrp95Yr
+RiEhpsYhg6rxGFfcIKAnUSpFwA5u9k/UPNiVKqRbpwDcH49BSOLc6kqr+avR
+hYxCpTDF+U7NTxE2n8fo1xl+Ob5hdO4trd1jCrqWKDUaKYOCItbnZ2WgQ101
+jaSvZNy+RdHOb5WFib5sVLhvqmPqOJLkq5UiVHJNSE8ZhSTOra5CNF+ptsur
+T6Y4X9FcG8znCBsthRITcvbjOdZyzdvHXknOyrs6LJbxuVHTPXGgLa50V5+2
+rzy9Lc41k9k9wLCe2DS/2a4+WTU3ugq8EjJ3R5wbXCk0F8P81cD7g11xvkPz
+44UNMp6N+kL6LIOc67ezwV8PiDX/UTJIO2v5ujc7sJyMdqCrEfXTg9uFot9y
+5dnO8J4cWikO1nw7pFefkf1qgjhXuhrZ1nx+0ubeJlpIvCfOrZqfIGyI8XQS
+/GRm+3GRU58JMT7NYnN11C+SDtLcmFxo3kOc7yah5mcI+7mVQvlUm/ktXr6m
+FZobHrrb6eqADDJrvvbNuMmF5i+I8z2kjvODhQ01nk65b/OYwVsOgnpy7DmF
+ETRfguZBPck8mKkUQY2SQQdApShU8xloHtSTzIOZShHU6IUzqKke0i1TwZia
+WaMRKkX/KN+iGclow+rqArOWhzzj/AKaUyn8UCn2+Fdt2NTNslhIxtS4je6u
+FNnqfYVZy0Oeul9AcyqFn8tUitQ7ckrYp8N/d3X/jdcTucCspffpMdqwucpZ
+c2UwnyJsPrpt87wqsTi+FY3JGt2dQU3vT2O0EdEVpOeUkFb05MpxXrbmpwib
+utEkiKOZeogjZpDaaCPHCg9+Tglpkc+J82I1P0XY1I1ekChn5QCZQ5wfD5pf
+idIvjANoIM6Ph0oBAAB+qBQAAOCHSgEAAH6oFAAA4IdKAQAAfniKAAAAAAAA
+IC7/B+Uk0TM=
+    "], {{0, 115}, {526, 0}}, {0, 255},
+    ColorFunction->RGBColor],
+   BoxForm`ImageTag["Byte", ColorSpace -> "RGB", Interleaving -> True],
+   Selectable->False],
+  DefaultBaseStyle->"ImageGraphics",
+  ImageSize->Automatic,
+  ImageSizeRaw->{526, 115},
+  PlotRange->{{0, 526}, {0, 115}}]], "Output",
+ CellTags->"RasterizedOutput",
+ CellLabel->"Out[1]=",
+ CellID->381167047,ExpressionUUID->"1592b449-056a-49f6-bf84-065f847c73de"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "\t", "ExampleDelimiter",ExpressionUUID->
+   "966c0c1f-2b9d-4fbf-b320-390b43c4c436"],
+  $Line = 0; Null]], "ExampleDelimiter",
+ CellID->506170149,ExpressionUUID->"be815cd8-2a2d-4e06-aee0-aa00947b7c16"],
+
+Cell["\<\
+The Lie group does not need to be simple. For example, if could be \
+SU(3)xSU(2):\
+\>", "ExampleText",
+ CellID->317282050,ExpressionUUID->"0a11f736-a16f-447a-96f9-77ce6556b484"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PermutationSymmetry", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"SU3", ",", "SU2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"3", ",", "2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"3", ",", "2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"3", ",", "2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "2"}], "}"}]}], "}"}], ",", 
+   RowBox[{"UseName", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->188512204,ExpressionUUID->"7bb80732-77f7-4a76-bf93-5f04e6172765"],
+
+Cell[BoxData[
+ GraphicsBox[
+  TagBox[RasterBox[CompressedData["
+1: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
+TyC1UqpB0bCgVND1/IFH4rsnJu9JESbfVoSbr9P4PZrt4mqa4cemfo4L+8rD
+63uq5yRwidKKd49TLi3/UP3soTPL6zam1VdIILVS3fdt3R0RG9dZUCog1OFH
+YpDJcyTGORLPROUC09k/+3ge9tX05w9DH3nv3flDz6yuUVr9OZQ0mr5PJyyU
+lm+o4Sv2m42J9ZWySm7y2o+/LZZM3jvU8UdiiMlzJMY5Es9m+0PPKa3vXnf3
+eqpvobU/S0f6ZCZR/Pd2VseW1mo+8S8St3dffZGoCbU5M3GCvqHTNZGUandF
+PPueN4YqFRTq6CNRMnmOxHRH4plormymF4mzOjHdi6aafibwW2TzPrO9V1ze
+Jy2t1Xzil9ba5uzL8dnTE36hRt4X8muNJ+jbBJl82UoddCTOU7Vu13IkJtP3
+RKJMXxm/a5fJk2C6rI4trdV84peWYvdFwkKVpS9KbW06F6XCflWyvidipMlD
+sTHS5p7uSchmVo8DUOajCTJE0tw5U+6+OCRhoRJ/4zUsq7RKqUxgh1KBoTgS
+I+mb6ZF4KkaqebExJacn4MXRYxgeitcauOT6WgOOxP3keyQCHAQm75KryQMA
+eIPJu2DyAFAMmLwLJg8AxYDJb259pTFifACAQxjeFWsUjSmxE0ho8qbfsqYx
+YnwAgGPJfDGKlCavbowYHwDg1iSergEAgJSov+cCAAAAAAAAAAAAAAAAAAAA
+AFAmPEJzFVAKAALgYfirgFIAEADWcRVQCiA/ugU+nfVwxMaUWAkks45umVNn
+v8XGiPHVoNSXvJUCyAheNbm59ZXGiPHDeqFUhkoVx9FvbQrjm8D6naBkN4my
+fbkV1uGS50vjUcolT6WKor1QE9YelxpTYicQVnXxTb67+JsPi9gYMb4GrMMl
+T+tAKZc8lSqJgqvuPgVZsIjBoJQelCqbgqvuPgVZsIjBoJQelCobVdU11Xea
+u/JZ9qbv+PQv4cQmr5/Yj1SQpn7KY3mgdWQg4v67J7dQ6hUw5lN1PfVFqdJR
+VF1XP+PQ9QNpDaOpq+7hq7ZHNXtWaRz0i5i88lcxCrIdmHZIuuFJaB1XFVH/
+l6UotTrmi0pN9N2dFUoVhtIfxrHrfpyUXltyz8+CltY/+j9t+8w6BGZVlsmP
+ndKb/BVF1P9lQUotjPmGUnc2+bETJi/SNEJlzBsn14LTMTR9bTTd1w1M8/7Z
+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
+khAAAA7h5pOEAAAAAAAAAHBR/g/5RgUH
+    "], {{0, 172}, {503, 0}}, {0, 255},
+    ColorFunction->RGBColor],
+   BoxForm`ImageTag["Byte", ColorSpace -> "RGB", Interleaving -> True],
+   Selectable->False],
+  DefaultBaseStyle->"ImageGraphics",
+  ImageSize->Automatic,
+  ImageSizeRaw->{503, 172},
+  PlotRange->{{0, 503}, {0, 172}}]], "Output",
+ CellTags->"RasterizedOutput",
+ CellLabel->"Out[1]=",
+ CellID->946296789,ExpressionUUID->"a87d25f0-8e19-4a00-a7b5-89a7520e6c4e"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer",ExpressionUUID->"2e43e63b-2e6f-4e84-a132-d78755ffeeba"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]],ExpressionUUID->"d3822daf-70f0-4928-a4c1-78354ab68dfc"],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704,ExpressionUUID->"d8ad18b9-75b3-48dc-9575-87788c9c8f52"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Plethysms"]],"paclet:GroupMath/ref/Plethysms"},
+   "RefLink",
+   BaseStyle->{"InlineFormula", FontFamily -> "Verdana"}]], "InlineFormula",
+  ExpressionUUID->"049e16f2-3c2d-4184-8da8-96e66cb35075"],
+ "\[NonBreakingSpace]",
+ StyleBox["\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+  "InlineSeparator"],
+ " ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["PermutationSymmetryOfInvariants"]],
+    "paclet:GroupMath/ref/PermutationSymmetryOfInvariants"},
+   "RefLink",
+   BaseStyle->{"InlineFormula", FontFamily -> "Verdana"}]], "InlineFormula",
+  ExpressionUUID->"3f669428-a0c5-4071-b265-bfa66f14ae73"],
+ "\[NonBreakingSpace]",
+ StyleBox["\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+  "InlineSeparator"],
+ " ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["ReduceRepProduct"]],"paclet:GroupMath/ref/ReduceRepProduct"},
+   "RefLink",
+   BaseStyle->{"InlineFormula", FontFamily -> "Verdana"}]], "InlineFormula",
+  ExpressionUUID->"e796181e-2a08-4c3c-8b28-8a8c3b895f1d"],
+ "\[NonBreakingSpace]",
+ StyleBox["\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+  "InlineSeparator"],
+ " ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SnIrrepDim"]],"paclet:GroupMath/ref/SnIrrepDim"},
+   "RefLink",
+   BaseStyle->{"InlineFormula", FontFamily -> "Verdana"}]], "InlineFormula",
+  ExpressionUUID->"ad455b23-3a33-45fd-8e01-8ab6ccd95d1a"]
+}], "SeeAlso",
+ CellID->1038487239,ExpressionUUID->"4dad7bdd-6923-4e09-a0e3-bfa6de0d2aec"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]],ExpressionUUID->"900ae8ed-5966-4077-91d7-f09ced1552e6"],
+ "Tutorials"
+}], "TutorialsSection",
+ WholeCellGroupOpener->True,
+ CellID->250839057,ExpressionUUID->"6007cdfd-3414-493d-80a9-f51816ef6ae6"],
+
+Cell["", "SectionHeaderSpacer",ExpressionUUID->"386d2921-3dad-4d36-ba1f-5512d2f60341"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["GroupMath Tutorial"]],"paclet:GroupMath/tutorial/GroupMathDoc"},
+  "RefLink",
+  BaseStyle->"Tutorials"]], "Tutorials",
+ CellID->341631938,ExpressionUUID->"689f7559-8ec0-4dd6-a062-792d88d5c3e2"],
+
+Cell["", "SectionFooterSpacer",ExpressionUUID->"6250c6b6-e1a9-4082-b640-977a80b5932c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]],ExpressionUUID->"5c808775-930b-4988-8c32-94a02fa49440"],
+ "Related Links"
+}], "RelatedLinksSection",
+ WholeCellGroupOpener->True,
+ CellID->1584193535,ExpressionUUID->"3e5eb4f8-b31e-4d2e-a91c-added1b248a5"],
+
+Cell["", "SectionHeaderSpacer",ExpressionUUID->"6fc7201a-c429-4b9a-bf28-cdbb5584812d"],
+
+Cell[TextData[StyleBox["M. A. A. van Leeuwen, A. M. Cohen, and B. Lisser, \
+LiE, A Package for Lie Group Computations. Computer Algebra Nederland, 1992", \
+"TR"]], "SeeAlso",
+ CellID->929782353,ExpressionUUID->"ae70c894-607f-466f-ac79-82956027736c"],
+
+Cell[TextData[{
+ StyleBox["M. A. A. van Leeuwen, A. M. Cohen, and B. Lisser, \
+\[OpenCurlyDoubleQuote]LiE - A Computer algebra package for Lie group \
+computations.\[CloseCurlyDoubleQuote] ", "TR"],
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["http://wwwmathlabo.univ-poitiers.fr/~maavl/LiE"]],
+    "http://wwwmathlabo.univ-poitiers.fr/~maavl/LiE/"},
+   "WebLink",
+   BaseStyle->{"RelatedLinks", "TR"}]],ExpressionUUID->
+  "61dc1502-750d-413c-95fe-a99f556d9281"],
+ StyleBox[", 2012. Retrieved 15 January 2020.", "TR"]
+}], "RelatedLinks",
+ CellID->696314739,ExpressionUUID->"c00f144b-b32a-45cd-93b9-2e78dde68c40"]
+}, Open  ]],
+
+Cell[" ", "FooterCell",ExpressionUUID->"2c3daa24-4b2d-4cb5-9ead-b0c43fa971a3"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"PermutationSymmetry",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "Mathematica", ButtonData -> "paclet:GroupMath/guide/GroupMath", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2020, 11, 4, 11, 39, 37.2736875}", 
+    "history" -> {"1.0", "", "", ""}, "context" -> "GroupMath`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Group Math Symbol", "language" -> "en", "paclet" -> "GroupMath", 
+    "status" -> "None", "summary" -> 
+    "PermutationSymmetry[gauge group, list of representations] Computes the \
+irreducible parts (irreps) in the product of the representations of the gauge \
+group provided, together with the information on how these irreps change \
+under a permutation of the representations being multiplied", 
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "PermutationSymmetry", 
+    "titlemodifier" -> "", "windowtitle" -> "PermutationSymmetry", "type" -> 
+    "Symbol", "uri" -> "GroupMath/ref/PermutationSymmetry", 
+    "WorkflowDockedCell" -> ""}, "SearchTextTranslated" -> "", "NewStyles" -> 
+  False},
+CellContext->"Global`",
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 8, 2019)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  TaggingRules -> {"NewStyles" -> False}, FrontEndVersion -> 
+  "12.0 for Microsoft Windows (64-bit) (April 8, 2019)", StyleDefinitions -> 
+  "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[16646, 434, 435, 11, 35, "PrimaryExamplesSection",ExpressionUUID->"7e952d0d-8834-4b0c-a5ba-e03f1fe06dba",
+   CellTags->"PrimaryExamplesSection",
+   CellID->474419127]},
+ "RasterizedOutput"->{
+  Cell[25279, 682, 4722, 83, 106, "Output",ExpressionUUID->"dc512717-20ba-4014-8021-a68665a03e1d",
+   CellTags->"RasterizedOutput",
+   CellID->517717158],
+  Cell[36912, 984, 2363, 44, 53, "Output",ExpressionUUID->"d0f038a2-f57d-4da6-8bee-f3404b6a0fc7",
+   CellTags->"RasterizedOutput",
+   CellID->637869036],
+  Cell[40036, 1055, 5327, 93, 136, "Output",ExpressionUUID->"1592b449-056a-49f6-bf84-065f847c73de",
+   CellTags->"RasterizedOutput",
+   CellID->381167047],
+  Cell[46448, 1188, 7482, 128, 193, "Output",ExpressionUUID->"a87d25f0-8e19-4a00-a7b5-89a7520e6c4e",
+   CellTags->"RasterizedOutput",
+   CellID->946296789]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 60139, 1485},
+ {"RasterizedOutput", 60338, 1489}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[591, 21, 4439, 98, 53, "AnchorBarGrid",ExpressionUUID->"f14f5ed2-f7b7-46a8-849f-48b0a97e4857",
+ CellID->1],
+Cell[CellGroupData[{
+Cell[5055, 123, 404, 9, 52, "ObjectNameGrid",ExpressionUUID->"353a53c8-9fce-4515-a2c2-c3469217d525"],
+Cell[5462, 134, 816, 16, 151, "Usage",ExpressionUUID->"7411f0e1-2f49-4f47-bf01-670126efddbf",
+ CellID->982511436]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6315, 155, 854, 21, 37, "NotesSection",ExpressionUUID->"1a3db189-bfa4-4bdc-bb6d-85122b7c6828",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->16361843],
+Cell[7172, 178, 86, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"7a6883dd-81e9-4d07-be9f-7939e3b17bac"],
+Cell[7261, 180, 388, 10, 70, "Notes",ExpressionUUID->"bebaddde-dfff-4487-9492-0b8386dfe264",
+ CellID->1067943069],
+Cell[7652, 192, 502, 11, 70, "Notes",ExpressionUUID->"267ad00f-b463-46dc-86fb-a6f8c52409bd",
+ CellID->53448704],
+Cell[8157, 205, 1335, 30, 70, "Notes",ExpressionUUID->"96a8d4fc-e861-4958-8c4a-83bd4e6249e6",
+ CellID->330094259],
+Cell[9495, 237, 921, 24, 70, "Notes",ExpressionUUID->"b4244b70-6cb3-433d-8248-340dc635129d",
+ CellID->606738545],
+Cell[10419, 263, 5406, 145, 70, "Notes",ExpressionUUID->"a054d23f-698c-4488-9339-adabf7b0685a",
+ CellID->463020107],
+Cell[15828, 410, 692, 17, 70, "Notes",ExpressionUUID->"b2d59e74-73eb-47ec-a031-431f41b8f44e",
+ CellID->1034945],
+Cell[16523, 429, 86, 0, 70, "SectionFooterSpacer",ExpressionUUID->"f2479fed-080c-47af-a5ac-1cf09bbd4533"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[16646, 434, 435, 11, 35, "PrimaryExamplesSection",ExpressionUUID->"7e952d0d-8834-4b0c-a5ba-e03f1fe06dba",
+ CellTags->"PrimaryExamplesSection",
+ CellID->474419127],
+Cell[CellGroupData[{
+Cell[17106, 449, 308, 7, 29, "ExampleSection",ExpressionUUID->"85ba9e52-695c-4246-8d4f-d83b92ad3d16",
+ CellID->642343748],
+Cell[17417, 458, 243, 4, 57, "ExampleText",ExpressionUUID->"05e47a57-dfbc-453c-9eef-86cb2efb8947",
+ CellID->21576093],
+Cell[CellGroupData[{
+Cell[17685, 466, 263, 6, 26, "Input",ExpressionUUID->"dba446f6-54eb-47ea-af7c-f54b33748cb2",
+ CellID->39678609],
+Cell[17951, 474, 3992, 135, 100, "Output",ExpressionUUID->"f2a15851-4a35-4a7c-ad74-6e6b1a23ec6a",
+ CellID->119770292]
+}, Open  ]],
+Cell[21958, 612, 2709, 50, 691, "ExampleText",ExpressionUUID->"1eda89cf-0324-4b0a-8704-0ace2e323d51",
+ CellID->151918977],
+Cell[24670, 664, 268, 5, 70, "ExampleText",ExpressionUUID->"e8e4d2f8-a9f5-4116-bfd4-5d5cfe7ab527",
+ CellID->212221805],
+Cell[CellGroupData[{
+Cell[24963, 673, 313, 7, 70, "Input",ExpressionUUID->"3ef7c26e-9c57-480f-ab81-7cc73c5de432",
+ CellID->440084367],
+Cell[25279, 682, 4722, 83, 106, "Output",ExpressionUUID->"dc512717-20ba-4014-8021-a68665a03e1d",
+ CellTags->"RasterizedOutput",
+ CellID->517717158]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[30038, 770, 241, 5, 70, "ExampleDelimiter",ExpressionUUID->"7e9d7767-b70b-4cf1-89e7-de0e8e69d5f5",
+ CellID->87747050],
+Cell[30282, 777, 167, 3, 70, "ExampleText",ExpressionUUID->"10599fb5-add3-4b5d-9aaa-8da06d359985",
+ CellID->425739455],
+Cell[CellGroupData[{
+Cell[30474, 784, 264, 6, 70, "Input",ExpressionUUID->"45015f7e-976e-4766-851b-73abddee2e0d",
+ CellID->631183171],
+Cell[30741, 792, 1336, 44, 52, "Output",ExpressionUUID->"2fe135e4-251b-4a1f-8ce7-def3c6d86bb8",
+ CellID->28762495]
+}, Open  ]],
+Cell[32092, 839, 1403, 29, 70, "ExampleText",ExpressionUUID->"78691354-fc05-4d5a-b7d5-98081cee4eb2",
+ CellID->651730668],
+Cell[CellGroupData[{
+Cell[33520, 872, 208, 5, 70, "Input",ExpressionUUID->"c13d9068-5769-4344-896c-58b3c13afc03",
+ CellID->324641701],
+Cell[33731, 879, 126, 2, 35, "Output",ExpressionUUID->"67bd67c9-05ed-4247-84f2-be2dfdb8166c",
+ CellID->480796244]
+}, Open  ]],
+Cell[33872, 884, 506, 11, 70, "ExampleText",ExpressionUUID->"16af254b-71b3-47b0-a115-bc5477e6bfad",
+ CellID->289351674],
+Cell[CellGroupData[{
+Cell[34403, 899, 261, 6, 70, "Input",ExpressionUUID->"0df88bf5-4d5a-46e2-b7e3-c8d0feccbac5",
+ CellID->216308175],
+Cell[34667, 907, 487, 16, 35, "Output",ExpressionUUID->"6ae3fedd-f125-4418-bb09-ac598c94312c",
+ CellID->413584636]
+}, Open  ]],
+Cell[35169, 926, 120, 1, 70, "ExampleText",ExpressionUUID->"3130bb85-a716-4dbe-b62e-f293f88f8f37",
+ CellID->176196727],
+Cell[CellGroupData[{
+Cell[35314, 931, 803, 26, 70, "Input",ExpressionUUID->"ce0066e3-96ca-4a7e-abc1-8039eb6f2c79",
+ CellID->100031268],
+Cell[36120, 959, 127, 2, 35, "Output",ExpressionUUID->"66419778-adab-4ad8-a245-04df2c5ea52e",
+ CellID->833208423],
+Cell[36250, 963, 126, 2, 35, "Output",ExpressionUUID->"98769496-1854-4e86-917d-da0b303c7f5f",
+ CellID->44845570]
+}, Open  ]],
+Cell[36391, 968, 180, 3, 70, "ExampleText",ExpressionUUID->"1c7936ff-7217-4396-b450-13717d545632",
+ CellID->89086483],
+Cell[CellGroupData[{
+Cell[36596, 975, 313, 7, 70, "Input",ExpressionUUID->"00e0c6bc-dbe5-4d09-bda1-cd88d946e6d4",
+ CellID->111586721],
+Cell[36912, 984, 2363, 44, 53, "Output",ExpressionUUID->"d0f038a2-f57d-4da6-8bee-f3404b6a0fc7",
+ CellTags->"RasterizedOutput",
+ CellID->637869036]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[39324, 1034, 242, 5, 70, "ExampleDelimiter",ExpressionUUID->"f6ee72ea-169a-4599-826e-3bd3861959a3",
+ CellID->704102152],
+Cell[39569, 1041, 121, 1, 70, "ExampleText",ExpressionUUID->"b3d516ba-f2a4-43d0-b1a7-f821a631a230",
+ CellID->544317391],
+Cell[CellGroupData[{
+Cell[39715, 1046, 318, 7, 70, "Input",ExpressionUUID->"5cb3eed5-d878-47f4-9364-a376a55e9c3d",
+ CellID->419989149],
+Cell[40036, 1055, 5327, 93, 136, "Output",ExpressionUUID->"1592b449-056a-49f6-bf84-065f847c73de",
+ CellTags->"RasterizedOutput",
+ CellID->381167047]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[45412, 1154, 242, 5, 70, "ExampleDelimiter",ExpressionUUID->"be815cd8-2a2d-4e06-aee0-aa00947b7c16",
+ CellID->506170149],
+Cell[45657, 1161, 187, 4, 70, "ExampleText",ExpressionUUID->"0a11f736-a16f-447a-96f9-77ce6556b484",
+ CellID->317282050],
+Cell[CellGroupData[{
+Cell[45869, 1169, 576, 17, 70, "Input",ExpressionUUID->"7bb80732-77f7-4a76-bf93-5f04e6172765",
+ CellID->188512204],
+Cell[46448, 1188, 7482, 128, 193, "Output",ExpressionUUID->"a87d25f0-8e19-4a00-a7b5-89a7520e6c4e",
+ CellTags->"RasterizedOutput",
+ CellID->946296789]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[53969, 1321, 86, 0, 70, "SectionFooterSpacer",ExpressionUUID->"2e43e63b-2e6f-4e84-a132-d78755ffeeba"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[54092, 1326, 260, 7, 70, "SeeAlsoSection",ExpressionUUID->"d8ad18b9-75b3-48dc-9575-87788c9c8f52",
+ CellID->1255426704],
+Cell[54355, 1335, 1523, 39, 70, "SeeAlso",ExpressionUUID->"4dad7bdd-6923-4e09-a0e3-bfa6de0d2aec",
+ CellID->1038487239]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[55915, 1379, 262, 7, 70, "TutorialsSection",ExpressionUUID->"6007cdfd-3414-493d-80a9-f51816ef6ae6",
+ CellID->250839057],
+Cell[56180, 1388, 86, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"386d2921-3dad-4d36-ba1f-5512d2f60341"],
+Cell[56269, 1390, 241, 5, 70, "Tutorials",ExpressionUUID->"689f7559-8ec0-4dd6-a062-792d88d5c3e2",
+ CellID->341631938],
+Cell[56513, 1397, 86, 0, 70, "SectionFooterSpacer",ExpressionUUID->"6250c6b6-e1a9-4082-b640-977a80b5932c"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[56636, 1402, 270, 7, 70, "RelatedLinksSection",ExpressionUUID->"3e5eb4f8-b31e-4d2e-a91c-added1b248a5",
+ CellID->1584193535],
+Cell[56909, 1411, 86, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"6fc7201a-c429-4b9a-bf28-cdbb5584812d"],
+Cell[56998, 1413, 249, 3, 70, "SeeAlso",ExpressionUUID->"ae70c894-607f-466f-ac79-82956027736c",
+ CellID->929782353],
+Cell[57250, 1418, 618, 13, 70, "RelatedLinks",ExpressionUUID->"c00f144b-b32a-45cd-93b9-2e78dde68c40",
+ CellID->696314739]
+}, Open  ]],
+Cell[57883, 1434, 78, 0, 70, "FooterCell",ExpressionUUID->"2c3daa24-4b2d-4cb5-9ead-b0c43fa971a3"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

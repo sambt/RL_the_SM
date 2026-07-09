@@ -1,0 +1,594 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     22211,        584]
+NotebookOptionsPosition[     16421,        458]
+NotebookOutlinePosition[     18639,        515]
+CellTagsIndexPosition[     18554,        510]
+WindowTitle->SnClassOrder
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["GROUP MATH SYMBOL", "PacletNameCell",ExpressionUUID->
+     "ce27e851-c319-40c4-a98e-1d3afaf54df5"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "Tutorials",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }],ExpressionUUID->"fe67783e-8b3b-4d00-93db-b900948aeb21"],
+         TextCell[
+          Row[{"Tutorials", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"GroupMath Tutorial\"\>":>
+       Documentation`HelpLookup["paclet:GroupMath/tutorial/GroupMathDoc"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"Tutorials"]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "9d84f6c0-4900-4ddf-b19a-690bf971b008"],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }],ExpressionUUID->"ff31a740-2344-4c47-b208-cd98c25d9325"],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"SnClassCharacter\"\>":>
+       Documentation`HelpLookup[
+       "paclet:GroupMath/ref/SnClassCharacter"], "\<\"SnIrrepDim\"\>":>
+       Documentation`HelpLookup["paclet:GroupMath/ref/SnIrrepDim"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "2ad088f2-3eaa-4e60-b07c-c0e5308449ac"],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }],ExpressionUUID->"0dbf509a-759e-437a-80e6-4e2c37b90d28"],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"GroupMath/ref/SnClassOrder\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["GroupMath/ref/SnClassOrder"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/GroupMath/ref/\
+SnClassOrder.html"], StandardForm]], "Input", TextClipboardType -> 
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$29348], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "GroupMath/ref/SnClassOrder", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "a5164432-80f7-49b4-8e7c-aae52f5336f3"]
+    }], "AnchorBar",ExpressionUUID->"17b9bb16-85c7-424e-b69f-b63b0b638360"]}
+  }]], "AnchorBarGrid",
+ CellID->1,ExpressionUUID->"d97e81ce-5aa7-45e3-8390-9fde5d184c59"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell["SnClassOrder", "ObjectName",ExpressionUUID->
+  "52ce52ee-469b-4b63-af39-eca17e5ed4bb"],
+ Cell[BoxData[
+  TemplateBox[{8},
+   "Spacer1"]],ExpressionUUID->"4709a1c5-e944-454d-8641-c334ca161e87"],
+ Cell[BoxData[
+ ""], "ObjectNameTranslation",ExpressionUUID->
+  "6bfd08ce-7b39-4680-a2ec-d38dcf2d544c"]
+}], "ObjectNameGrid",ExpressionUUID->"b7de94cf-1201-42a2-b874-47d8a27a5922"],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"SnClassOrder", "[", 
+       RowBox[{"conjugacy", " ", "class"}], "]"}]], "InlineFormula",
+      ExpressionUUID->"2206bd9d-7ac1-4808-b762-2f8c94ee92e6"],
+     " \[LineSeparator]Calculates the order/size of a conjugacy class of ",
+     Cell[BoxData[
+      SubscriptBox["S", "n"]], "InlineFormula",ExpressionUUID->
+      "aa008940-6b07-4138-8892-7600db64370c"]
+    }],ExpressionUUID->"f6b61fad-01e6-49f6-9e25-580cadbae3ec"]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{"Columns" -> {{None}}, "Rows" -> {{None}}}},
+ CellID->982511436,ExpressionUUID->"94c69e52-d47f-4d82-9535-bebc96584083"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    TemplateBox[{6},
+     "Spacer1"]],ExpressionUUID->"7cf8d2c8-1127-4f79-8669-ca4077a16817"],
+   "Details"
+  }], "NotesFrameText",ExpressionUUID->"1d30551a-53e4-453b-a5e7-c1809e7af4d3"],
+  Appearance->{Automatic, None, "Normal", Automatic},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->
+   "Preemptive"]],ExpressionUUID->"d99b7b8a-1929-4afe-90a7-7feb7711c036"]], \
+"NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->255686326,ExpressionUUID->"786529ad-3aa0-44ad-93d0-d07366ab56f2"],
+
+Cell["", "SectionHeaderSpacer",ExpressionUUID->"c82cb71d-59e9-48fb-9cd6-c2576fe4158f"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  RowBox[{"conjugacy", " ", "class"}]], "InlineFormula",ExpressionUUID->
+  "03d2d0ea-a5a8-44de-90b0-85686858f7e5"],
+ " must be a partition of some integer n."
+}], "Notes",
+ CellID->1067943069,ExpressionUUID->"357223c0-de86-45cb-97ff-531a2e1cadfa"],
+
+Cell[TextData[{
+ "Recall that each conjugacy class of ",
+ Cell[BoxData[
+  SubscriptBox["S", "n"]], "InlineFormula",ExpressionUUID->
+  "e5cae8bd-98aa-42ab-b10a-98862f3f1c25"],
+ " is specified by its cycle structure \
+(\[CenterEllipsis])(\[CenterEllipsis])(\[CenterEllipsis])\[CenterEllipsis]"
+}], "Notes",
+ CellID->107750341,ExpressionUUID->"4ff3057e-0717-477f-bf70-6c1c7409ed53"],
+
+Cell[TextData[{
+ "Denoting each cycle's length by ",
+ Cell[BoxData[
+  SubscriptBox["\[Lambda]", "1"]], "InlineFormula",ExpressionUUID->
+  "3542ba6d-f8bb-45de-8f96-21f55945c84a"],
+ ", ",
+ Cell[BoxData[
+  SubscriptBox["\[Lambda]", "2"]], "InlineFormula",ExpressionUUID->
+  "616718c4-0a9a-469b-8d3b-a918f8a066d0"],
+ ", ... with ",
+ Cell[BoxData[
+  SubscriptBox["\[Lambda]", "1"]], "InlineFormula",ExpressionUUID->
+  "22c146c3-0817-4b7e-815e-f9da11a6f9e9"],
+ " \[GreaterEqual] ",
+ Cell[BoxData[
+  SubscriptBox["\[Lambda]", "2"]], "InlineFormula",ExpressionUUID->
+  "b2192044-e4b0-48df-9fa4-5487ad17a4cd"],
+ " \[GreaterEqual] \[CenterEllipsis], then each conjugacy class is given by \
+the partition {",
+ Cell[BoxData[
+  SubscriptBox["\[Lambda]", "1"]], "InlineFormula",ExpressionUUID->
+  "e85b7f84-e9aa-4eb0-b0a5-15aecff7468d"],
+ ", ",
+ Cell[BoxData[
+  SubscriptBox["\[Lambda]", "2"]], "InlineFormula",ExpressionUUID->
+  "58747fa3-6034-41fd-bf66-08ce23ac3e80"],
+ ", \[CenterEllipsis]} of n, with ",
+ Cell[BoxData[
+  SubscriptBox["\[Lambda]", "1"]], "InlineFormula",ExpressionUUID->
+  "90c9b9cd-43f0-4964-9928-64e11f0afe31"],
+ "+",
+ Cell[BoxData[
+  SubscriptBox["\[Lambda]", "2"]], "InlineFormula",ExpressionUUID->
+  "3784a13b-ce87-46f7-8869-78a6e0763caa"],
+ "+\[CenterEllipsis]=n."
+}], "Notes",
+ CellID->275688574,ExpressionUUID->"58fd919b-711d-45ae-b35e-af0555897831"],
+
+Cell["", "SectionFooterSpacer",ExpressionUUID->"8069bc9d-dce2-4588-8405-af1fa4597902"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]],ExpressionUUID->"b511c32e-f55c-4b82-a7d2-e70bb60be24e"],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(2)", "ExampleCount",ExpressionUUID->
+  "84b4e423-04ec-44b8-aca3-47b1bb20434b"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->362672683,ExpressionUUID->"48023cd7-4665-48e1-9dc1-8a7ddc30bda2"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "63815d71-9c88-4b71-81ae-0083f90bf174"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->25120172,ExpressionUUID->"a44d3e6f-a68d-4ea4-a14c-46b9524f62dc"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  SubscriptBox["S", "3"]], "InlineFormula",ExpressionUUID->
+  "296a7337-7454-4915-8778-3e478b4d63da"],
+ " has 6 elements, distributed in 3 conjugacy classes\[LongDash]class1: \
+{(1)(2)(3)}; class2: {(12)(3),(13)(2),(23)(1)}; class3: {(123),(132)}. Their \
+sizes could have been calculated as follows:"
+}], "ExampleText",
+ CellID->31627279,ExpressionUUID->"433b1aca-f24a-4671-bc1e-e1c2d6670bc2"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"SnClassOrder", "[", 
+  RowBox[{"{", 
+   RowBox[{"1", ",", "1", ",", "1"}], "}"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"SnClassOrder", "[", 
+  RowBox[{"{", 
+   RowBox[{"2", ",", "1"}], "}"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"SnClassOrder", "[", 
+  RowBox[{"{", "3", "}"}], "]"}]}], "Input",
+ CellLabel->"In[1]:=",
+ CellID->670298593,ExpressionUUID->"5e3295e8-386c-4729-ae67-a629286f8163"],
+
+Cell[BoxData["1"], "Output",
+ CellLabel->"Out[1]=",
+ CellID->31596395,ExpressionUUID->"b52fac3e-189a-4a13-aa4c-01c95ddbbb62"],
+
+Cell[BoxData["3"], "Output",
+ CellLabel->"Out[1]=",
+ CellID->345413537,ExpressionUUID->"fb13beaa-1da1-4bb7-aee1-644f66151f07"],
+
+Cell[BoxData["2"], "Output",
+ CellLabel->"Out[1]=",
+ CellID->585932694,ExpressionUUID->"f0bb2701-3799-47a1-8838-b7bb95c32493"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Neat Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "6155d163-afcb-4b40-a65b-fd6abd4ffa32"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->589267740,ExpressionUUID->"85657285-4076-464e-9d75-a0260f62cbbf"],
+
+Cell[TextData[{
+ "For a given ",
+ Cell[BoxData[
+  SubscriptBox["S", "n"]], "InlineFormula",ExpressionUUID->
+  "6f30eb2f-d247-4ecb-a058-8c25de1f244f"],
+ ", we can quickly list all classes with Mathematica's built in function ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["IntegerPartitions"]],"paclet:ref/IntegerPartitions"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
+  "38e7a73d-8297-4600-a809-1076ef66f6f8"],
+ ". The sum of the size/order of all conjugacy classes must be n!, which is \
+the number of elements of  ",
+ Cell[BoxData[
+  SubscriptBox["S", "n"]], "InlineFormula",ExpressionUUID->
+  "733d8c31-9df0-4840-aab0-7272e9d9225b"],
+ ". We can check this for n=7:"
+}], "ExampleText",
+ CellID->125441838,ExpressionUUID->"b0806048-d2cd-46fd-93d0-59deef645f4a"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"n", "=", "7"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"classesSn", "=", 
+  RowBox[{"IntegerPartitions", "[", "7", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"sizeOfClasses", "=", 
+  RowBox[{"SnClassOrder", "/@", "classesSn"}]}], "\[IndentingNewLine]", 
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"n", "!"}], ",", 
+   RowBox[{"Total", "[", "sizeOfClasses", "]"}]}], "}"}]}], "Input",
+ CellLabel->"In[1]:=",
+ CellID->21554665,ExpressionUUID->"d2b3ef13-2865-42f1-ab96-93c5b21b32ff"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "7", "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"6", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"5", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"5", ",", "1", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "3"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "2", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "1", ",", "1", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "3", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "2", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "2", ",", "1", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "1", ",", "1", ",", "1", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "2", ",", "2", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "2", ",", "1", ",", "1", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "1", ",", "1", ",", "1", ",", "1", ",", "1"}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "1", ",", "1", ",", "1", ",", "1", ",", "1", ",", "1"}],
+     "}"}]}], "}"}]], "Output",
+ CellLabel->"Out[1]=",
+ CellID->21307987,ExpressionUUID->"cbae7ada-bba8-4f3f-9582-f4d084af3b46"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "720", ",", "840", ",", "504", ",", "504", ",", "420", ",", "630", ",", 
+   "210", ",", "280", ",", "210", ",", "420", ",", "70", ",", "105", ",", 
+   "105", ",", "21", ",", "1"}], "}"}]], "Output",
+ CellLabel->"Out[1]=",
+ CellID->26687833,ExpressionUUID->"cf5c1452-31e2-4c38-8f32-48b60f54ce7d"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"5040", ",", "5040"}], "}"}]], "Output",
+ CellLabel->"Out[1]=",
+ CellID->218692402,ExpressionUUID->"c68fe1b0-42b3-4550-a0ef-6221b76bebdb"]
+}, Open  ]]
+}, Closed]],
+
+Cell["", "SectionFooterSpacer",ExpressionUUID->"e7f3230e-b855-481f-8fda-99e464e7c307"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]],ExpressionUUID->"85dd338f-80ce-4541-99a5-ddbee553fa66"],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704,ExpressionUUID->"99f125a8-db93-4044-8a95-d6c68a53bb45"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SnClassCharacter"]],"paclet:GroupMath/ref/SnClassCharacter"},
+   "RefLink",
+   BaseStyle->{"InlineFormula", FontFamily -> "Verdana"}]], "InlineFormula",
+  ExpressionUUID->"b2de47cd-1629-4ffd-a21f-337631b3c0e4"],
+ "\[NonBreakingSpace]",
+ StyleBox["\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+  "InlineSeparator"],
+ " ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SnIrrepDim"]],"paclet:GroupMath/ref/SnIrrepDim"},
+   "RefLink",
+   BaseStyle->{"InlineFormula", FontFamily -> "Verdana"}]], "InlineFormula",
+  ExpressionUUID->"b4ef5d52-2b60-482a-be06-e60d3528d7e1"]
+}], "SeeAlso",
+ CellID->1038487239,ExpressionUUID->"4aaf86d1-e89b-4b48-98e4-672ba1f00c82"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]],ExpressionUUID->"cebd4fd0-1140-4545-bbf6-40f4277047b3"],
+ "Tutorials"
+}], "TutorialsSection",
+ WholeCellGroupOpener->True,
+ CellID->250839057,ExpressionUUID->"bb4285c6-1421-48ba-9b9a-bb0dd1697bf4"],
+
+Cell["", "SectionHeaderSpacer",ExpressionUUID->"fcddcccf-67c1-4d30-b5c9-2967dc1395fc"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["GroupMath Tutorial"]],"paclet:GroupMath/tutorial/GroupMathDoc"},
+  "RefLink",
+  BaseStyle->"Tutorials"]], "Tutorials",
+ CellID->341631938,ExpressionUUID->"56d13b6c-65a0-40b8-879f-42767e34964f"]
+}, Open  ]],
+
+Cell[" ", "FooterCell",ExpressionUUID->"c89cc22f-61c9-4d6d-bc34-93557aa30611"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"SnClassOrder",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "Mathematica", ButtonData -> "paclet:GroupMath/guide/GroupMath", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2020, 11, 4, 11, 40, 28.4515123}", 
+    "history" -> {"1.0", "", "", ""}, "context" -> "GroupMath`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Group Math Symbol", "language" -> "en", "paclet" -> "GroupMath", 
+    "status" -> "None", "summary" -> 
+    "SnClassOrder[conjugacy class] Calculates the order/size of a conjugacy \
+class of Sn", "synonyms" -> {}, "tabletags" -> {}, "title" -> "SnClassOrder", 
+    "titlemodifier" -> "", "windowtitle" -> "SnClassOrder", "type" -> 
+    "Symbol", "uri" -> "GroupMath/ref/SnClassOrder", "WorkflowDockedCell" -> 
+    ""}, "SearchTextTranslated" -> "", "NewStyles" -> False},
+CellContext->"Global`",
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 8, 2019)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  TaggingRules -> {"NewStyles" -> False}, FrontEndVersion -> 
+  "12.0 for Microsoft Windows (64-bit) (April 8, 2019)", StyleDefinitions -> 
+  "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[9017, 236, 435, 11, 35, "PrimaryExamplesSection",ExpressionUUID->"48023cd7-4665-48e1-9dc1-8a7ddc30bda2",
+   CellTags->"PrimaryExamplesSection",
+   CellID->362672683]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 18356, 503}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[584, 21, 4193, 95, 53, "AnchorBarGrid",ExpressionUUID->"d97e81ce-5aa7-45e3-8390-9fde5d184c59",
+ CellID->1],
+Cell[CellGroupData[{
+Cell[4802, 120, 397, 9, 52, "ObjectNameGrid",ExpressionUUID->"b7de94cf-1201-42a2-b874-47d8a27a5922"],
+Cell[5202, 131, 678, 14, 110, "Usage",ExpressionUUID->"94c69e52-d47f-4d82-9535-bebc96584083",
+ CellID->982511436]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5917, 150, 855, 21, 37, "NotesSection",ExpressionUUID->"786529ad-3aa0-44ad-93d0-d07366ab56f2",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->255686326],
+Cell[6775, 173, 86, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"c82cb71d-59e9-48fb-9cd6-c2576fe4158f"],
+Cell[6864, 175, 278, 6, 70, "Notes",ExpressionUUID->"357223c0-de86-45cb-97ff-531a2e1cadfa",
+ CellID->1067943069],
+Cell[7145, 183, 379, 8, 70, "Notes",ExpressionUUID->"4ff3057e-0717-477f-bf70-6c1c7409ed53",
+ CellID->107750341],
+Cell[7527, 193, 1364, 36, 70, "Notes",ExpressionUUID->"58fd919b-711d-45ae-b35e-af0555897831",
+ CellID->275688574],
+Cell[8894, 231, 86, 0, 70, "SectionFooterSpacer",ExpressionUUID->"8069bc9d-dce2-4588-8405-af1fa4597902"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[9017, 236, 435, 11, 35, "PrimaryExamplesSection",ExpressionUUID->"48023cd7-4665-48e1-9dc1-8a7ddc30bda2",
+ CellTags->"PrimaryExamplesSection",
+ CellID->362672683],
+Cell[CellGroupData[{
+Cell[9477, 251, 307, 7, 29, "ExampleSection",ExpressionUUID->"a44d3e6f-a68d-4ea4-a14c-46b9524f62dc",
+ CellID->25120172],
+Cell[9787, 260, 425, 8, 57, "ExampleText",ExpressionUUID->"433b1aca-f24a-4671-bc1e-e1c2d6670bc2",
+ CellID->31627279],
+Cell[CellGroupData[{
+Cell[10237, 272, 424, 10, 59, "Input",ExpressionUUID->"5e3295e8-386c-4729-ae67-a629286f8163",
+ CellID->670298593],
+Cell[10664, 284, 125, 2, 35, "Output",ExpressionUUID->"b52fac3e-189a-4a13-aa4c-01c95ddbbb62",
+ CellID->31596395],
+Cell[10792, 288, 126, 2, 35, "Output",ExpressionUUID->"fb13beaa-1da1-4bb7-aee1-644f66151f07",
+ CellID->345413537],
+Cell[10921, 292, 126, 2, 35, "Output",ExpressionUUID->"f0bb2701-3799-47a1-8838-b7bb95c32493",
+ CellID->585932694]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11096, 300, 307, 7, 29, "ExampleSection",ExpressionUUID->"85657285-4076-464e-9d75-a0260f62cbbf",
+ CellID->589267740],
+Cell[11406, 309, 808, 19, 70, "ExampleText",ExpressionUUID->"b0806048-d2cd-46fd-93d0-59deef645f4a",
+ CellID->125441838],
+Cell[CellGroupData[{
+Cell[12239, 332, 510, 12, 70, "Input",ExpressionUUID->"d2b3ef13-2865-42f1-ab96-93c5b21b32ff",
+ CellID->21554665],
+Cell[12752, 346, 1269, 35, 68, "Output",ExpressionUUID->"cbae7ada-bba8-4f3f-9582-f4d084af3b46",
+ CellID->21307987],
+Cell[14024, 383, 337, 7, 35, "Output",ExpressionUUID->"cf5c1452-31e2-4c38-8f32-48b60f54ce7d",
+ CellID->26687833],
+Cell[14364, 392, 177, 4, 35, "Output",ExpressionUUID->"c68fe1b0-42b3-4550-a0ef-6221b76bebdb",
+ CellID->218692402]
+}, Open  ]]
+}, Closed]],
+Cell[14568, 400, 86, 0, 29, "SectionFooterSpacer",ExpressionUUID->"e7f3230e-b855-481f-8fda-99e464e7c307"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14691, 405, 260, 7, 72, "SeeAlsoSection",ExpressionUUID->"99f125a8-db93-4044-8a95-d6c68a53bb45",
+ CellID->1255426704],
+Cell[14954, 414, 738, 18, 24, "SeeAlso",ExpressionUUID->"4aaf86d1-e89b-4b48-98e4-672ba1f00c82",
+ CellID->1038487239]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15729, 437, 262, 7, 72, "TutorialsSection",ExpressionUUID->"bb4285c6-1421-48ba-9b9a-bb0dd1697bf4",
+ CellID->250839057],
+Cell[15994, 446, 86, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"fcddcccf-67c1-4d30-b5c9-2967dc1395fc"],
+Cell[16083, 448, 241, 5, 70, "Tutorials",ExpressionUUID->"56d13b6c-65a0-40b8-879f-42767e34964f",
+ CellID->341631938]
+}, Open  ]],
+Cell[16339, 456, 78, 0, 70, "FooterCell",ExpressionUUID->"c89cc22f-61c9-4d6d-bc34-93557aa30611"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

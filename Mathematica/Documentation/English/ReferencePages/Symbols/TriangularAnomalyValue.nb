@@ -1,0 +1,772 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     27548,        762]
+NotebookOptionsPosition[     20820,        619]
+NotebookOutlinePosition[     23105,        677]
+CellTagsIndexPosition[     23020,        672]
+WindowTitle->TriangularAnomalyValue
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["GROUP MATH SYMBOL", "PacletNameCell",ExpressionUUID->
+     "7ce3cbfd-2700-4aad-940c-0b613d19cc04"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "Tutorials",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }],ExpressionUUID->"da81ff03-ee69-4f87-928d-7ffd2e42829a"],
+         TextCell[
+          Row[{"Tutorials", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"GroupMath Tutorial\"\>":>
+       Documentation`HelpLookup["paclet:GroupMath/tutorial/GroupMathDoc"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"Tutorials"]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "9bde005d-b8cc-4c0d-be02-adf68908ce77"],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }],ExpressionUUID->"0227cc1e-61fc-45c6-a406-a41e6fd946c0"],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"GroupMath/ref/TriangularAnomalyValue\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["GroupMath/ref/TriangularAnomalyValue"]}, Visible -> 
+            False]]; SelectionMove[
+         DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/GroupMath/ref/\
+TriangularAnomalyValue.html"], StandardForm]], "Input", TextClipboardType -> 
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$32522], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "GroupMath/ref/TriangularAnomalyValue", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "7a35a20d-1fee-424e-b722-48c1c93849cd"]
+    }], "AnchorBar",ExpressionUUID->"98023ce8-1ff3-4095-b2a6-1ac231c3774f"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1,ExpressionUUID->"3a257c53-5229-426a-afb5-3961d8820d20"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell["TriangularAnomalyValue", "ObjectName",ExpressionUUID->
+  "b178c8e4-9fb5-4100-a18a-d64862168534"],
+ Cell[BoxData[
+  TemplateBox[{8},
+   "Spacer1"]],ExpressionUUID->"ad2af1d0-e147-4aac-9671-b25d7c151173"],
+ Cell[BoxData[
+ ""], "ObjectNameTranslation",ExpressionUUID->
+  "de730eaa-8a8a-45d2-b63f-e006a59c476e"]
+}], "ObjectNameGrid",ExpressionUUID->"0f1126d6-6473-42d4-a556-ca85aa67aece"],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"TriangularAnomalyValue", "[", 
+       RowBox[{"group", ",", "representation"}], "]"}]], "InlineFormula",
+      ExpressionUUID->"51bae30f-ebc9-401a-9a59-b979d435d2fa"],
+     " \[LineSeparator]Contribution to gauge anomalies from a given ",
+     Cell[BoxData[
+     "representation"], "InlineFormula",ExpressionUUID->
+      "301fd54a-4e7a-4bec-8679-e92f3e6a72c3"]
+    }],ExpressionUUID->"043dc365-942a-4222-9f67-2e0c3cbac6f9"]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{"Columns" -> {{None}}, "Rows" -> {{None}}}},
+ CellID->982511436,ExpressionUUID->"c3e75223-21e4-4fb1-89dc-ce9b77261ecf"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    TemplateBox[{6},
+     "Spacer1"]],ExpressionUUID->"b9e8dd7f-6946-40d9-9846-7ee87a565d19"],
+   "Details"
+  }], "NotesFrameText",ExpressionUUID->"4ba8c2a7-8ed4-4716-866f-078fa77060a3"],
+  Appearance->{Automatic, None, "Normal", Automatic},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->
+   "Preemptive"]],ExpressionUUID->"9ce65600-e63b-4e59-aba6-a82c171dd716"]], \
+"NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->7163554,ExpressionUUID->"097d9046-fc31-45c9-8053-01797d02b309"],
+
+Cell["", "SectionHeaderSpacer",ExpressionUUID->"4a2e4f2b-54c7-4945-bafb-33558d081815"],
+
+Cell[TextData[{
+ Cell[BoxData[
+ "group"], "InlineFormula",ExpressionUUID->
+  "60185755-cb1e-40e7-b838-a28d165397b9"],
+ " should be a list of ",
+ ButtonBox["Cartan matrices",
+  BaseStyle->"Link",
+  ButtonData->"paclet:GroupMath/ref/CartanMatrix"],
+ ". Semi-simple groups are also allowed."
+}], "Notes",
+ CellID->1067943069,ExpressionUUID->"13b5c048-81f7-4dbd-ad0f-48be35e6e9cc"],
+
+Cell[TextData[{
+ "Each representation ",
+ Cell[BoxData[
+ "rep"], "InlineFormula",ExpressionUUID->
+  "025b45c8-7217-426d-9d8e-243012d45aaa"],
+ " should be a list of non-negative integers (Dynkin coefficients). It is \
+also possible to use the simplified input format for representations (see the \
+",
+ ButtonBox["GroupMath tutorial",
+  BaseStyle->"Link",
+  ButtonData->"paclet:GroupMath/tutorial/GroupMathDoc"],
+ " page)."
+}], "Notes",
+ CellID->15844731,ExpressionUUID->"752ff747-e143-484a-8902-7b18783b79ab"],
+
+Cell[TextData[{
+ "The output of this functions is a list of anomaly values. Assuming a gauge \
+group ",
+ Cell[BoxData[
+  RowBox[{
+   SubscriptBox["G", "1"], "x", " ", 
+   SubscriptBox["G", "2"], "x", " ", "\[CenterEllipsis]"}]], "InlineFormula",
+  ExpressionUUID->"826605d8-a47a-406b-aedb-d318ade631f4"],
+ ", where some of the ",
+ Cell[BoxData[
+  SubscriptBox["G", "i"]], "InlineFormula",ExpressionUUID->
+  "725acbf2-5626-45bb-8e54-9555a7405509"],
+ " are U(1)'s and/or SU(n)'s, then the output is the anomalies associated to ",
+ Cell[BoxData[
+  RowBox[{"{", 
+   RowBox[{"U", 
+    RowBox[{"(", "1", ")"}], 
+    SuperscriptBox[
+     SubscriptBox["G", "1"], "2"]}]}]], "InlineFormula",ExpressionUUID->
+  "3692bffd-f93d-4d8a-a7f2-2929b7a3196b"],
+ ", ",
+ Cell[BoxData[
+  RowBox[{"U", 
+   RowBox[{"(", "1", ")"}], 
+   SuperscriptBox[
+    SubscriptBox["G", "2"], "2"]}]], "InlineFormula",ExpressionUUID->
+  "86da2310-d123-4d0f-863f-c5d44476b97a"],
+ ", \[CenterEllipsis], ",
+ Cell[BoxData[
+  RowBox[{"U", 
+   RowBox[{
+    RowBox[{"(", "1", ")"}], "'"}], 
+   SuperscriptBox[
+    SubscriptBox["G", "1"], "2"]}]], "InlineFormula",ExpressionUUID->
+  "83296e42-ed6d-4b46-b43a-a392d22c3bb9"],
+ ", ",
+ Cell[BoxData[
+  RowBox[{"U", 
+   RowBox[{
+    RowBox[{"(", "1", ")"}], "'"}], 
+   SuperscriptBox[
+    SubscriptBox["G", "2"], "2"]}]], "InlineFormula",ExpressionUUID->
+  "2954b566-392c-4f11-80b1-40b60c562026"],
+ ", \[CenterEllipsis], ",
+ Cell[BoxData[
+  RowBox[{"U", 
+   RowBox[{
+    RowBox[{"(", "1", ")"}], "''"}], 
+   SuperscriptBox[
+    SubscriptBox["G", "1"], "2"]}]], "InlineFormula",ExpressionUUID->
+  "9b8aba98-2989-4b81-98ff-cc5de7fad3db"],
+ ", ",
+ Cell[BoxData[
+  RowBox[{"U", 
+   RowBox[{
+    RowBox[{"(", "1", ")"}], "''"}], 
+   SuperscriptBox[
+    SubscriptBox["G", "2"], "2"]}]], "InlineFormula",ExpressionUUID->
+  "621e4f2f-648b-42a7-997e-49d9b74891d6"],
+ ",  \[CenterEllipsis], ",
+ Cell[BoxData[
+  RowBox[{"SU", 
+   SuperscriptBox[
+    RowBox[{"(", "n", ")"}], "3"]}]], "InlineFormula",ExpressionUUID->
+  "55b64031-4543-442f-b5dd-b1095c4f5a42"],
+ ", ",
+ Cell[BoxData[
+  RowBox[{"SU", 
+   SuperscriptBox[
+    RowBox[{"(", 
+     RowBox[{"n", "'"}], ")"}], "3"]}]], "InlineFormula",ExpressionUUID->
+  "8ae0b7ef-bbaf-4007-bb9c-f37d7937b06c"],
+ ", ",
+ Cell[BoxData[
+  RowBox[{"SU", 
+   SuperscriptBox[
+    RowBox[{"(", 
+     RowBox[{"n", "''"}], ")"}], "3"]}]], "InlineFormula",ExpressionUUID->
+  "3a3939eb-1457-45c2-9a23-e566142d47fa"],
+ ", \[CenterEllipsis]}."
+}], "Notes",
+ CellID->271541782,ExpressionUUID->"edb9d9ce-e034-4d4b-a111-4639112d7bc6"],
+
+Cell["\<\
+In a gauge anomaly free theory, the sum of the triangular anomaly values of \
+all representations (taking into account the number of flavors of each) adds \
+up to zero.\
+\>", "Notes",
+ CellID->287748580,ExpressionUUID->"aefa8235-038b-48ac-ad29-22e2ee549e10"],
+
+Cell["", "SectionFooterSpacer",ExpressionUUID->"e085f72a-ba66-482a-8fc0-4188fbef5214"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]],ExpressionUUID->"4f074dfa-d5ea-445b-9e3d-9afb5a83bf0c"],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(2)", "ExampleCount",ExpressionUUID->
+  "ae8e7686-fbc5-4665-b688-86ceaa96245c"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->115901210,ExpressionUUID->"cd909e0f-09e5-4f41-9708-5ceb629b62dc"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(2)", "ExampleCount",ExpressionUUID->
+  "b5a02568-1cfa-4d89-965d-46904a187497"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->71713870,ExpressionUUID->"11f15cf0-9702-4b0b-88ea-719b3b7022af"],
+
+Cell[TextData[{
+ "Contribution of one generation of left-handed quarks (Q) to the gauge \
+anomalies {",
+ Cell[BoxData[
+  RowBox[{"U", 
+   SuperscriptBox[
+    RowBox[{"(", "1", ")"}], "3"]}]], "InlineFormula",ExpressionUUID->
+  "15891257-e39a-49ba-805d-7561f5ab8a30"],
+ ", ",
+ Cell[BoxData[
+  RowBox[{"U", 
+   RowBox[{"(", "1", ")"}], "\[Times]", "SU", 
+   SuperscriptBox[
+    RowBox[{"(", "2", ")"}], "2"]}]], "InlineFormula",ExpressionUUID->
+  "02de9e6f-5128-4ec1-a8a9-d8f5da390de5"],
+ ", ",
+ Cell[BoxData[
+  RowBox[{"U", 
+   RowBox[{"(", "1", ")"}], "\[Times]", "SU", 
+   SuperscriptBox[
+    RowBox[{"(", "3", ")"}], "2"]}]], "InlineFormula",ExpressionUUID->
+  "de764ec5-8153-445a-bc6b-8362504bb0a7"],
+ ", ",
+ Cell[BoxData[
+  RowBox[{"SU", 
+   SuperscriptBox[
+    RowBox[{"(", "3", ")"}], "3"]}]], "InlineFormula",ExpressionUUID->
+  "45aa6fc7-84b0-48fc-b566-3701c01a07f0"],
+ "}:"
+}], "ExampleText",
+ CellID->144329535,ExpressionUUID->"9da628a1-0b87-4632-882b-9424acbe0ed4"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Q", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0"}], "}"}], ",", 
+     RowBox[{"{", "1", "}"}], ",", 
+     RowBox[{"1", "/", "6"}]}], " ", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"TriangularAnomalyValue", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"SU3", ",", "SU2", ",", "U1"}], "}"}], ",", "Q"}], 
+  "]"}]}], "Input",
+ CellLabel->"In[1]:=",
+ CellID->400860700,ExpressionUUID->"5d7d3f3c-f356-456b-b5a5-9cb079b659c3"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   FractionBox["1", "6"], ",", 
+   FractionBox["1", "4"], ",", 
+   FractionBox["1", "36"], ",", "1"}], "}"}]], "Output",
+ CellLabel->"Out[1]=",
+ CellID->6945796,ExpressionUUID->"a582ab92-ca85-47f3-9933-cfc8417fd7a7"]
+}, Open  ]],
+
+Cell["\<\
+In order to be sure what does each number mean, use Verbose\[Rule]True:\
+\>", "ExampleText",
+ CellID->133516829,ExpressionUUID->"cbbd9cc1-e73e-4727-bb49-21927d681452"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"TriangularAnomalyValue", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"SU3", ",", "SU2", ",", "U1"}], "}"}], ",", "Q", ",", 
+   RowBox[{"Verbose", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->96555244,ExpressionUUID->"ee3873c3-0082-483b-8ffa-5f63a9a06101"],
+
+Cell[BoxData[
+ TemplateBox[{
+  StyleBox["\"\
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\
+XX\"", 
+    GrayLevel[0.5], StripOnInput -> False],"\"\\n\"",StyleBox[
+   "\">>> The input group has the following factors: \"", {Bold, 
+     RGBColor[
+      Rational[2, 3], 0, 0]}, StripOnInput -> False],RowBox[{"{", 
+     RowBox[{"\"SU3\"", ",", "\"SU2\"", ",", "\"U1\""}], "}"}],"\".\\n\"",
+   StyleBox[
+    TemplateBox[{"\">>> There are \"", "4", "\" anomalies to consider: \""}, 
+     "RowDefault"], {Bold, 
+     RGBColor[
+      Rational[2, 3], 0, 0]}, StripOnInput -> False],RowBox[{"{", 
+     RowBox[{
+       RowBox[{
+         SuperscriptBox["\"SU3\"", "2"], " ", "\"U1\""}], ",", 
+       RowBox[{
+         SuperscriptBox["\"SU2\"", "2"], " ", "\"U1\""}], ",", 
+       SuperscriptBox["\"U1\"", "3"], ",", 
+       SuperscriptBox["\"SU3\"", "3"]}], "}"}],"\".\\n\"",StyleBox[
+   "\">>> The values of the anomalies given by the TriangularAnomalyValue \
+function follow this order.\"", {Bold, 
+     RGBColor[
+      Rational[2, 3], 0, 0]}, StripOnInput -> False],StyleBox[
+   "\"\\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\
+XXXXXXXXXXX\"", 
+    GrayLevel[0.5], StripOnInput -> False]},
+  "Row",
+  BaseStyle->{FontFamily -> "Consolas"},
+  DisplayFunction->(RowBox[{
+     TemplateSlotSequence[1, "\[InvisibleSpace]"]}]& ),
+  InterpretationFunction->(RowBox[{"Row", "[", 
+     RowBox[{
+       RowBox[{"{", 
+         TemplateSlotSequence[1, ","], "}"}], ",", 
+       RowBox[{"BaseStyle", "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"FontFamily", "\[Rule]", "\"Consolas\""}], "}"}]}]}], 
+     "]"}]& )]], "Print",
+ CellLabel->"During evaluation of In[137]:=",
+ CellID->502356723,ExpressionUUID->"27cf67f2-83cf-4495-bc6f-a9925e8a9dfa"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   FractionBox["1", "6"], ",", 
+   FractionBox["1", "4"], ",", 
+   FractionBox["1", "36"], ",", "1"}], "}"}]], "Output",
+ CellLabel->"Out[2]=",
+ CellID->9356043,ExpressionUUID->"406b1821-f800-4978-b9e4-7ee7665e13f5"]
+}, Open  ]],
+
+Cell["\<\
+Note that the simplified input notation for representations can be used as \
+well, so the above example is the same as\
+\>", "ExampleText",
+ CellID->630543576,ExpressionUUID->"5e29d783-27c1-40bb-a315-dfc58b5b2666"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"TriangularAnomalyValue", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"SU3", ",", "SU2", ",", "U1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "2", ",", 
+     RowBox[{"1", "/", "6"}]}], "}"}]}], "]"}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->370137837,ExpressionUUID->"0c4282a3-3326-40df-a9cb-317792b332a3"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   FractionBox["1", "6"], ",", 
+   FractionBox["1", "4"], ",", 
+   FractionBox["1", "36"], ",", "1"}], "}"}]], "Output",
+ CellLabel->"Out[3]=",
+ CellID->102100436,ExpressionUUID->"b2ff1430-25fd-4d64-91ec-c40456c4d8aa"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "\t", "ExampleDelimiter",ExpressionUUID->
+   "fb73b415-bc70-441a-b47f-1552ff92efee"],
+  $Line = 0; Null]], "ExampleDelimiter",
+ CellID->292513496,ExpressionUUID->"29f569d5-d5ac-445b-8514-1f0b1bab7cfb"],
+
+Cell["\<\
+Summing all contributions from the Standard Model fields over one generation, \
+there is no gauge anomalies:\
+\>", "ExampleText",
+ CellID->31074690,ExpressionUUID->"e758a1f8-c152-4d2c-b2f4-9707ef33034d"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"uc", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "3"}], ",", "1", ",", 
+     RowBox[{
+      RowBox[{"-", "2"}], "/", "3"}]}], " ", "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"dc", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "3"}], ",", "1", ",", 
+     RowBox[{"1", "/", "3"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Q", "=", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "2", ",", 
+     RowBox[{"1", "/", "6"}]}], " ", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ec", "=", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "1", ",", "1"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"L", "=", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "2", ",", 
+      RowBox[{
+       RowBox[{"-", "1"}], "/", "2"}]}], " ", "}"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"anomalies", "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"TriangularAnomalyValue", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"SU3", ",", "SU2", ",", "U1"}], "}"}], ",", "#"}], "]"}], 
+    "&"}], "/@", 
+   RowBox[{"{", 
+    RowBox[{"uc", ",", "dc", ",", "Q", ",", "ec", ",", "L"}], 
+    "}"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{"Total", "[", "anomalies", "]"}]}], "Input",
+ CellLabel->"In[1]:=",
+ CellID->49038611,ExpressionUUID->"cf65d69e-60f5-4799-b1b6-a64484ef399a"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["1", "3"]}], ",", "0", ",", 
+     RowBox[{"-", 
+      FractionBox["8", "9"]}], ",", 
+     RowBox[{"-", 
+      FractionBox["1", "2"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["1", "6"], ",", "0", ",", 
+     FractionBox["1", "9"], ",", 
+     RowBox[{"-", 
+      FractionBox["1", "2"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["1", "6"], ",", 
+     FractionBox["1", "4"], ",", 
+     FractionBox["1", "36"], ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", "1", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", 
+     RowBox[{"-", 
+      FractionBox["1", "4"]}], ",", 
+     RowBox[{"-", 
+      FractionBox["1", "4"]}], ",", "0"}], "}"}]}], "}"}]], "Output",
+ CellLabel->"Out[1]=",
+ CellID->45657966,ExpressionUUID->"29014e04-28c6-4272-812e-dc5ead68446a"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0", ",", "0", ",", "0", ",", "0"}], "}"}]], "Output",
+ CellLabel->"Out[1]=",
+ CellID->741941792,ExpressionUUID->"88829d11-5d42-47af-b929-f2a442321a55"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer",ExpressionUUID->"bc037fcc-f728-4aa2-9668-5c54891e8bc7"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]],ExpressionUUID->"4436b765-a3ee-440f-b83c-c1c4649d521b"],
+ "Tutorials"
+}], "TutorialsSection",
+ WholeCellGroupOpener->True,
+ CellID->250839057,ExpressionUUID->"98b8a1c2-5d8c-48ef-ae3e-d1064201cad9"],
+
+Cell["", "SectionHeaderSpacer",ExpressionUUID->"57a55c81-f7d0-4b2f-b9ab-3d275ce7fece"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["GroupMath Tutorial"]],"paclet:GroupMath/tutorial/GroupMathDoc"},
+  "RefLink",
+  BaseStyle->"Tutorials"]], "Tutorials",
+ CellID->341631938,ExpressionUUID->"eb51b176-6dfd-4d43-b194-d2b5287c4376"],
+
+Cell["", "SectionFooterSpacer",ExpressionUUID->"24a0deff-702d-47b9-818f-dd582832829b"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]],ExpressionUUID->"c4ffea83-458b-4663-9e5b-2c304365c59a"],
+ "Related Links"
+}], "RelatedLinksSection",
+ WholeCellGroupOpener->True,
+ CellID->1584193535,ExpressionUUID->"4e664e44-08ce-42fd-a4e2-ecd7302ea7a8"],
+
+Cell["", "SectionHeaderSpacer",ExpressionUUID->"0da8a42f-9fe8-4a15-81d1-8d1f39d84a9a"],
+
+Cell[TextData[StyleBox["The algorithm used is described in Susumu Okubo, \
+Gauge groups without triangular anomaly, Phys. Rev. D 16, 3528 (1977).", \
+"TR"]], "RelatedLinks",
+ CellID->77300856,ExpressionUUID->"aafdb69b-f0d7-4205-ab8b-c37e4b4129a8"]
+}, Open  ]],
+
+Cell[" ", "FooterCell",ExpressionUUID->"8a093740-f8e9-4290-a80d-9adc838bda72"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"TriangularAnomalyValue",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "Mathematica", ButtonData -> "paclet:GroupMath/guide/GroupMath", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2020, 11, 4, 11, 40, 49.3988229}", 
+    "history" -> {"1.0", "", "", ""}, "context" -> "GroupMath`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Group Math Symbol", "language" -> "en", "paclet" -> "GroupMath", 
+    "status" -> "None", "summary" -> 
+    "TriangularAnomalyValue[group, representation] Contribution to gauge \
+anomalies from a given representation", "synonyms" -> {}, "tabletags" -> {}, 
+    "title" -> "TriangularAnomalyValue", "titlemodifier" -> "", "windowtitle" -> 
+    "TriangularAnomalyValue", "type" -> "Symbol", "uri" -> 
+    "GroupMath/ref/TriangularAnomalyValue", "WorkflowDockedCell" -> ""}, 
+  "SearchTextTranslated" -> "", "NewStyles" -> False},
+CellContext->"Global`",
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 8, 2019)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  TaggingRules -> {"NewStyles" -> False}, FrontEndVersion -> 
+  "12.0 for Microsoft Windows (64-bit) (April 8, 2019)", StyleDefinitions -> 
+  "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[10034, 280, 435, 11, 35, "PrimaryExamplesSection",ExpressionUUID->"cd909e0f-09e5-4f41-9708-5ceb629b62dc",
+   CellTags->"PrimaryExamplesSection",
+   CellID->115901210]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 22821, 665}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[594, 21, 3506, 78, 53, "AnchorBarGrid",ExpressionUUID->"3a257c53-5229-426a-afb5-3961d8820d20",
+ CellID->1],
+Cell[CellGroupData[{
+Cell[4125, 103, 407, 9, 52, "ObjectNameGrid",ExpressionUUID->"0f1126d6-6473-42d4-a556-ca85aa67aece"],
+Cell[4535, 114, 681, 14, 110, "Usage",ExpressionUUID->"c3e75223-21e4-4fb1-89dc-ce9b77261ecf",
+ CellID->982511436]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5253, 133, 853, 21, 37, "NotesSection",ExpressionUUID->"097d9046-fc31-45c9-8053-01797d02b309",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->7163554],
+Cell[6109, 156, 86, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"4a2e4f2b-54c7-4945-bafb-33558d081815"],
+Cell[6198, 158, 377, 10, 70, "Notes",ExpressionUUID->"13b5c048-81f7-4dbd-ad0f-48be35e6e9cc",
+ CellID->1067943069],
+Cell[6578, 170, 508, 13, 70, "Notes",ExpressionUUID->"752ff747-e143-484a-8902-7b18783b79ab",
+ CellID->15844731],
+Cell[7089, 185, 2548, 81, 70, "Notes",ExpressionUUID->"edb9d9ce-e034-4d4b-a111-4639112d7bc6",
+ CellID->271541782],
+Cell[9640, 268, 268, 5, 70, "Notes",ExpressionUUID->"aefa8235-038b-48ac-ad29-22e2ee549e10",
+ CellID->287748580],
+Cell[9911, 275, 86, 0, 70, "SectionFooterSpacer",ExpressionUUID->"e085f72a-ba66-482a-8fc0-4188fbef5214"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[10034, 280, 435, 11, 35, "PrimaryExamplesSection",ExpressionUUID->"cd909e0f-09e5-4f41-9708-5ceb629b62dc",
+ CellTags->"PrimaryExamplesSection",
+ CellID->115901210],
+Cell[CellGroupData[{
+Cell[10494, 295, 307, 7, 29, "ExampleSection",ExpressionUUID->"11f15cf0-9702-4b0b-88ea-719b3b7022af",
+ CellID->71713870],
+Cell[10804, 304, 975, 30, 57, "ExampleText",ExpressionUUID->"9da628a1-0b87-4632-882b-9424acbe0ed4",
+ CellID->144329535],
+Cell[CellGroupData[{
+Cell[11804, 338, 502, 15, 43, "Input",ExpressionUUID->"5d7d3f3c-f356-456b-b5a5-9cb079b659c3",
+ CellID->400860700],
+Cell[12309, 355, 256, 7, 53, "Output",ExpressionUUID->"a582ab92-ca85-47f3-9933-cfc8417fd7a7",
+ CellID->6945796]
+}, Open  ]],
+Cell[12580, 365, 177, 3, 38, "ExampleText",ExpressionUUID->"cbbd9cc1-e73e-4727-bb49-21927d681452",
+ CellID->133516829],
+Cell[CellGroupData[{
+Cell[12782, 372, 308, 7, 26, "Input",ExpressionUUID->"ee3873c3-0082-483b-8ffa-5f63a9a06101",
+ CellID->96555244],
+Cell[13093, 381, 1955, 44, 155, "Print",ExpressionUUID->"27cf67f2-83cf-4495-bc6f-a9925e8a9dfa",
+ CellID->502356723],
+Cell[15051, 427, 256, 7, 53, "Output",ExpressionUUID->"406b1821-f800-4978-b9e4-7ee7665e13f5",
+ CellID->9356043]
+}, Open  ]],
+Cell[15322, 437, 224, 4, 70, "ExampleText",ExpressionUUID->"5e29d783-27c1-40bb-a315-dfc58b5b2666",
+ CellID->630543576],
+Cell[CellGroupData[{
+Cell[15571, 445, 345, 9, 70, "Input",ExpressionUUID->"0c4282a3-3326-40df-a9cb-317792b332a3",
+ CellID->370137837],
+Cell[15919, 456, 258, 7, 53, "Output",ExpressionUUID->"b2ff1430-25fd-4d64-91ec-c40456c4d8aa",
+ CellID->102100436]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16214, 468, 242, 5, 70, "ExampleDelimiter",ExpressionUUID->"29f569d5-d5ac-445b-8514-1f0b1bab7cfb",
+ CellID->292513496],
+Cell[16459, 475, 213, 4, 70, "ExampleText",ExpressionUUID->"e758a1f8-c152-4d2c-b2f4-9707ef33034d",
+ CellID->31074690],
+Cell[CellGroupData[{
+Cell[16697, 483, 1395, 45, 70, "Input",ExpressionUUID->"cf65d69e-60f5-4799-b1b6-a64484ef399a",
+ CellID->49038611],
+Cell[18095, 530, 942, 31, 53, "Output",ExpressionUUID->"29014e04-28c6-4272-812e-dc5ead68446a",
+ CellID->45657966],
+Cell[19040, 563, 191, 4, 35, "Output",ExpressionUUID->"88829d11-5d42-47af-b929-f2a442321a55",
+ CellID->741941792]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[19270, 572, 86, 0, 70, "SectionFooterSpacer",ExpressionUUID->"bc037fcc-f728-4aa2-9668-5c54891e8bc7"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19393, 577, 262, 7, 70, "TutorialsSection",ExpressionUUID->"98b8a1c2-5d8c-48ef-ae3e-d1064201cad9",
+ CellID->250839057],
+Cell[19658, 586, 86, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"57a55c81-f7d0-4b2f-b9ab-3d275ce7fece"],
+Cell[19747, 588, 241, 5, 70, "Tutorials",ExpressionUUID->"eb51b176-6dfd-4d43-b194-d2b5287c4376",
+ CellID->341631938],
+Cell[19991, 595, 86, 0, 70, "SectionFooterSpacer",ExpressionUUID->"24a0deff-702d-47b9-818f-dd582832829b"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20114, 600, 270, 7, 70, "RelatedLinksSection",ExpressionUUID->"4e664e44-08ce-42fd-a4e2-ecd7302ea7a8",
+ CellID->1584193535],
+Cell[20387, 609, 86, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"0da8a42f-9fe8-4a15-81d1-8d1f39d84a9a"],
+Cell[20476, 611, 247, 3, 70, "RelatedLinks",ExpressionUUID->"aafdb69b-f0d7-4205-ab8b-c37e4b4129a8",
+ CellID->77300856]
+}, Open  ]],
+Cell[20738, 617, 78, 0, 70, "FooterCell",ExpressionUUID->"8a093740-f8e9-4290-a80d-9adc838bda72"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

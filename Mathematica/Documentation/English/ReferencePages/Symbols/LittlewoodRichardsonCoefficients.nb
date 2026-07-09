@@ -1,0 +1,706 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     25323,        696]
+NotebookOptionsPosition[     19021,        562]
+NotebookOutlinePosition[     21403,        621]
+CellTagsIndexPosition[     21318,        616]
+WindowTitle->LittlewoodRichardsonCoefficients
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["GROUP MATH SYMBOL", "PacletNameCell",ExpressionUUID->
+     "327f39e0-7a98-4cc1-a9f7-ec686d439c2a"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "Tutorials",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }],ExpressionUUID->"b1af5332-57f6-4f4a-a7a1-d23b27c0e855"],
+         TextCell[
+          Row[{"Tutorials", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"GroupMath Tutorial\"\>":>
+       Documentation`HelpLookup["paclet:GroupMath/tutorial/GroupMathDoc"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"Tutorials"]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "1b28ce04-0f80-43b3-a1ca-d04f48b37ee7"],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }],ExpressionUUID->"bb139279-bf51-4045-947f-ca020e716a66"],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"ReduceRepProduct\"\>":>
+       Documentation`HelpLookup[
+       "paclet:GroupMath/ref/ReduceRepProduct"], "\<\"SnBranchingRules\"\>":>
+       Documentation`HelpLookup["paclet:GroupMath/ref/SnBranchingRules"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "ec8ffe0d-aed6-4692-b2ce-ff2812a294ec"],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }],ExpressionUUID->"3ccc9665-0cb4-411f-99d0-157aaec3d682"],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->
+         False], {"\<\"GroupMath/ref/LittlewoodRichardsonCoefficients\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["GroupMath/ref/LittlewoodRichardsonCoefficients"]}, Visible -> 
+            False]]; SelectionMove[
+         DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/GroupMath/ref/\
+LittlewoodRichardsonCoefficients.html"], StandardForm]], "Input", 
+              TextClipboardType -> "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$20099], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "GroupMath/ref/LittlewoodRichardsonCoefficients", ".html"]], 
+           None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "d8de2741-4239-4618-9935-60416dcaf045"]
+    }], "AnchorBar",ExpressionUUID->"2590c9f1-6aff-431e-9251-0c40b3e34085"]}
+  }]], "AnchorBarGrid",
+ CellID->1,ExpressionUUID->"1d799a08-03a2-4974-bcdc-06805557c1ee"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell["LittlewoodRichardsonCoefficients", "ObjectName",ExpressionUUID->
+  "06ace7a0-d5be-4908-b198-cb7c4bf5c8c5"],
+ Cell[BoxData[
+  TemplateBox[{8},
+   "Spacer1"]],ExpressionUUID->"d69f96c8-35be-4a19-9eef-ed1704d66000"],
+ Cell[BoxData[
+ ""], "ObjectNameTranslation",ExpressionUUID->
+  "ef280ae1-a038-4d60-96e5-38fbd9528a41"]
+}], "ObjectNameGrid",ExpressionUUID->"17b975bb-86b8-47da-bbbf-cb3119809137"],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"LittlewoodRichardsonCoefficients", "[", 
+       RowBox[{"list", " ", "of", " ", "partitons"}], "]"}]], "InlineFormula",
+      ExpressionUUID->"05df8ef3-31d1-4924-a340-028afac0d2a0"],
+     " \[LineSeparator]Calculates the Littlewood-Richardson coefficients for \
+the permutation group representations given as a list"
+    }],ExpressionUUID->"038d29ac-d42d-4edf-b31e-c89edbf6280f"]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{"Columns" -> {{None}}, "Rows" -> {{None}}}},
+ CellID->982511436,ExpressionUUID->"632619ca-7f6f-40b6-b3bd-b12a8067a2ae"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    TemplateBox[{6},
+     "Spacer1"]],ExpressionUUID->"e5ebc7e0-a167-4b6f-b06a-4af7178cbad4"],
+   "Details"
+  }], "NotesFrameText",ExpressionUUID->"6790079b-bca0-4c8e-8583-d3e6f1910be7"],
+  Appearance->{Automatic, None, "Normal", Automatic},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->
+   "Preemptive"]],ExpressionUUID->"fb64dbce-2e58-4feb-a896-a8e15fec7c6e"]], \
+"NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->19852109,ExpressionUUID->"3e0ff118-ffb9-47b4-b6f0-31c8dbe32938"],
+
+Cell["", "SectionHeaderSpacer",ExpressionUUID->"bab1473a-0318-4cf2-97d2-c3c4bfe506cb"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  RowBox[{"list", " ", "of", " ", "Sn", " ", "representations"}]], 
+  "InlineFormula",ExpressionUUID->"4d480a3d-25e0-498b-a903-4b1f674a9481"],
+ " must be a list of partitions {\[Lambda]1, \[Lambda]2,...} of natural \
+numbers n1, n2, ..."
+}], "Notes",
+ CellID->1067943069,ExpressionUUID->"303a24e5-763b-422e-81ae-2ae09abf1026"],
+
+Cell[TextData[{
+ "The Littlewood-Richardson coefficients can be interpreted in many different \
+ways (see ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["here"]],
+    "http://en.wikipedia.org/wiki/Littlewood%E2%80%93Richardson_rule#\
+Littlewood%E2%80%93Richardson_coefficients"},
+   "WebLink",
+   BaseStyle->{"Notes"}]],ExpressionUUID->
+  "35d564bf-48a8-492f-8170-40ce9b9c6826"],
+ " for details). On the them is the following: it provides the number of \
+times that the product \[Lambda]1 x \[Lambda]2 x ... of Sn1 x Sn2 x ... is \
+contained in each of the irreps of the larger group SN, with N=n1+n2+... \
+components."
+}], "Notes",
+ CellID->231691174,ExpressionUUID->"e29c2197-206f-48c4-a98a-c0983329c5b1"],
+
+Cell[TextData[{
+ "This function is related to ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["ReduceRepProduct"]],"paclet:GroupMath/ref/ReduceRepProduct"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
+  "0a8da9b3-2a66-4cd7-a318-5b9ef30e52e1"],
+ " applied to SU(n) Lie groups. On the other hand, it is also closelly \
+related to ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SnBranchingRules"]],"paclet:GroupMath/ref/SnBranchingRules"},
+   "RefLink",
+   BaseStyle->{"InlineFormula", FontFamily -> "Consolas"}]], "InlineFormula",
+  ExpressionUUID->"b71aa055-3b76-4597-bdf0-443f2dea5a79"],
+ "."
+}], "Notes",
+ CellID->168134201,ExpressionUUID->"70412be9-70c7-4ca6-9f04-86fe2a2efaf1"],
+
+Cell["", "SectionFooterSpacer",ExpressionUUID->"9f6307b1-369c-4142-ae8b-52966cec78b0"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]],ExpressionUUID->"18571fb6-aa09-4f13-907a-7abac4b4dd43"],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "88807640-f53d-49e5-a84a-c351362d158d"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->183752410,ExpressionUUID->"d326de19-20be-4919-996b-a064a622802a"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "b689a748-589d-401f-a9f8-a47cd2ef5f34"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->127037642,ExpressionUUID->"c5343c15-c91d-4669-a678-32bd459efe03"],
+
+Cell[TextData[{
+ "Consider the representation R={2,1} x {2, 2} of S3 x S4. This permutation \
+group is a subgroup of S7, so we might want to know, for each of the irreps \
+of S7, how many copies of the R sub-representation does it contain, if any. ",
+ Cell[BoxData[
+ "LittlewoodRichardsonCoefficients"], "InlineFormula",ExpressionUUID->
+  "f78701e4-59c5-49ba-9fe2-18e8ffb7a288"],
+ " provides us with the following answer:"
+}], "ExampleText",
+ CellID->329238481,ExpressionUUID->"d474c901-d683-457e-a6b3-98123c3564b8"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"R", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"2", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"2", ",", "2"}], "}"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"LittlewoodRichardsonCoefficients", "[", "R", "]"}]}], "Input",
+ CellLabel->"In[1]:=",
+ CellID->250692952,ExpressionUUID->"52da26f6-672a-4f46-82fc-63e00400a0d6"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"4", ",", "3"}], "}"}], ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"4", ",", "2", ",", "1"}], "}"}], ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"3", ",", "2", ",", "2"}], "}"}], ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"3", ",", "3", ",", "1"}], "}"}], ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"3", ",", "2", ",", "1", ",", "1"}], "}"}], ",", "1"}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"2", ",", "2", ",", "2", ",", "1"}], "}"}], ",", "1"}], "}"}]}],
+   "}"}]], "Output",
+ CellLabel->"Out[1]=",
+ CellID->65825606,ExpressionUUID->"995fb9b3-e4b0-41ec-aa71-c37e9b9654ab"]
+}, Open  ]],
+
+Cell[TextData[{
+ "This output states that {4,3}, {4,2,1}, {3,2,2}, {3,3,1}, {3,2,1,1} and \
+{2,2,2,1} all contain exactly once the R sub-representation. We could have \
+found this information by using the function ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SnBranchingRules"]],"paclet:GroupMath/ref/SnBranchingRules"},
+   "RefLink",
+   BaseStyle->{"InlineFormula", FontFamily -> "Consolas"}]], "InlineFormula",
+  ExpressionUUID->"7d438a1b-1788-4817-8907-bba25bed306b"],
+ " to each of these S7 irreps:"
+}], "ExampleText",
+ CellID->339308793,ExpressionUUID->"1ffc6258-b140-4284-b14e-b8f168bc67a1"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Cases", "[", 
+  RowBox[{
+   RowBox[{"SnBranchingRules", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"4", ",", "3"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"3", ",", "4"}], "}"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"R", ",", "_"}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Cases", "[", 
+  RowBox[{
+   RowBox[{"SnBranchingRules", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"4", ",", "2", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"3", ",", "4"}], "}"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"R", ",", "_"}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Cases", "[", 
+  RowBox[{
+   RowBox[{"SnBranchingRules", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"3", ",", "2", ",", "2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"3", ",", "4"}], "}"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"R", ",", "_"}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Cases", "[", 
+  RowBox[{
+   RowBox[{"SnBranchingRules", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"3", ",", "3", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"3", ",", "4"}], "}"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"R", ",", "_"}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Cases", "[", 
+  RowBox[{
+   RowBox[{"SnBranchingRules", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"3", ",", "2", ",", "1", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"3", ",", "4"}], "}"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"R", ",", "_"}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Cases", "[", 
+  RowBox[{
+   RowBox[{"SnBranchingRules", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"2", ",", "2", ",", "2", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"3", ",", "4"}], "}"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"R", ",", "_"}], "}"}]}], "]"}]}], "Input",
+ CellLabel->"In[2]:=",
+ CellID->115422392,ExpressionUUID->"f4e53ab3-dda1-4016-ada3-6ee507aa0a0b"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"2", ",", "1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"2", ",", "2"}], "}"}]}], "}"}], ",", "1"}], "}"}], 
+  "}"}]], "Output",
+ CellLabel->"Out[2]=",
+ CellID->85890577,ExpressionUUID->"b8ce75fd-c748-4797-b328-66cf351715ee"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"2", ",", "1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"2", ",", "2"}], "}"}]}], "}"}], ",", "1"}], "}"}], 
+  "}"}]], "Output",
+ CellLabel->"Out[2]=",
+ CellID->17825497,ExpressionUUID->"c99644fb-7bfe-4574-ae92-1b62377ae7e4"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"2", ",", "1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"2", ",", "2"}], "}"}]}], "}"}], ",", "1"}], "}"}], 
+  "}"}]], "Output",
+ CellLabel->"Out[2]=",
+ CellID->8098646,ExpressionUUID->"3d17312e-2db0-405f-8a6c-2b42f2317b95"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"2", ",", "1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"2", ",", "2"}], "}"}]}], "}"}], ",", "1"}], "}"}], 
+  "}"}]], "Output",
+ CellLabel->"Out[2]=",
+ CellID->498480378,ExpressionUUID->"3de7bc4f-cdd3-4114-b73a-3592459f68f3"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"2", ",", "1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"2", ",", "2"}], "}"}]}], "}"}], ",", "1"}], "}"}], 
+  "}"}]], "Output",
+ CellLabel->"Out[2]=",
+ CellID->850194432,ExpressionUUID->"84ef016e-f4ac-4412-b84f-02a21d568670"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"2", ",", "1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"2", ",", "2"}], "}"}]}], "}"}], ",", "1"}], "}"}], 
+  "}"}]], "Output",
+ CellLabel->"Out[2]=",
+ CellID->296634802,ExpressionUUID->"b83b0cb8-32aa-4f98-bcfe-b44e45634080"]
+}, Open  ]],
+
+Cell["\<\
+On the other hand, for example the irrep {5,2} of S7 does not contain R:\
+\>", "ExampleText",
+ CellID->864924527,ExpressionUUID->"7c7cd411-9a29-4723-a272-d4403e7423e5"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Cases", "[", 
+  RowBox[{
+   RowBox[{"SnBranchingRules", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"5", ",", "2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"3", ",", "4"}], "}"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"R", ",", "_"}], "}"}]}], "]"}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->587792993,ExpressionUUID->"8c6718a9-8134-492b-9593-b31ed178c998"],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellLabel->"Out[3]=",
+ CellID->288061771,ExpressionUUID->"684bd0d3-bf75-48bb-b3a3-18f61f18d69a"]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer",ExpressionUUID->"42db5710-d6e9-4d19-88a1-cc134990022e"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]],ExpressionUUID->"87ed33ff-991c-4e65-8ecb-8290d92968ba"],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704,ExpressionUUID->"a008ac7c-6d43-4179-b350-9eeb1ef9adc4"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["ReduceRepProduct"]],"paclet:GroupMath/ref/ReduceRepProduct"},
+   "RefLink",
+   BaseStyle->{"InlineFormula", FontFamily -> "Verdana"}]], "InlineFormula",
+  ExpressionUUID->"634bdb64-0767-4831-8be9-735c67eb8021"],
+ "\[NonBreakingSpace]",
+ StyleBox["\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+  "InlineSeparator"],
+ " ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SnBranchingRules"]],"paclet:GroupMath/ref/SnBranchingRules"},
+   "RefLink",
+   BaseStyle->{"InlineFormula", FontFamily -> "Verdana"}]], "InlineFormula",
+  ExpressionUUID->"dc20f863-7c2b-4219-b9a9-3c78ef13fe75"]
+}], "SeeAlso",
+ CellID->302395502,ExpressionUUID->"c9f904f8-3a32-46af-a6b1-0aa6c9091a19"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]],ExpressionUUID->"adde0cc1-2f02-4963-9c4e-929fda389feb"],
+ "Tutorials"
+}], "TutorialsSection",
+ WholeCellGroupOpener->True,
+ CellID->250839057,ExpressionUUID->"5b86c072-5007-4085-93c8-831924e6b027"],
+
+Cell["", "SectionHeaderSpacer",ExpressionUUID->"36cc15d3-0f57-404e-8f5d-eb9e79a14a20"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["GroupMath Tutorial"]],"paclet:GroupMath/tutorial/GroupMathDoc"},
+  "RefLink",
+  BaseStyle->"Tutorials"]], "Tutorials",
+ CellID->341631938,ExpressionUUID->"7dd45edd-2b97-46a9-af12-c5124e818ee0"]
+}, Open  ]],
+
+Cell[" ", "FooterCell",ExpressionUUID->"6dbcbccd-9af1-4e87-96fa-f1e5fad9921b"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"LittlewoodRichardsonCoefficients",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "Mathematica", ButtonData -> "paclet:GroupMath/guide/GroupMath", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2020, 11, 4, 11, 39, 30.0815692}", 
+    "history" -> {"1.0", "", "", ""}, "context" -> "GroupMath`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Group Math Symbol", "language" -> "en", "paclet" -> "GroupMath", 
+    "status" -> "None", "summary" -> 
+    "LittlewoodRichardsonCoefficients[list of partitons] Calculates the \
+Littlewood-Richardson coefficients for the permutation group representations \
+given as a list", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
+    "LittlewoodRichardsonCoefficients", "titlemodifier" -> "", "windowtitle" -> 
+    "LittlewoodRichardsonCoefficients", "type" -> "Symbol", "uri" -> 
+    "GroupMath/ref/LittlewoodRichardsonCoefficients", "WorkflowDockedCell" -> 
+    ""}, "SearchTextTranslated" -> "", "NewStyles" -> False},
+CellContext->"Global`",
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 8, 2019)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  TaggingRules -> {"NewStyles" -> False}, FrontEndVersion -> 
+  "12.0 for Microsoft Windows (64-bit) (April 8, 2019)", StyleDefinitions -> 
+  "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[8922, 228, 435, 11, 35, "PrimaryExamplesSection",ExpressionUUID->"d326de19-20be-4919-996b-a064a622802a",
+   CellTags->"PrimaryExamplesSection",
+   CellID->183752410]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 21120, 609}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[604, 21, 4321, 98, 53, "AnchorBarGrid",ExpressionUUID->"1d799a08-03a2-4974-bcdc-06805557c1ee",
+ CellID->1],
+Cell[CellGroupData[{
+Cell[4950, 123, 417, 9, 52, "ObjectNameGrid",ExpressionUUID->"17b975bb-86b8-47da-bbbf-cb3119809137"],
+Cell[5370, 134, 637, 12, 131, "Usage",ExpressionUUID->"632619ca-7f6f-40b6-b3bd-b12a8067a2ae",
+ CellID->982511436]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6044, 151, 854, 21, 37, "NotesSection",ExpressionUUID->"3e0ff118-ffb9-47b4-b6f0-31c8dbe32938",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->19852109],
+Cell[6901, 174, 86, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"bab1473a-0318-4cf2-97d2-c3c4bfe506cb"],
+Cell[6990, 176, 357, 7, 70, "Notes",ExpressionUUID->"303a24e5-763b-422e-81ae-2ae09abf1026",
+ CellID->1067943069],
+Cell[7350, 185, 713, 16, 70, "Notes",ExpressionUUID->"e29c2197-206f-48c4-a98a-c0983329c5b1",
+ CellID->231691174],
+Cell[8066, 203, 730, 18, 70, "Notes",ExpressionUUID->"70412be9-70c7-4ca6-9f04-86fe2a2efaf1",
+ CellID->168134201],
+Cell[8799, 223, 86, 0, 70, "SectionFooterSpacer",ExpressionUUID->"9f6307b1-369c-4142-ae8b-52966cec78b0"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[8922, 228, 435, 11, 35, "PrimaryExamplesSection",ExpressionUUID->"d326de19-20be-4919-996b-a064a622802a",
+ CellTags->"PrimaryExamplesSection",
+ CellID->183752410],
+Cell[CellGroupData[{
+Cell[9382, 243, 308, 7, 29, "ExampleSection",ExpressionUUID->"c5343c15-c91d-4669-a678-32bd459efe03",
+ CellID->127037642],
+Cell[9693, 252, 516, 9, 95, "ExampleText",ExpressionUUID->"d474c901-d683-457e-a6b3-98123c3564b8",
+ CellID->329238481],
+Cell[CellGroupData[{
+Cell[10234, 265, 408, 11, 43, "Input",ExpressionUUID->"52da26f6-672a-4f46-82fc-63e00400a0d6",
+ CellID->250692952],
+Cell[10645, 278, 899, 30, 52, "Output",ExpressionUUID->"995fb9b3-e4b0-41ec-aa71-c37e9b9654ab",
+ CellID->65825606]
+}, Open  ]],
+Cell[11559, 311, 606, 12, 76, "ExampleText",ExpressionUUID->"1ffc6258-b140-4284-b14e-b8f168bc67a1",
+ CellID->339308793],
+Cell[CellGroupData[{
+Cell[12190, 327, 2005, 62, 107, "Input",ExpressionUUID->"f4e53ab3-dda1-4016-ada3-6ee507aa0a0b",
+ CellID->115422392],
+Cell[14198, 391, 358, 12, 35, "Output",ExpressionUUID->"b8ce75fd-c748-4797-b328-66cf351715ee",
+ CellID->85890577],
+Cell[14559, 405, 358, 12, 35, "Output",ExpressionUUID->"c99644fb-7bfe-4574-ae92-1b62377ae7e4",
+ CellID->17825497],
+Cell[14920, 419, 357, 12, 35, "Output",ExpressionUUID->"3d17312e-2db0-405f-8a6c-2b42f2317b95",
+ CellID->8098646],
+Cell[15280, 433, 359, 12, 35, "Output",ExpressionUUID->"3de7bc4f-cdd3-4114-b73a-3592459f68f3",
+ CellID->498480378],
+Cell[15642, 447, 359, 12, 35, "Output",ExpressionUUID->"84ef016e-f4ac-4412-b84f-02a21d568670",
+ CellID->850194432],
+Cell[16004, 461, 359, 12, 35, "Output",ExpressionUUID->"b83b0cb8-32aa-4f98-bcfe-b44e45634080",
+ CellID->296634802]
+}, Open  ]],
+Cell[16378, 476, 178, 3, 70, "ExampleText",ExpressionUUID->"7c7cd411-9a29-4723-a272-d4403e7423e5",
+ CellID->864924527],
+Cell[CellGroupData[{
+Cell[16581, 483, 403, 12, 70, "Input",ExpressionUUID->"8c6718a9-8134-492b-9593-b31ed178c998",
+ CellID->587792993],
+Cell[16987, 497, 143, 3, 35, "Output",ExpressionUUID->"684bd0d3-bf75-48bb-b3a3-18f61f18d69a",
+ CellID->288061771]
+}, Open  ]]
+}, Open  ]],
+Cell[17157, 504, 86, 0, 70, "SectionFooterSpacer",ExpressionUUID->"42db5710-d6e9-4d19-88a1-cc134990022e"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17280, 509, 260, 7, 70, "SeeAlsoSection",ExpressionUUID->"a008ac7c-6d43-4179-b350-9eeb1ef9adc4",
+ CellID->1255426704],
+Cell[17543, 518, 749, 18, 70, "SeeAlso",ExpressionUUID->"c9f904f8-3a32-46af-a6b1-0aa6c9091a19",
+ CellID->302395502]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18329, 541, 262, 7, 70, "TutorialsSection",ExpressionUUID->"5b86c072-5007-4085-93c8-831924e6b027",
+ CellID->250839057],
+Cell[18594, 550, 86, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"36cc15d3-0f57-404e-8f5d-eb9e79a14a20"],
+Cell[18683, 552, 241, 5, 70, "Tutorials",ExpressionUUID->"7dd45edd-2b97-46a9-af12-c5124e818ee0",
+ CellID->341631938]
+}, Open  ]],
+Cell[18939, 560, 78, 0, 70, "FooterCell",ExpressionUUID->"6dbcbccd-9af1-4e87-96fa-f1e5fad9921b"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

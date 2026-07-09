@@ -1,0 +1,719 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     28427,        709]
+NotebookOptionsPosition[     21639,        560]
+NotebookOutlinePosition[     24164,        623]
+CellTagsIndexPosition[     24044,        617]
+WindowTitle->GenerateStandardTableaux
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["GROUP MATH SYMBOL", "PacletNameCell",ExpressionUUID->
+     "7a5ebb5e-9ed9-4c5b-ac4e-12475f692af9"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "Tutorials",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }],ExpressionUUID->"7562afcf-9d50-464b-8881-84e3c08b4bd7"],
+         TextCell[
+          Row[{"Tutorials", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"GroupMath Tutorial\"\>":>
+       Documentation`HelpLookup["paclet:GroupMath/tutorial/GroupMathDoc"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"Tutorials"]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "c946dc20-6249-4d3e-92e9-18f7b0ea6fce"],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }],ExpressionUUID->"1bfb3e8f-9125-4f36-889c-90fa8c02f31a"],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"SnIrrepDim\"\>":>Documentation`HelpLookup[
+       "paclet:GroupMath/ref/SnIrrepDim"], "\<\"TransposeTableaux\"\>":>
+       Documentation`HelpLookup["paclet:GroupMath/ref/TransposeTableaux"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "d4084b9c-9b05-4802-92e0-9b91dff64c34"],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }],ExpressionUUID->"b3a20b60-b200-4d38-bcbb-917add5e3777"],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->
+         False], {"\<\"GroupMath/ref/GenerateStandardTableaux\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["GroupMath/ref/GenerateStandardTableaux"]}, Visible -> 
+            False]]; SelectionMove[
+         DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/GroupMath/ref/\
+GenerateStandardTableaux.html"], StandardForm]], "Input", TextClipboardType -> 
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$17753], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "GroupMath/ref/GenerateStandardTableaux", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "85f3f38e-d93e-4678-9a97-45f6ba4e4154"]
+    }], "AnchorBar",ExpressionUUID->"e812681d-39ac-438b-889e-eaad19ca697f"]}
+  }]], "AnchorBarGrid",
+ CellID->1,ExpressionUUID->"613cf129-2e34-4ac7-a339-b8d4a4984564"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell["GenerateStandardTableaux", "ObjectName",ExpressionUUID->
+  "9e8deb98-373f-4f24-90a2-149efca03584"],
+ Cell[BoxData[
+  TemplateBox[{8},
+   "Spacer1"]],ExpressionUUID->"05666d7b-e04e-417d-aa2c-86c2342432a0"],
+ Cell[BoxData[
+ ""], "ObjectNameTranslation",ExpressionUUID->
+  "d6b92fd9-52a5-4ef3-b178-c5ce85c8b146"]
+}], "ObjectNameGrid",ExpressionUUID->"b8b524b3-9baf-4beb-9dc1-17acc2d760db"],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"GenerateStandardTableaux", "[", "partition", "]"}]], 
+      "InlineFormula",ExpressionUUID->"2bfb6a27-f0c2-4aec-841e-30bb5811dcaa"],
+     " \[LineSeparator]Generates a list with all standard Young tableaux with \
+a shape given by the ",
+     Cell[BoxData[
+     "partition"], "InlineFormula",ExpressionUUID->
+      "d2bdfa3f-d653-4fe6-8b1d-4bd2acf1f189"],
+     "."
+    }],ExpressionUUID->"3c212038-bf3a-4c1b-8165-2d35abf58bb2"]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{"Columns" -> {{None}}, "Rows" -> {{None}}}},
+ CellID->982511436,ExpressionUUID->"9487815e-9a62-4740-9efa-57e54c27a773"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    TemplateBox[{6},
+     "Spacer1"]],ExpressionUUID->"360122c6-c0e7-427d-aff7-3471b75e26ee"],
+   "Details"
+  }], "NotesFrameText",ExpressionUUID->"bb83324d-bdaa-4c11-a3f9-8c49b6ad9479"],
+  Appearance->{Automatic, None, "Normal", Automatic},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->
+   "Preemptive"]],ExpressionUUID->"419efc6b-0273-403e-8a34-ab0b5f501da4"]], \
+"NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->222490819,ExpressionUUID->"e8c2417a-bd4d-43a8-b319-b769c5bf46f9"],
+
+Cell["", "SectionHeaderSpacer",ExpressionUUID->"262d760e-fcfd-4374-9336-65067875b39d"],
+
+Cell["\<\
+The shape of a Young tableaux is a partition (non-decreasing list of natural \
+numbers) {\[Lambda]1,\[Lambda]2,...} where \[Lambda]i is the number of boxes \
+in the i-th row of the tableaux.\
+\>", "Notes",
+ CellID->345286050,ExpressionUUID->"85d4e1da-5dab-450b-85ac-7c61bf90877e"],
+
+Cell["\<\
+A standard Young tableaux with n boxes is filled with the numbers 1,2,...,n \
+in such a way that the numbers increase along rows and along columns.\
+\>", "Notes",
+ CellID->68148277,ExpressionUUID->"f6a1d44d-d151-4370-9d50-af2963fdc7a6"],
+
+Cell[TextData[{
+ "Each standard Young tableaux is given by ",
+ Cell[BoxData[
+ "GenerateStandardTableaux"], "InlineFormula",ExpressionUUID->
+  "595fd76d-d96e-4d9b-9dfe-6ad4a4e66203"],
+ " as a list with the format ",
+ Cell[BoxData[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"numbers", " ", "in", " ", "row", " ", "1"}], ",", " ", 
+    RowBox[{"numbers", " ", "in", " ", "row", " ", "2"}], ",", " ", "..."}], 
+   "}"}]], "InlineFormula",ExpressionUUID->
+  "d3a098a3-b1b9-432b-a35d-3ee97b0a3a14"],
+ "."
+}], "Notes",
+ CellID->1067943069,ExpressionUUID->"25c8300a-3c46-4de9-acef-df19a5f482c9"],
+
+Cell[TextData[{
+ "A ",
+ Cell[BoxData[
+  StyleBox["Draw",
+   FontFamily->"Consolas"]], "InlineFormula",ExpressionUUID->
+  "8325f22d-464d-4a98-b407-ac61f99ecaed"],
+ " option can be used."
+}], "Notes",
+ CellID->160897304,ExpressionUUID->"17534bbc-80bf-486c-9e03-c3b69351264e"],
+
+Cell["", "SectionFooterSpacer",ExpressionUUID->"0d76b40b-c187-446b-b42e-a65a2a1cac72"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]],ExpressionUUID->"8890751d-e7d0-4ec1-8eec-09e057c594cc"],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(2)", "ExampleCount",ExpressionUUID->
+  "f22a5672-a66a-4659-a671-7c1bf89f0dca"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->25022570,ExpressionUUID->"fc7a778a-df1a-4d13-ab57-8f2387d51fcb"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(2)", "ExampleCount",ExpressionUUID->
+  "2f9a8934-92e3-44d9-93ff-56aec320e27d"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->376729402,ExpressionUUID->"1d83a128-98a2-4fdc-a3c4-b7c8c3688e19"],
+
+Cell["There are two standard Young tableaux with shape {2,2}:", "Notes",
+ CellID->309770698,ExpressionUUID->"5efe8ebb-ddf3-4476-aa31-315278833518"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GenerateStandardTableaux", "[", 
+  RowBox[{"{", 
+   RowBox[{"2", ",", "2"}], "}"}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->95401904,ExpressionUUID->"80154a37-0186-4823-a50e-77d068c51194"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", "2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"3", ",", "4"}], "}"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", "3"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"2", ",", "4"}], "}"}]}], "}"}]}], "}"}]], "Output",
+ CellLabel->"Out[1]=",
+ CellID->738080737,ExpressionUUID->"633d1c08-471c-4f10-9df0-4ed8186775b6"]
+}, Open  ]],
+
+Cell[TextData[{
+ "They are drawn automatically if the option ",
+ Cell[BoxData[
+  StyleBox["Draw",
+   FontFamily->"Consolas"]], "InlineFormula",ExpressionUUID->
+  "ad6302d0-5270-4900-a0f8-2cfb39109fd9"],
+ " is used:"
+}], "Notes",
+ CellID->12182275,ExpressionUUID->"8830f007-9212-4736-9246-99bf2198f07b"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GenerateStandardTableaux", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"2", ",", "2"}], "}"}], ",", 
+   RowBox[{"Draw", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->123189420,ExpressionUUID->"526cf839-b06d-4201-8ee9-068db4b2b831"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   TagBox[GridBox[{
+      {"1", "2"},
+      {"3", "4"}
+     },
+     AutoDelete->False,
+     GridBoxFrame->{
+      "Columns" -> None, "Rows" -> None, 
+       "ItemsIndexed" -> {{{1, 1}, {1, 2}} -> True, {{2, 2}, {1, 2}} -> 
+         True, {{1, 2}, {1, 1}} -> True, {{1, 2}, {2, 2}} -> True}},
+     GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+    "Grid"], ",", 
+   TagBox[GridBox[{
+      {"1", "3"},
+      {"2", "4"}
+     },
+     AutoDelete->False,
+     GridBoxFrame->{
+      "Columns" -> None, "Rows" -> None, 
+       "ItemsIndexed" -> {{{1, 1}, {1, 2}} -> True, {{2, 2}, {1, 2}} -> 
+         True, {{1, 2}, {1, 1}} -> True, {{1, 2}, {2, 2}} -> True}},
+     GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+    "Grid"]}], "}"}]], "Output",
+ CellLabel->"Out[2]=",
+ CellID->842635678,ExpressionUUID->"092dce00-6552-4d81-9953-06925f3c57f2"]
+}, Open  ]],
+
+Cell[TextData[{
+ "The number of such tableaux (2) must match the size of the irreducible \
+representation {2,2} of ",
+ Cell[BoxData[
+  SubscriptBox["S", "4"]], "InlineFormula",ExpressionUUID->
+  "f37bee9f-e1a2-4272-a019-4235c247095e"],
+ ":"
+}], "Notes",
+ CellID->93790958,ExpressionUUID->"4d519e5f-949d-4fc3-ac68-665264f717c3"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SnIrrepDim", "[", 
+  RowBox[{"{", 
+   RowBox[{"2", ",", "2"}], "}"}], "]"}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->474159171,ExpressionUUID->"53cbf537-ebc1-4706-a26b-ff84a69c50e9"],
+
+Cell[BoxData["2"], "Output",
+ CellLabel->"Out[3]=",
+ CellID->68014476,ExpressionUUID->"ad98cdc9-7996-42e9-968f-05b6d43e1184"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "\t", "ExampleDelimiter",ExpressionUUID->
+   "f9bdd20b-461f-4f9b-8465-a315ab905e16"],
+  $Line = 0; Null]], "ExampleDelimiter",
+ CellID->234036490,ExpressionUUID->"f05a27c2-537e-4db7-99e6-7ed568994132"],
+
+Cell["\<\
+We expect 21 standard Young tableaux of shape {3,3,1}, because\
+\>", "ExampleText",
+ CellID->558619551,ExpressionUUID->"97af53bd-70ca-40d8-bacd-89acfe2f6c16"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SnIrrepDim", "[", 
+  RowBox[{"{", 
+   RowBox[{"3", ",", "3", ",", "1"}], "}"}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->958035233,ExpressionUUID->"42b6b01f-6b8b-4b82-bb4c-9c15b8c056cf"],
+
+Cell[BoxData["21"], "Output",
+ CellLabel->"Out[1]=",
+ CellID->557647058,ExpressionUUID->"fb244086-b2e6-4f83-97d6-369d81b9ab32"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GenerateStandardTableaux", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"3", ",", "3", ",", "1"}], "}"}], ",", 
+   RowBox[{"Draw", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->247209678,ExpressionUUID->"4f75874a-bc3c-42a3-9967-6c5c3357c10e"],
+
+Cell[BoxData[
+ GraphicsBox[
+  TagBox[RasterBox[CompressedData["
+1:eJztnUGOM7cVhOVkk2WukFsE3mWZrYMcwEb+MbL5A/w2EOQWukCuobMY0GHG
+M5pRq9VNsvkeWewiuwqwkRhV6veJZHerNXr8y0//+eHlD6fT6Zc/vf3rhx//
++7dv33783z/+/PZ//vn1l3///PXLv/7+9dcvP3/59tef/vj2H///9s9v351O
+7//7NakTpdI1C6S9BMImgbDJATInQkfQfndKICC/OyUQkN+dEgjIXx7nJBII
+j9+dEgjI704JBOQvj3MSCYTH704JBOR3pwQC8mfEr+fv3x93vFzyIp/20+n7
+83XbP7mjgXpDI5BDgcwz4SMIJHIUgaT98zUSPkbt8/DbEd8qez9uHtGb89N4
+eQkzRSt8C9QjEsjMf1yQ26u/hDEEIpCH3wTy8fqmkmyKxPOJtjMJv+0skZRA
+8jPDgnz6IpcTgQgkO9PveTj2Xq/8b0brR5ttCWStg4FMr8y76gWS+fpp7QJy
+V81nd1txM9F7wLqKIx8J9h0agXQKMntd0lUvkOySNrTzGgkdhOE8nMCJH+I1
+tux3HBqBdAvy/E3KTeujCCT0nwWSf4jX2DVl9/NwGid+CLq7L4GMAkJ39yWQ
+UUDM37lkahVfXMU2z/z3R4sOP/ZppECOBjIPor+dF8ihQGb+yIneB1ISt0bQ
+fndKICC/OyUQkN+dEgjIXx7nJBIIj9+dEgjI704JBOC/nF/O58vTR8/OiYpS
+AgH53SmBgPzulECq+y/nOl/B8BAVpgQC8rtTAgH53SmBVPfrPFwYEQg6JRCQ
+350SSHV/7DxMKNM7IJAGEgibBMKmzOJ1P1wYEQg6JRCQ350SSHW/zsOFEYGg
+UwIB+d0pgVT3W87D+S1DXZ05pz+LbvLrLQjI4i/BiUCey9ssrB2ItVkK7dQC
+g/COyHN5HU+teQqwppLKPw9bWoaaO8L5f3WbVHuQh7Btez+Ly2/iWvS7ZjCI
+5UDUU+tTGBDj6+eqGGSYqfWuRmtqXWDmedjWMtQ6xx4dmPP8uWoOsh3cD8T3
+DuNBto7UzdSaHRLZRZxwRMaYWs3WVKjAc85lwtoy1PiJ4PY2nVM3+DU/qgBB
+JkVfficQ9zsMB3k1NjqmnVqvWJD5QahGZKyp1WJNLXW9LH9IF44XtQzN6cx5
+m5J3E7DLIhxkfZz810+qFMT5DsNBnmRt7MY0tZaFVQf5FN+IjDK1Wq2pld5P
+w6G74fQXCjdZWoZmdOZ8/tgQDNQYGjzIZPS0ME2pFMT3DsNBso7Xw9RaF1Yb
+JPXCOSVFVQoyyNRqtabCynwuMcl8G5nXmXOOlD2Hb5850g9omoMkjPHXbwHi
+eIcbg5hvI1mnFggkYYy/fguQ8aYWbk1FQS4XxHnY3plzdjkKJgIl3SLprzp2
+AEle6MMltQCxv8ONQKyNjmmnFh6EdESGmVrzIGZNvUZBev4dR+SxWsFRHBGB
+zCSQmhGBzDQ4SKfn4Y8L0cbf/QikoV8g6MKsfoGgC7P6EyCdnodxKYGA/O6U
+QEB+d0og1f06DxdGBIJOCQTkd6cEUt2v83BhRCDolEBAfndKINX96j/cXgJh
+k0DYdDSQve6H20ggbBIImwRCoev55Xy5Pp+L+yaaSSBsEgibBMKjjfMwrGUo
+WuGqAN1o0VpV5WrDSyBNLTZpatEqVV7VlqForasCdaNFK7RYvN1rd5WmFps0
+tWgVL69yy1C0QnMM0o0WrQMsFk2tfaSpRatoebVbhqK1rArWjRat5IfHnuaY
+phabNLVoFSmvfstQtAKLBdONFq2Nz1y53Wv3l6YWmzS1aBX9DqJ2y1C0gjct
+iG60aCWryu5eSyBNLTZpatEqVJ69ZSiBks++Brlpye5eSyFNLTZpatEqUJ6j
+ZSiBAlU5WoYSaFWVvXsthzS12KSpRStHeZxEAmGTQNgkEFoNQyQQNgmETQKh
+1TBEAmGTQNgkEFoNQyQQNgmETQKh1cmlvasOSCBsEgibBCJJkiRJkiRJkiRJ
+kiRJkiRJJPI960ZLIGwSCJsEwiYHyJwIHUH73SmBgPzulEBAfndKICB/eZyT
+SCA8fndKICC/OyUQkL88zkkkEB6/OyUQkN+dEgjInxH/bCOV20t56joV6XT0
+7EdtSiiQQGlZIDcB9rsUyMKcIIkfInwEgUSO0hlIPP7RVTW/p/1jl65Yz7mV
+H7IZlkBmfhMIar9LgQSUvX/l7dVfYhv8CGR1kC5BtuIeorwm0s1OX+miUgc6
+Hghkv0uBBDNZO9l9vnZ0ozWBRIrqDGQr7iGKlVjjE8G2BLJWFghsv0uBzHR/
+XJL9yOv2yoSnL4FQn4cTHwlTnwjqbYYlkEAgBwS236VAAoo8YZn7Z69LePq6
+SyCZr5+nKkTp53LxCmtuSiiQpTsTBLbfpUBC2rxAPH//e5NA8lL9gWzFDUTu
+L0fqbkookCerAQS136VAAsq4+3p2d3wb+ewWSEqr+OLkv3mbN9tk0Oqvuimh
+QLwgqP0uBRIAsT3yQp++BLIzSEncGkH73SmBgPzulEBAfndKICB/eZyTSCA8
+fndKICC/OyUQkL88zkkkEB6/OyUQkN+dEgjIXx7nJBIIj9+dEgjI704JBOQv
+j3MSCYTH704JBOR3pwQC8q/jhBIImwTCJoGwyQEyJ0JH0H53SiAgvzslEJDf
+nRIIyF8e5yQSCI/fnRIIyO9OCQTk34qDO3Mu/jYf2CTWBZLfvZYcZIQRef7j
+/M1fLLYDsTZGNoJ8qE0jZSgI74g8l7ffYs+KoztzZr9+jspB/N1ryUBeBxmR
+gs6iWBB4q+qGjZRb9dzmGhGWxZ4TB3fmjI5p9VWfB+LuXssGMtKI+FZ9UxDA
+BaVxI+XPQyKvjIQjQrHYk/EmnTmj9opDYwFxd69lAxlmRNwdnluAbByqCKR1
+I+V3YXtus40IzWLPigM7c/o61KVUCOLtXksHMs6ILPy5nUXbgaBaVbdupIzu
+uc03IjSLPS8O68wZe4izXVJUZSDe7rV0IAONyNKft+pbgQBbVbdtpAzvuU04
+IjSLPSuO6syZuqwE/LfPshtPcyqAOLrXcoLM3V2PyHZ9e4GAW1XbpyIpSMIY
+8TcCYVns8cPhO3MmLysB/+0Wb+PrgSog1u61tCCPYNcjYu/w3B4kUlwpiHUq
+0oKQjgjLYo/GAZFif+RRVNlRHBGB3CWQyhGB3HUsEPfhHJES/8dVK+eyIpA2
+foGgC7P6BYIuzOrPB3EfzhFB+90pgYD87pRAQH53SiAgf3mck0ggPH53SiAg
+vzslEJC/PM5JJBAevzslEJDfnRIIyL+OE0ogbBIImwTCJgfInKhBpIEEwiaB
+sEkgtBqGSCBsEgibBEKrcHmA3qdoRarKbsNLo1VVru61BBp2RPDdaEEad7H3
+ukYmrcsD9T5FK1iVsw3vrgrNMW/T11017ojMhOlGC9K4i73XNTIpRATpfYpW
+oCpnG96dNcwcG3dEJqG60YI07mLvdY1MWpYH632KVvCjiqcN795KfubqfdWP
+MSJ3wbrRgjT2Yu9xjUwKDA2m9ylai6q8bXj318an4Nymr/tr9BEBdqMFadTF
+/qSu1sik4CUS0fsUreeqvG14CZSsKrvpK4EGHxFkN1qQBl3sC/W0RiYln7SM
+cYkc4+7rXdlNXyk09IgYu9Fy6ACLvbM1MinyZUr0jiUcIdC4q97e9JVD446I
+vRsth8Zd7L2ukUmO8jiJBMImgbBJILQahkggbBIImwRCq2GIBMImgbBJILQa
+hkggbBIImwRCq5NLe1cdkEDYJBA2CUSSJEmSJEmSJEmSJEmSJEmSqOR74o2W
+QNgkEDYJhE0OkDkROoL2u1MCAfndKYGA/O6UQED+8jgnkUB4/O6UQEB+d0og
+IH95nJNIIDx+d0ogIL87JRCQPyP+2YMpr8e1tRM+akc/gYQKOxTITYBdLwUS
+iuR0zKOdWvNIdus/5Iaqq/hHS1LXXgNZeyaidpISSEDHAkHteimQZW25O71S
+Ty3TlrXoDVUjcc8ci73pOw3NdDiBpP0jgUB2vRTIypvZQZp4aplBsBuq1phj
+9/v1yFte4TNahgQy0yFBYLteCmTlzD99cU4tIwh+Q9WK1/rYJgUpf72dpAQS
+Luw4ILBdLwWy8tl3VGGaWmYQ/IaqNeeYucKaO/oJJFLYYUBgu14KZLItZCmM
+Z2rZQfAbqu5491V3Rz+BBHQsENSulwJZyXw/zDq1HA+629wPLy4Wm5ew2Q59
+WU8jUTv6CSRQ2LFAULteCmSlzNMX7dSaV5h3QQFvqOqIWyNovzslEJDfnRII
+yO9OCQTkL49zEgmEx+9OCQTkd6cEAvKXxzmJBMLjd6cEAvK7UwLJ91+vl/P5
+fEn+vXStwzkiRx4ak9+dEgjI704JBOR3p5qBvJ2LHWdiZiJ0SiAgvzslEJDf
+nRKI1X+9eO6IT5SycwgEK4GwSSBs+qjNfR5GR9B+d0ogIL87JRCQ350SiNWv
+8zA6IhB0SiAgvzslEKu/2nl4+ovlzL85f2T27OTZGmT2J+qMIPnvMDnICCNi
+bMPLC/JcXsdTCzgilc7Djw5vkZ9gBt4Ehk6e7UEeymsqm6lyEP87TAbyOsiI
+FLR/5AIZZmoBR6T6c4ncn4RzdPJsDjKPNejpNytwI+J+h9lARhoR36onBBlj
+agFHpPp5ODb713f4DJ08W4NsvvpeIO53mA1kmBFxt+FlAxlraoFG5Ho+py9V
+6fhCiQ8g8whPJ8/WIOtcdklpFYJ432E6kHFGZC5DG14+kFGm1pPqj8jl/GK+
+JQ6Wl34KNIsQdfJsDfKh2NOoeEmbKgPxvsN0IAONyLK+vFVPCDLI1FrXV3dE
+3n/ebD0Rrw/nfRQP6+R5+7Jy47HUDiCv6etjwN8IxNErlRNkfryuR2S7vk5A
+xptagBG5VHkusfgTDYJOnjf/xlP1XUCS18eAvxmI9R2mBXkEux4RexteUpBh
+phZwRMb9HUfkCU7ZURwRgdwlkMoRgdzVPciQ5+GPy+/m9dFxlMLCrH6BoAuz
++gWCLszqHwNkyPMwNCUQkN+dEgjI704JxOrXeRgdEQg6JRCQ350SiNWv8zA6
+IhB0SiAgvzslEKtf/YcJJRA2CYRNg4HQ3g+3kUDYJBA2CaSBaPdFaiOBsEkg
+bBIIWNfr+cXzK451ebCWoWiFqwI0OkYrUpWxwzOBVlUZm77S6BgjUrMfGlqs
+IK6tmm9KlVe1ZSha66pAjY7RClblbMO7q0KLxdv0dVeNOyIzdb7YH+oKZFK8
+vMotQ9EKrXpIo2O0AlU52/DurJHPw4OMyEOxsRFIG0XLq90yFK1lVbBGx2gF
+P3N52vDuLdYPj2aNOyKvjyd31naRu2oYkEmJZ191W4aiFTgPYxodo7WoytuG
+d39tfHg09PnZWUcZke6/Q7mpK5BJ0a+3arcMRSt4P4xodIzWc1XeNrwESlaV
+3fSVQIcZkV7vVZ7VE8ikUHnGlqEcSj6N7Glo4lWNc/eV3fSVQkcYkb5uI4cB
+mRQoz9oylEORL1OidyzhCIHGXfX2pq8cOsSIdPVYdRiQSY7yOIkEwiaBsEkg
+tBqGSCBsEgibBEKrYYgEwiaBsEkgtBqGSCBsEgibBEKrk0t7Vx2QQNgkEDYJ
+RJIkSZIkSZKkHfU7UmUDOg==
+    "], {{0, 157}, {472, 0}}, {0, 255},
+    ColorFunction->RGBColor],
+   BoxForm`ImageTag["Byte", ColorSpace -> "RGB", Interleaving -> True],
+   Selectable->False],
+  DefaultBaseStyle->"ImageGraphics",
+  ImageSize->Automatic,
+  ImageSizeRaw->{472, 157},
+  PlotRange->{{0, 472}, {0, 157}}]], "Output",
+ CellTags->"RasterizedOutput",
+ CellLabel->"Out[2]=",
+ CellID->331339524,ExpressionUUID->"b2199def-0a3d-488d-bd3e-8572145dc18a"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer",ExpressionUUID->"8e8d0097-9f6f-4457-b7cb-71442f2582b4"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]],ExpressionUUID->"03a4861e-ed72-4fd2-9c9a-84b659eaaa21"],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704,ExpressionUUID->"5f8b98c1-59ce-4b64-828b-7524a0ded580"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SnIrrepDim"]],"paclet:GroupMath/ref/SnIrrepDim"},
+   "RefLink",
+   BaseStyle->{"InlineFormula", FontFamily -> "Verdana"}]], "InlineFormula",
+  ExpressionUUID->"8b977bf7-7352-4a66-b968-55bb2131a3e3"],
+ "\[NonBreakingSpace]",
+ StyleBox["\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+  "InlineSeparator"],
+ " ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["TransposeTableaux"]],"paclet:GroupMath/ref/TransposeTableaux"},
+   "RefLink",
+   BaseStyle->{"InlineFormula", FontFamily -> "Verdana"}]], "InlineFormula",
+  ExpressionUUID->"5ae6cf9d-746b-4f01-9654-67499fe915f8"]
+}], "SeeAlso",
+ CellID->1038487239,ExpressionUUID->"1bfe0f8b-f267-4d71-b444-e12c887d2bf3"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]],ExpressionUUID->"dbbd67bd-a28c-4f41-a3f9-66e0acd288da"],
+ "Tutorials"
+}], "TutorialsSection",
+ WholeCellGroupOpener->True,
+ CellID->250839057,ExpressionUUID->"d4de14a3-cbcf-4609-9cbf-d047b689dc37"],
+
+Cell["", "SectionHeaderSpacer",ExpressionUUID->"a278f4f9-d2d7-4f07-b06c-f344c823e505"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["GroupMath Tutorial"]],"paclet:GroupMath/tutorial/GroupMathDoc"},
+  "RefLink",
+  BaseStyle->"Tutorials"]], "Tutorials",
+ CellID->341631938,ExpressionUUID->"6051270a-0b60-4152-a9f0-4162541ed22c"]
+}, Open  ]],
+
+Cell[" ", "FooterCell",ExpressionUUID->"f2ab7cae-73b9-494f-893b-81182a0c5699"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"GenerateStandardTableaux",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "Mathematica", ButtonData -> "paclet:GroupMath/guide/GroupMath", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2020, 11, 4, 11, 39, 14.3107222}", 
+    "history" -> {"1.0", "", "", ""}, "context" -> "GroupMath`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Group Math Symbol", "language" -> "en", "paclet" -> "GroupMath", 
+    "status" -> "None", "summary" -> 
+    "GenerateStandardTableaux[partition] Generates a list with all standard \
+Young tableaux with a shape given by the partition.", "synonyms" -> {}, 
+    "tabletags" -> {}, "title" -> "GenerateStandardTableaux", "titlemodifier" -> 
+    "", "windowtitle" -> "GenerateStandardTableaux", "type" -> "Symbol", 
+    "uri" -> "GroupMath/ref/GenerateStandardTableaux", "WorkflowDockedCell" -> 
+    ""}, "SearchTextTranslated" -> "", "NewStyles" -> False},
+CellContext->"Global`",
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 8, 2019)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  TaggingRules -> {"NewStyles" -> False}, FrontEndVersion -> 
+  "12.0 for Microsoft Windows (64-bit) (April 8, 2019)", StyleDefinitions -> 
+  "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[8489, 222, 434, 11, 35, "PrimaryExamplesSection",ExpressionUUID->"fc7a778a-df1a-4d13-ab57-8f2387d51fcb",
+   CellTags->"PrimaryExamplesSection",
+   CellID->25022570]},
+ "RasterizedOutput"->{
+  Cell[13552, 390, 6193, 107, 178, "Output",ExpressionUUID->"b2199def-0a3d-488d-bd3e-8572145dc18a",
+   CellTags->"RasterizedOutput",
+   CellID->331339524]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 23667, 606},
+ {"RasterizedOutput", 23864, 610}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[596, 21, 4259, 96, 53, "AnchorBarGrid",ExpressionUUID->"613cf129-2e34-4ac7-a339-b8d4a4984564",
+ CellID->1],
+Cell[CellGroupData[{
+Cell[4880, 121, 409, 9, 52, "ObjectNameGrid",ExpressionUUID->"b8b524b3-9baf-4beb-9dc1-17acc2d760db"],
+Cell[5292, 132, 684, 15, 110, "Usage",ExpressionUUID->"9487815e-9a62-4740-9efa-57e54c27a773",
+ CellID->982511436]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6013, 152, 855, 21, 37, "NotesSection",ExpressionUUID->"e8c2417a-bd4d-43a8-b319-b769c5bf46f9",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->222490819],
+Cell[6871, 175, 86, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"262d760e-fcfd-4374-9336-65067875b39d"],
+Cell[6960, 177, 290, 5, 70, "Notes",ExpressionUUID->"85d4e1da-5dab-450b-85ac-7c61bf90877e",
+ CellID->345286050],
+Cell[7253, 184, 246, 4, 70, "Notes",ExpressionUUID->"f6a1d44d-d151-4370-9d50-af2963fdc7a6",
+ CellID->68148277],
+Cell[7502, 190, 585, 15, 70, "Notes",ExpressionUUID->"25c8300a-3c46-4de9-acef-df19a5f482c9",
+ CellID->1067943069],
+Cell[8090, 207, 273, 8, 70, "Notes",ExpressionUUID->"17534bbc-80bf-486c-9e03-c3b69351264e",
+ CellID->160897304],
+Cell[8366, 217, 86, 0, 70, "SectionFooterSpacer",ExpressionUUID->"0d76b40b-c187-446b-b42e-a65a2a1cac72"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[8489, 222, 434, 11, 35, "PrimaryExamplesSection",ExpressionUUID->"fc7a778a-df1a-4d13-ab57-8f2387d51fcb",
+ CellTags->"PrimaryExamplesSection",
+ CellID->25022570],
+Cell[CellGroupData[{
+Cell[8948, 237, 308, 7, 29, "ExampleSection",ExpressionUUID->"1d83a128-98a2-4fdc-a3c4-b7c8c3688e19",
+ CellID->376729402],
+Cell[9259, 246, 147, 1, 35, "Notes",ExpressionUUID->"5efe8ebb-ddf3-4476-aa31-315278833518",
+ CellID->309770698],
+Cell[CellGroupData[{
+Cell[9431, 251, 221, 5, 26, "Input",ExpressionUUID->"80154a37-0186-4823-a50e-77d068c51194",
+ CellID->95401904],
+Cell[9655, 258, 481, 16, 35, "Output",ExpressionUUID->"633d1c08-471c-4f10-9df0-4ed8186775b6",
+ CellID->738080737]
+}, Open  ]],
+Cell[10151, 277, 302, 8, 35, "Notes",ExpressionUUID->"8830f007-9212-4736-9246-99bf2198f07b",
+ CellID->12182275],
+Cell[CellGroupData[{
+Cell[10478, 289, 283, 7, 26, "Input",ExpressionUUID->"526cf839-b06d-4201-8ee9-068db4b2b831",
+ CellID->123189420],
+Cell[10764, 298, 929, 26, 56, "Output",ExpressionUUID->"092dce00-6552-4d81-9953-06925f3c57f2",
+ CellID->842635678]
+}, Open  ]],
+Cell[11708, 327, 327, 8, 35, "Notes",ExpressionUUID->"4d519e5f-949d-4fc3-ac68-665264f717c3",
+ CellID->93790958],
+Cell[CellGroupData[{
+Cell[12060, 339, 208, 5, 26, "Input",ExpressionUUID->"53cbf537-ebc1-4706-a26b-ff84a69c50e9",
+ CellID->474159171],
+Cell[12271, 346, 125, 2, 35, "Output",ExpressionUUID->"ad98cdc9-7996-42e9-968f-05b6d43e1184",
+ CellID->68014476]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12433, 353, 242, 5, 8, "ExampleDelimiter",ExpressionUUID->"f05a27c2-537e-4db7-99e6-7ed568994132",
+ CellID->234036490],
+Cell[12678, 360, 168, 3, 38, "ExampleText",ExpressionUUID->"97af53bd-70ca-40d8-bacd-89acfe2f6c16",
+ CellID->558619551],
+Cell[CellGroupData[{
+Cell[12871, 367, 218, 5, 26, "Input",ExpressionUUID->"42b6b01f-6b8b-4b82-bb4c-9c15b8c056cf",
+ CellID->958035233],
+Cell[13092, 374, 127, 2, 35, "Output",ExpressionUUID->"fb244086-b2e6-4f83-97d6-369d81b9ab32",
+ CellID->557647058]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13256, 381, 293, 7, 70, "Input",ExpressionUUID->"4f75874a-bc3c-42a3-9967-6c5c3357c10e",
+ CellID->247209678],
+Cell[13552, 390, 6193, 107, 178, "Output",ExpressionUUID->"b2199def-0a3d-488d-bd3e-8572145dc18a",
+ CellTags->"RasterizedOutput",
+ CellID->331339524]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[19784, 502, 86, 0, 70, "SectionFooterSpacer",ExpressionUUID->"8e8d0097-9f6f-4457-b7cb-71442f2582b4"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19907, 507, 260, 7, 70, "SeeAlsoSection",ExpressionUUID->"5f8b98c1-59ce-4b64-828b-7524a0ded580",
+ CellID->1255426704],
+Cell[20170, 516, 740, 18, 70, "SeeAlso",ExpressionUUID->"1bfe0f8b-f267-4d71-b444-e12c887d2bf3",
+ CellID->1038487239]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20947, 539, 262, 7, 70, "TutorialsSection",ExpressionUUID->"d4de14a3-cbcf-4609-9cbf-d047b689dc37",
+ CellID->250839057],
+Cell[21212, 548, 86, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"a278f4f9-d2d7-4f07-b06c-f344c823e505"],
+Cell[21301, 550, 241, 5, 70, "Tutorials",ExpressionUUID->"6051270a-0b60-4152-a9f0-4162541ed22c",
+ CellID->341631938]
+}, Open  ]],
+Cell[21557, 558, 78, 0, 70, "FooterCell",ExpressionUUID->"f2ab7cae-73b9-494f-893b-81182a0c5699"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

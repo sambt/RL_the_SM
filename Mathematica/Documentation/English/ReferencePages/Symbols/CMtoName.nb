@@ -1,0 +1,554 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     20172,        544]
+NotebookOptionsPosition[     14345,        416]
+NotebookOutlinePosition[     16687,        475]
+CellTagsIndexPosition[     16602,        470]
+WindowTitle->CMtoName
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["GROUP MATH SYMBOL", "PacletNameCell",ExpressionUUID->
+     "b65180fe-b202-4f1d-80d6-4de433bb015c"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "Tutorials",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }],ExpressionUUID->"76c583d6-0ee6-4ebe-b60d-d5d7af52232c"],
+         TextCell[
+          Row[{"Tutorials", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"GroupMath Tutorial\"\>":>
+       Documentation`HelpLookup["paclet:GroupMath/tutorial/GroupMathDoc"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"Tutorials"]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "0424790d-b8d1-436c-836b-186bd688a2f2"],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }],ExpressionUUID->"f694ced9-a26c-4b06-9139-1a123c8456f7"],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"CartanMatrix\"\>":>
+       Documentation`HelpLookup["paclet:GroupMath/ref/CartanMatrix"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "28cce084-0d16-4fbb-bd65-ec371effbed6"],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }],ExpressionUUID->"cb8cbb19-98f5-4753-a883-89698490fb6b"],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"GroupMath/ref/CMtoName\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["GroupMath/ref/CMtoName"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/GroupMath/ref/CMtoName.\
+html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
+            False]]; SelectionMove[
+         DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$10058], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "GroupMath/ref/CMtoName", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "77220aad-b73e-45ac-829b-7f7b49b8c2ad"]
+    }], "AnchorBar",ExpressionUUID->"e8e01336-82b3-42cd-989c-c9067c6b0a7a"]}
+  }]], "AnchorBarGrid",
+ CellID->1,ExpressionUUID->"ec6718c2-b0fc-4cdc-9939-d5b276b9e5ca"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell["CMtoName", "ObjectName",ExpressionUUID->
+  "51589ebb-79c8-424e-8fda-e0d04edb55b0"],
+ Cell[BoxData[
+  TemplateBox[{8},
+   "Spacer1"]],ExpressionUUID->"b8994987-c373-4658-9f58-933cafe8120f"],
+ Cell[BoxData[
+ ""], "ObjectNameTranslation",ExpressionUUID->
+  "96a0d0f1-fcd2-4970-b5c8-e43e96515465"]
+}], "ObjectNameGrid",ExpressionUUID->"9f04192e-5678-46f2-9bca-7edd9f61c2a4"],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"CMtoName", "[", "group", "]"}]], "InlineFormula",
+      ExpressionUUID->"4f816fbd-9791-403f-941a-42c39cfd2a42"],
+     " \[LineSeparator]Identifies the simple group name from its Cartan matrix"
+    }],ExpressionUUID->"49a657b4-7461-4310-bcbd-778e5b91a8e7"]},
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"CMtoName", "[", 
+       RowBox[{"{", 
+        RowBox[{"group1", ",", "group2", ",", "..."}], "}"}], "]"}]], 
+      "InlineFormula",ExpressionUUID->"4f639047-df9d-4c1e-9848-45a1edd98838"],
+     "\[LineSeparator]Identifies the name of the semi-simple group ",
+     Cell[BoxData[
+      RowBox[{"{", 
+       RowBox[{"group1", ",", "group2", ",", "..."}], "}"}]], "InlineFormula",
+      ExpressionUUID->"caeae3b1-9ea0-4751-b5ca-0544b4da358c"],
+     " from the Cartan matrices of its simple factors"
+    }],ExpressionUUID->"20b864b1-0c44-415c-93d4-961aaeae4f32"]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{"Columns" -> {{None}}, "Rows" -> {None, {None}}}},
+ CellID->982511436,ExpressionUUID->"5a6ea404-ebf8-4c6e-8e6f-40b7dbb48b5c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    TemplateBox[{6},
+     "Spacer1"]],ExpressionUUID->"041daa38-2182-433e-b47b-a5406bc39dc7"],
+   "Details"
+  }], "NotesFrameText",ExpressionUUID->"4ba98cc6-cad2-42f9-9640-77f6f097d1e4"],
+  Appearance->{Automatic, None, "Normal", Automatic},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->
+   "Preemptive"]],ExpressionUUID->"3ba3f55d-6898-451a-b6a8-6a0d2e7030f6"]], \
+"NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->132905348,ExpressionUUID->"ea0a7f6b-e4eb-4ff0-ad9a-f440f58ff330"],
+
+Cell["", "SectionHeaderSpacer",ExpressionUUID->"bb74ace7-157d-4ac5-81e2-c82ecb62364e"],
+
+Cell[TextData[{
+ Cell[BoxData[
+ "group"], "InlineFormula",ExpressionUUID->
+  "5e505c72-25c2-484b-8980-b9ab078ecc53"],
+ " should a ",
+ ButtonBox["Cartan matrix",
+  BaseStyle->"Link",
+  ButtonData->"paclet:GroupMath/ref/CartanMatrix"],
+ ButtonBox[".",
+  BaseStyle->"Link",
+  ButtonData->"paclet:Susyno/ref/CartanMatrix"]
+}], "Notes",
+ CellID->1067943069,ExpressionUUID->"64a6e038-bc53-4f40-b53f-e8ec63223e60"],
+
+Cell["\<\
+The output is a string with the simple group's name. U(1)'s also work.\
+\>", "Notes",
+ CellID->38413404,ExpressionUUID->"0d91f1c0-ffb7-4778-b5ea-36e36dc136ba"],
+
+Cell[TextData[{
+ "A list of Cartan matrices ",
+ Cell[BoxData[
+  RowBox[{"{", 
+   RowBox[{"group1", ",", " ", "group2", ",", "..."}], "}"}]], 
+  "InlineFormula",ExpressionUUID->"f785e4ed-d3de-40ef-9f1a-8e81e825c9b4"],
+ " can also be used as input, in which case the output is a list of strings."
+}], "Notes",
+ CellID->33008471,ExpressionUUID->"e99a664a-8bc2-4004-859e-468b02d18f0b"],
+
+Cell["", "SectionFooterSpacer",ExpressionUUID->"5de72584-0b06-4306-9866-376aee471309"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]],ExpressionUUID->"b3fcf90b-30c0-41d1-98ff-8d1a33ac97fb"],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(2)", "ExampleCount",ExpressionUUID->
+  "1d15da27-1b7d-4caf-9079-eefafeb729fb"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->165838491,ExpressionUUID->"198150bb-04c6-49ca-ab2e-1f22a4d88d2d"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(2)", "ExampleCount",ExpressionUUID->
+  "b3ac6834-518c-4376-9200-68e984418807"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->241085435,ExpressionUUID->"8790442e-083c-46cf-ad12-5ff95cfbf848"],
+
+Cell["The Cartan matrix of SU(3) is {{2,-1},{-1,2}}:", "ExampleText",
+ CellID->173216035,ExpressionUUID->"5d765a77-2d40-4b52-a25a-c03d25899225"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CMtoName", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"2", ",", 
+      RowBox[{"-", "1"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"-", "1"}], ",", "2"}], "}"}]}], "}"}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->293722129,ExpressionUUID->"68a7768c-8eab-41e2-a4ec-60ce92e74fd2"],
+
+Cell[BoxData["\<\"SU3\"\>"], "Output",
+ CellLabel->"Out[1]=",
+ CellID->808203997,ExpressionUUID->"4b5bea94-c3de-4835-9cbe-52ee8a07c152"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "\t", "ExampleDelimiter",ExpressionUUID->
+   "b2945bf2-63fe-4340-bbea-90f143a2ff76"],
+  $Line = 0; Null]], "ExampleDelimiter",
+ CellID->459538714,ExpressionUUID->"86a9b9e4-a263-4692-adf1-3dd1445edf71"],
+
+Cell["The function also works for semi-simple groups:", "ExampleText",
+ CellID->451618593,ExpressionUUID->"ed147e37-380b-4bee-9cac-428bb3dece84"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CMtoName", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"2", ",", 
+        RowBox[{"-", "1"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "1"}], ",", "2"}], "}"}]}], "}"}], ",", 
+    RowBox[{"{", "}"}]}], "}"}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->5584208,ExpressionUUID->"85f2a486-68f8-4b7c-8ba0-4393f29f5153"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"SU3\"\>", ",", "\<\"U1\"\>"}], "}"}]], "Output",
+ CellLabel->"Out[1]=",
+ CellID->44984498,ExpressionUUID->"83869687-e966-49c1-a2cd-dc0ec8564078"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"cartanMatrices", "=", 
+  RowBox[{"{", 
+   RowBox[{"SU2", ",", "E6", ",", "SP6"}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{"groupName", "=", 
+  RowBox[{"CMtoName", "[", "cartanMatrices", "]"}]}]}], "Input",
+ CellLabel->"In[2]:=",
+ CellID->128825400,ExpressionUUID->"d5935350-517c-4499-9848-cc741007a44f"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"{", "2", "}"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"2", ",", 
+       RowBox[{"-", "1"}], ",", "0", ",", "0", ",", "0", ",", "0"}], "}"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "1"}], ",", "2", ",", 
+       RowBox[{"-", "1"}], ",", "0", ",", "0", ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", 
+       RowBox[{"-", "1"}], ",", "2", ",", 
+       RowBox[{"-", "1"}], ",", "0", ",", 
+       RowBox[{"-", "1"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", 
+       RowBox[{"-", "1"}], ",", "2", ",", 
+       RowBox[{"-", "1"}], ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0", ",", 
+       RowBox[{"-", "1"}], ",", "2", ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", 
+       RowBox[{"-", "1"}], ",", "0", ",", "0", ",", "2"}], "}"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"2", ",", 
+       RowBox[{"-", "1"}], ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "1"}], ",", "2", ",", 
+       RowBox[{"-", "1"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", 
+       RowBox[{"-", "2"}], ",", "2"}], "}"}]}], "}"}]}], "}"}]], "Output",
+ CellLabel->"Out[2]=",
+ CellID->553877470,ExpressionUUID->"d05b0746-b8a7-404d-a5b0-7985ec890c8a"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"SU2\"\>", ",", "\<\"E6\"\>", ",", "\<\"SP6\"\>"}], 
+  "}"}]], "Output",
+ CellLabel->"Out[2]=",
+ CellID->237756665,ExpressionUUID->"8b6b13ff-33eb-4679-8a8d-bc5e6d09f248"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer",ExpressionUUID->"488628c0-667f-4d44-84a3-8696b305075e"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]],ExpressionUUID->"8699bf6a-354b-46bb-85f4-75ce7612f37e"],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704,ExpressionUUID->"543be65e-4a70-438c-a4ba-501c789346a5"],
+
+Cell[TextData[Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["CartanMatrix"]],"paclet:GroupMath/ref/CartanMatrix"},
+  "RefLink",
+  BaseStyle->{
+   "InlineFormula", FontFamily -> 
+    "Verdana"}]], \
+"InlineFormula",ExpressionUUID->"6cec054f-5261-43fb-b7fc-62d9e325490e"]], \
+"SeeAlso",
+ CellID->1038487239,ExpressionUUID->"c300b11c-6f5c-4695-a49c-1252e1ea5b7c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]],ExpressionUUID->"d8a1ac24-000f-4776-bfef-f21cb30789f5"],
+ "Tutorials"
+}], "TutorialsSection",
+ WholeCellGroupOpener->True,
+ CellID->250839057,ExpressionUUID->"f3388638-0735-4988-b8f7-87f801626a59"],
+
+Cell["", "SectionHeaderSpacer",ExpressionUUID->"ecad7c54-9c10-484c-b9df-084388c001c6"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["GroupMath Tutorial"]],"paclet:GroupMath/tutorial/GroupMathDoc"},
+  "RefLink",
+  BaseStyle->"Tutorials"]], "Tutorials",
+ CellID->341631938,ExpressionUUID->"28bb20da-cbdd-47e1-b80b-18190816b3ae"]
+}, Open  ]],
+
+Cell[" ", "FooterCell",ExpressionUUID->"8a617aff-cf30-4678-8222-0298c3134120"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"CMtoName",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "Mathematica", ButtonData -> "paclet:GroupMath/guide/GroupMath", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2020, 11, 4, 11, 38, 19.1904097}", 
+    "history" -> {"1.0", "", "", ""}, "context" -> "GroupMath`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Group Math Symbol", "language" -> "en", "paclet" -> "GroupMath", 
+    "status" -> "None", "summary" -> 
+    "CMtoName[group] Identifies the simple group name from its Cartan matrix \
+CMtoName[{group1, group2, ...}] Identifies the name of the semi-simple group \
+{group1, group2, ...} from the Cartan matrices of its simple factors", 
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "CMtoName", 
+    "titlemodifier" -> "", "windowtitle" -> "CMtoName", "type" -> "Symbol", 
+    "uri" -> "GroupMath/ref/CMtoName", "WorkflowDockedCell" -> ""}, 
+  "SearchTextTranslated" -> "", "NewStyles" -> False},
+CellContext->"Global`",
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 8, 2019)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  TaggingRules -> {"NewStyles" -> False}, FrontEndVersion -> 
+  "12.0 for Microsoft Windows (64-bit) (April 8, 2019)", StyleDefinitions -> 
+  "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[8279, 216, 435, 11, 35, "PrimaryExamplesSection",ExpressionUUID->"198150bb-04c6-49ca-ab2e-1f22a4d88d2d",
+   CellTags->"PrimaryExamplesSection",
+   CellID->165838491]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 16404, 463}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[580, 21, 4069, 93, 53, "AnchorBarGrid",ExpressionUUID->"ec6718c2-b0fc-4cdc-9939-d5b276b9e5ca",
+ CellID->1],
+Cell[CellGroupData[{
+Cell[4674, 118, 393, 9, 52, "ObjectNameGrid",ExpressionUUID->"9f04192e-5678-46f2-9bca-7edd9f61c2a4"],
+Cell[5070, 129, 1136, 23, 204, "Usage",ExpressionUUID->"5a6ea404-ebf8-4c6e-8e6f-40b7dbb48b5c",
+ CellID->982511436]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6243, 157, 855, 21, 37, "NotesSection",ExpressionUUID->"ea0a7f6b-e4eb-4ff0-ad9a-f440f58ff330",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->132905348],
+Cell[7101, 180, 86, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"bb74ace7-157d-4ac5-81e2-c82ecb62364e"],
+Cell[7190, 182, 407, 12, 70, "Notes",ExpressionUUID->"64a6e038-bc53-4f40-b53f-e8ec63223e60",
+ CellID->1067943069],
+Cell[7600, 196, 169, 3, 70, "Notes",ExpressionUUID->"0d91f1c0-ffb7-4778-b5ea-36e36dc136ba",
+ CellID->38413404],
+Cell[7772, 201, 381, 8, 70, "Notes",ExpressionUUID->"e99a664a-8bc2-4004-859e-468b02d18f0b",
+ CellID->33008471],
+Cell[8156, 211, 86, 0, 70, "SectionFooterSpacer",ExpressionUUID->"5de72584-0b06-4306-9866-376aee471309"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[8279, 216, 435, 11, 35, "PrimaryExamplesSection",ExpressionUUID->"198150bb-04c6-49ca-ab2e-1f22a4d88d2d",
+ CellTags->"PrimaryExamplesSection",
+ CellID->165838491],
+Cell[CellGroupData[{
+Cell[8739, 231, 308, 7, 29, "ExampleSection",ExpressionUUID->"8790442e-083c-46cf-ad12-5ff95cfbf848",
+ CellID->241085435],
+Cell[9050, 240, 144, 1, 38, "ExampleText",ExpressionUUID->"5d765a77-2d40-4b52-a25a-c03d25899225",
+ CellID->173216035],
+Cell[CellGroupData[{
+Cell[9219, 245, 352, 11, 26, "Input",ExpressionUUID->"68a7768c-8eab-41e2-a4ec-60ce92e74fd2",
+ CellID->293722129],
+Cell[9574, 258, 136, 2, 35, "Output",ExpressionUUID->"4b5bea94-c3de-4835-9cbe-52ee8a07c152",
+ CellID->808203997]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9747, 265, 242, 5, 8, "ExampleDelimiter",ExpressionUUID->"86a9b9e4-a263-4692-adf1-3dd1445edf71",
+ CellID->459538714],
+Cell[9992, 272, 145, 1, 38, "ExampleText",ExpressionUUID->"ed147e37-380b-4bee-9cac-428bb3dece84",
+ CellID->451618593],
+Cell[CellGroupData[{
+Cell[10162, 277, 433, 14, 26, "Input",ExpressionUUID->"85f2a486-68f8-4b7c-8ba0-4393f29f5153",
+ CellID->5584208],
+Cell[10598, 293, 189, 4, 35, "Output",ExpressionUUID->"83869687-e966-49c1-a2cd-dc0ec8564078",
+ CellID->44984498]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10824, 302, 330, 7, 43, "Input",ExpressionUUID->"d5935350-517c-4499-9848-cc741007a44f",
+ CellID->128825400],
+Cell[11157, 311, 1457, 44, 68, "Output",ExpressionUUID->"d05b0746-b8a7-404d-a5b0-7985ec890c8a",
+ CellID->553877470],
+Cell[12617, 357, 213, 5, 35, "Output",ExpressionUUID->"8b6b13ff-33eb-4679-8a8d-bc5e6d09f248",
+ CellID->237756665]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[12869, 367, 86, 0, 70, "SectionFooterSpacer",ExpressionUUID->"488628c0-667f-4d44-84a3-8696b305075e"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12992, 372, 260, 7, 70, "SeeAlsoSection",ExpressionUUID->"543be65e-4a70-438c-a4ba-501c789346a5",
+ CellID->1255426704],
+Cell[13255, 381, 361, 9, 70, "SeeAlso",ExpressionUUID->"c300b11c-6f5c-4695-a49c-1252e1ea5b7c",
+ CellID->1038487239]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13653, 395, 262, 7, 70, "TutorialsSection",ExpressionUUID->"f3388638-0735-4988-b8f7-87f801626a59",
+ CellID->250839057],
+Cell[13918, 404, 86, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"ecad7c54-9c10-484c-b9df-084388c001c6"],
+Cell[14007, 406, 241, 5, 70, "Tutorials",ExpressionUUID->"28bb20da-cbdd-47e1-b80b-18190816b3ae",
+ CellID->341631938]
+}, Open  ]],
+Cell[14263, 414, 78, 0, 70, "FooterCell",ExpressionUUID->"8a617aff-cf30-4678-8222-0298c3134120"]
+}
+]
+*)
+
+(* End of internal cache information *)
+
