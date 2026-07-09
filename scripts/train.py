@@ -37,7 +37,9 @@ def parse_args():
     p.add_argument("--iters", type=int, default=50)
     p.add_argument("--rollout", type=int, default=64)
     p.add_argument("--start-group", default=None, help="episode start group (default: SU2)")
-    p.add_argument("--metric", default="count", choices=["count", "hungarian"])
+    p.add_argument("--metric", default=None, choices=["count", "hungarian"],
+                   help="reward metric; default 'hungarian' for new runs, "
+                        "auto-reused from the run's config.json on resume")
     p.add_argument("--run-name", default="ppo")
     p.add_argument("--run-dir", default=None, help="reuse an existing run dir (for resume)")
     p.add_argument("--resume", default=None, help="checkpoint path, or 'latest'")
@@ -53,7 +55,18 @@ def main():
     np.random.seed(a.seed)
 
     cfg = Config()
-    cfg.reward.metric = a.metric
+    # reward metric: explicit --metric > existing run's config.json (resume) > hungarian
+    metric = a.metric
+    if metric is None:
+        prev = os.path.join(a.run_dir, "config.json") if a.run_dir else None
+        if prev and os.path.exists(prev):
+            import json
+            try:
+                metric = json.load(open(prev)).get("reward", {}).get("metric")
+            except Exception:
+                metric = None
+        metric = metric or "hungarian"
+    cfg.reward.metric = metric
 
     logger = Logger(run_dir=a.run_dir, name=a.run_name)
     cache_path = a.cache or os.path.join(logger.run_dir, "cache.pkl")
@@ -83,7 +96,7 @@ def main():
 
         logger.log(f"target={len(env.target)} hadrons | actions={env.num_actions} | "
                    f"params={sum(p.numel() for p in policy.parameters()):,} | "
-                   f"start_group={a.start_group or env.ladder.default.gm} | metric={a.metric}")
+                   f"start_group={a.start_group or env.ladder.default.gm} | metric={metric}")
         ppo.train(a.iters, logger=logger, ckpt_every=a.ckpt_every)
 
         ppo.save(os.path.join(logger.ckpt_dir, "final.pt"))
