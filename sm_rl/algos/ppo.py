@@ -26,9 +26,11 @@ class PPOConfig:
     gae_lambda: float = 0.95
     clip: float = 0.2
     epochs: int = 4
-    minibatch_size: int = 32
-    rollout_len: int = 64
-    ent_coef: float = 0.02
+    minibatch_size: int = 256
+    rollout_len: int = 1024
+    ent_coef: float = 0.03          # entropy bonus at iter 0 (annealed to ent_coef_final)
+    ent_coef_final: float = 0.005   # entropy coef reached after ent_anneal_iters
+    ent_anneal_iters: int = 5000    # linear-anneal horizon (0 = fixed ent_coef)
     vf_coef: float = 0.5
     max_grad_norm: float = 0.5
     start_group: str | None = "SU3"
@@ -75,12 +77,14 @@ class PPO(Algorithm):
                 logger.log(
                     f"iter {it:>4} mean_r={stats['mean_reward']:+.2f} "
                     f"ep_ret={stats['ep_return']:+.2f} best={self.best_score:+.1f} "
-                    f"ent={stats['entropy']:.3f} pg={stats['pg_loss']:+.4f} "
+                    f"ent={stats['entropy']:.3f} ec={stats['ent_coef']:.3f} "
+                    f"pg={stats['pg_loss']:+.4f} "
                     f"vf={stats['v_loss']:.1f} eps={stats['n_episodes']} "
                     f"exact={stats['exact_hits']} hit_rate={cstats.get('cache_hit_rate', '-')}")
                 logger.log_metrics({
                     "iter": it, "mean_reward": stats["mean_reward"], "ep_return": stats["ep_return"],
                     "best_score": self.best_score, "entropy": stats["entropy"],
+                    "ent_coef": stats["ent_coef"],
                     "pg_loss": stats["pg_loss"], "v_loss": stats["v_loss"],
                     "n_episodes": stats["n_episodes"], "exact_hits": stats["exact_hits"],
                     **cstats})
@@ -129,7 +133,18 @@ class PPO(Algorithm):
 
     # ---- update -----------------------------------------------------------
 
+    def _current_ent_coef(self) -> float:
+        """Entropy coefficient, linearly annealed from ent_coef to ent_coef_final
+        over the first ent_anneal_iters (then held). Keyed on iters_done so it is
+        resume-safe."""
+        c = self.cfg
+        if c.ent_anneal_iters <= 0:
+            return c.ent_coef
+        frac = min(1.0, self.iters_done / c.ent_anneal_iters)
+        return c.ent_coef + frac * (c.ent_coef_final - c.ent_coef)
+
     def _update(self, roll: dict) -> dict:
+        ent_coef = self._current_ent_coef()
         adv, returns = compute_gae(roll["rewards"], roll["values"], roll["dones"],
                                    roll["last_value"], self.cfg.gamma, self.cfg.gae_lambda)
         adv_t = torch.as_tensor((adv - adv.mean()) / (adv.std() + 1e-8), device=self.device)
@@ -154,12 +169,12 @@ class PPO(Algorithm):
                 pg_loss = -torch.min(s1, s2).mean()
                 v_loss = ((value - ret_t[mb]) ** 2).mean()
                 ent = entropy.mean()
-                loss = pg_loss + self.cfg.vf_coef * v_loss - self.cfg.ent_coef * ent
+                loss = pg_loss + self.cfg.vf_coef * v_loss - ent_coef * ent
 
                 self.opt.zero_grad()
                 loss.backward()
                 nn.utils.clip_grad_norm_(self.policy.parameters(), self.cfg.max_grad_norm)
                 self.opt.step()
                 last = {"pg_loss": float(pg_loss.item()), "v_loss": float(v_loss.item()),
-                        "entropy": float(ent.item())}
+                        "entropy": float(ent.item()), "ent_coef": ent_coef}
         return last

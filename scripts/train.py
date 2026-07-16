@@ -35,16 +35,25 @@ from sm_rl.utils import Logger
 def parse_args():
     p = argparse.ArgumentParser()
     p.add_argument("--iters", type=int, default=50)
-    p.add_argument("--rollout", type=int, default=64)
+    p.add_argument("--rollout", type=int, default=1024, help="steps collected per PPO update")
+    p.add_argument("--minibatch", type=int, default=256, help="PPO minibatch size")
     p.add_argument("--start-group", default=None, help="episode start group (default: SU2)")
-    p.add_argument("--metric", default=None, choices=["count", "hungarian"],
-                   help="reward metric; default 'hungarian' for new runs, "
+    p.add_argument("--metric", default=None, choices=["count", "hungarian", "f1"],
+                   help="reward metric; default 'f1' for new runs, "
                         "auto-reused from the run's config.json on resume")
+    p.add_argument("--normalization", default="physical", choices=["gcd", "none", "physical"],
+                   help="charge normalization before matching (default 'physical': "
+                        "undoes the x3 scaled-integer convention so the charge quantum "
+                        "is 1 and near-misses earn partial credit; 'none' leaves the "
+                        "quantum at 3, wider than the match radius -> no gradient)")
     p.add_argument("--run-name", default="ppo")
     p.add_argument("--run-dir", default=None, help="reuse an existing run dir (for resume)")
     p.add_argument("--resume", default=None, help="checkpoint path, or 'latest'")
     p.add_argument("--ckpt-every", type=int, default=10)
-    p.add_argument("--cache", default=None, help="spectrum cache path (default: <run_dir>/cache.pkl)")
+    p.add_argument("--cache", default=None,
+                   help="spectrum cache path. Precedence: --cache > $SM_RL_CACHE > "
+                        "<run_dir>/cache.pkl. Point several runs at one shared file to "
+                        "pool (and never recompute) Mathematica evaluations.")
     p.add_argument("--seed", type=int, default=0)
     return p.parse_args()
 
@@ -65,11 +74,12 @@ def main():
                 metric = json.load(open(prev)).get("reward", {}).get("metric")
             except Exception:
                 metric = None
-        metric = metric or "hungarian"
+        metric = metric or "f1"
     cfg.reward.metric = metric
+    cfg.reward.normalization = a.normalization
 
     logger = Logger(run_dir=a.run_dir, name=a.run_name)
-    cache_path = a.cache or os.path.join(logger.run_dir, "cache.pkl")
+    cache_path = a.cache or os.environ.get("SM_RL_CACHE") or os.path.join(logger.run_dir, "cache.pkl")
     logger.save_json("config.json", {
         "argv": vars(a), "cache_path": cache_path,
         "env": cfg.env.__dict__, "groups": cfg.groups.__dict__, "reward": cfg.reward.__dict__,
@@ -84,7 +94,7 @@ def main():
         policy = ActorCritic(GROUP_FEAT, tok.parton_feat, env.num_actions,
                              max_partons=cfg.env.max_partons + 4)
         ppo = PPO(env, policy, tok,
-                  PPOConfig(rollout_len=a.rollout, minibatch_size=min(32, a.rollout),
+                  PPOConfig(rollout_len=a.rollout, minibatch_size=min(a.minibatch, a.rollout),
                             start_group=a.start_group))
 
         if a.resume:

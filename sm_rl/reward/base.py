@@ -34,10 +34,13 @@ class RewardMetric(abc.ABC):
 
 def make_metric(cfg, n_u1: int) -> RewardMetric:
     from .count import CountReward
+    from .f1 import F1Reward
     from .hungarian import HungarianReward
 
     if cfg.metric == "count":
         return CountReward(cfg, n_u1)
     if cfg.metric == "hungarian":
         return HungarianReward(cfg, n_u1)
+    if cfg.metric == "f1":
+        return F1Reward(cfg, n_u1)
     raise ValueError(f"unknown reward metric: {cfg.metric!r}")

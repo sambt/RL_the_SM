@@ -115,19 +115,35 @@ def _rational_col_gcd(values: np.ndarray, max_den: int = 10**6) -> Fraction | No
     return Fraction(g, den) if g else None
 
 
-def normalize_spectrum(spec: np.ndarray, n_u1: int, mode: str = "gcd") -> np.ndarray:
+def normalize_spectrum(spec: np.ndarray, n_u1: int, mode: str = "gcd",
+                       scale: tuple[float, ...] | None = None) -> np.ndarray:
     """Per-column charge normalization applied before matching.
+
+    mode="physical": divide column c by scale[c], undoing the notebook's
+    scaled-integer convention (EM/B/S are physical x3) so the charge quantum
+    becomes 1. Deterministic and prediction-independent, unlike "gcd". This
+    matters for graded metrics: with mode="none" the target's charge quantum is
+    3, so a one-unit charge error already costs more than a match radius of 3
+    and earns zero partial credit.
 
     mode="gcd": divide each U(1) column by the rational gcd of its nonzero
     entries (so the smallest charge unit becomes 1) -- matches the GT-Invariants
     notebook. NB this is data-dependent: adding/removing a predicted state can
     rescale a whole column, so target and prediction must be normalized by the
-    SAME rule (they are). Use RewardConfig.metric="hungarian" for a graded
-    alternative that is more robust to this.
+    SAME rule (they are).
+
+    mode="none": raw charges, no rescaling.
     """
     if spec.shape[0] == 0 or mode == "none":
         return spec
     out = spec.astype(float).copy()
+    if mode == "physical":
+        if scale is None:
+            raise ValueError("normalization='physical' requires a charge scale")
+        for c in range(min(n_u1, len(scale))):
+            if scale[c]:
+                out[:, c] = out[:, c] / float(scale[c])
+        return out
     for c in range(n_u1):
         g = _rational_col_gcd(out[:, c])
         if g is not None and g != 0:

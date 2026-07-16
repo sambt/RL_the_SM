@@ -17,8 +17,9 @@ from ..physics.spectrum import normalize_spectrum
 class CountReward(RewardMetric):
     def match(self, pred_spectrum: np.ndarray, target_spectrum: np.ndarray) -> MatchResult:
         rd = self.cfg.round_decimals
-        p = normalize_spectrum(pred_spectrum, self.n_u1, self.cfg.normalization)
-        t = normalize_spectrum(target_spectrum, self.n_u1, self.cfg.normalization)
+        scale = getattr(self.cfg, "charge_scale", None)
+        p = normalize_spectrum(pred_spectrum, self.n_u1, self.cfg.normalization, scale)
+        t = normalize_spectrum(target_spectrum, self.n_u1, self.cfg.normalization, scale)
         pc = signature_counts(p, rd)
         tc = signature_counts(t, rd)
 

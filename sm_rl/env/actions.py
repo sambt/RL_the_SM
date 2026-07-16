@@ -131,7 +131,7 @@ class ActionSpace:
         for i, d in enumerate(self.actions):
             k, prm = d.kind, d.param
             if k == "stop":
-                ok = True
+                ok = m.n >= self.cfg.min_partons_before_stop
             elif k == "type":
                 ok = True                                  # type_step cycles
             elif k == "rank":

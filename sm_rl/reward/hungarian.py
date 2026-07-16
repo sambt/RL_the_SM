@@ -22,8 +22,9 @@ class HungarianReward(RewardMetric):
     def match(self, pred_spectrum: np.ndarray, target_spectrum: np.ndarray) -> MatchResult:
         from scipy.optimize import linear_sum_assignment
 
-        p = normalize_spectrum(pred_spectrum, self.n_u1, self.cfg.normalization)
-        t = normalize_spectrum(target_spectrum, self.n_u1, self.cfg.normalization)
+        scale = getattr(self.cfg, "charge_scale", None)
+        p = normalize_spectrum(pred_spectrum, self.n_u1, self.cfg.normalization, scale)
+        t = normalize_spectrum(target_spectrum, self.n_u1, self.cfg.normalization, scale)
         nt, npd = len(t), len(p)
         lam_miss, lam_spur = self.cfg.lam_miss, self.cfg.lam_spur
         c0 = lam_miss + lam_spur              # match-acceptance radius

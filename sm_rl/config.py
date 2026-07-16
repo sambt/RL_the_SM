@@ -96,6 +96,15 @@ class EnvConfig:
     reward_mode: str = "delta"
     terminal_bonus: float = 10.0  # added at STOP when the model exactly matches target
 
+    # Mask STOP until the model has at least this many partons. 0 = STOP anytime.
+    # Kept at 0 deliberately: the "premature STOP" collapse this was added to
+    # suppress was not a policy pathology but a correct response to a reward that
+    # decreased monotonically in the number of predicted hadrons (see f1.py).
+    # With RewardConfig.metric="f1" adding partons is rewarded, so whether the
+    # agent voluntarily builds up is now a live diagnostic of the reward -- don't
+    # mask it away without re-checking that.
+    min_partons_before_stop: int = 0
+
 
 @dataclass
 class RewardConfig:
@@ -103,23 +112,40 @@ class RewardConfig:
 
     # "count"     -> CountReward (missing/extra hadrons, matched by quantum numbers)
     # "hungarian" -> HungarianReward (optimal partial matching w/ graded distances)
+    # "f1"        -> F1Reward (quality-weighted F1; bounded [0,1], 1 == exact)
     metric: str = "count"
 
     # CountReward weights.
     w_missing: float = 1.0
     w_extra: float = 1.0
 
-    # HungarianReward weights.
+    # HungarianReward / F1Reward weights.
     w_charge: float = 1.0
     w_spin: float = 2.0
     lam_miss: float = 1.5
     lam_spur: float = 1.5
 
+    # F1Reward: match-acceptance radius. A (target, pred) pair earns gain
+    # 1 - cost/match_radius, so pairs at or beyond this cost earn nothing.
+    # NB HungarianReward uses lam_miss + lam_spur for the same role; keep them
+    # consistent if comparing the two.
+    match_radius: float = 3.0
+
     # Charge normalization applied to a spectrum before matching:
+    #   "physical" -> divide each U(1) column by charge_scale, undoing the
+    #                 notebook's scaled-integer convention so the charge quantum
+    #                 is 1. Deterministic (unlike "gcd") and keeps near-misses
+    #                 inside the match radius. Recommended.
     #   "gcd"   -> per-column divide by gcd of that spectrum's nonzero charges
     #              (matches the GT-Invariants notebook; data-dependent -- see docstring)
-    #   "none"  -> compare raw summed charges
+    #   "none"  -> compare raw summed charges. NB the target's charge quantum is
+    #              then 3 (EM/B/S are physical x3), which exceeds a match_radius
+    #              of 3.0 -- i.e. near-misses earn nothing. Avoid.
     normalization: str = "gcd"
+
+    # Per-column divisors for normalization="physical", matching the
+    # [EM, B, S, I3] convention: EM/B/S are physical x3; I3 is already physical.
+    charge_scale: tuple[float, ...] = (3.0, 3.0, 3.0, 1.0)
     round_decimals: int = 6      # signatures rounded to this precision before hashing
 
 

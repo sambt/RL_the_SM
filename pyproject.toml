@@ -16,6 +16,9 @@ dependencies = [
 # clusters can install the CUDA/CPU build they want:  uv sync --extra rl
 rl = ["torch>=2.0"]
 dev = ["pytest>=7.0"]
+# Tooling to run notebooks/walkthrough.ipynb in the uv env:
+#   uv sync --extra rl --extra notebook
+notebook = ["jupyterlab>=4", "ipykernel>=6", "matplotlib>=3.7"]
 
 [tool.setuptools.packages.find]
 include = ["sm_rl*"]
