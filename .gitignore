@@ -16,3 +16,4 @@ __pycache__/
 *.pkl
 runs/
 logs/
+addendum.txt
