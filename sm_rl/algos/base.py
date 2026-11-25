@@ -16,17 +16,24 @@ from ..models.transformer import to_torch
 
 
 def collect_rollout(env, policy, tok, use_cursor: bool, n_steps: int,
-                    start_group: str | None = None, device: str = "cpu") -> dict:
+                    start_group=None, device: str = "cpu") -> dict:
     """Run `policy` in `env` for n_steps, auto-resetting on episode end.
     Returns per-step feats/actions/logps/values/rewards/dones + bootstrap value.
+
+    `start_group` may be a group symbol (str), None (ladder default), or a
+    zero-arg callable resolved *per episode* -- the hook the randomized /
+    curriculum start-group schedules in PPO use to draw a fresh group each reset.
     """
+    def _sg():
+        return start_group() if callable(start_group) else start_group
+
     feats, actions, logps, values, rewards, dones = [], [], [], [], [], []
     ep_returns, cur_return = [], 0.0
     exact_hits = 0
     best_score, best_model = -float("inf"), None
 
     if env.model is None:
-        obs, _ = env.reset(start_group=start_group)
+        obs, _ = env.reset(start_group=_sg())
     else:
         obs = env._obs()
 
@@ -48,7 +55,7 @@ def collect_rollout(env, policy, tok, use_cursor: bool, n_steps: int,
         dones.append(done)
         if done:
             ep_returns.append(cur_return); cur_return = 0.0
-            obs, _ = env.reset(start_group=start_group)
+            obs, _ = env.reset(start_group=_sg())
 
     f = tok.featurize(obs, use_cursor)
     batch = to_torch(tok.collate([f]), device)

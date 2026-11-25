@@ -31,9 +31,27 @@ class PPOConfig:
     ent_coef: float = 0.03          # entropy bonus at iter 0 (annealed to ent_coef_final)
     ent_coef_final: float = 0.005   # entropy coef reached after ent_anneal_iters
     ent_anneal_iters: int = 5000    # linear-anneal horizon (0 = fixed ent_coef)
+    # Linear anneal horizon for the env's novelty bonus: the learner scales
+    # env._novelty_scale by max(0, 1 - iters_done/novelty_anneal_iters), so the
+    # intrinsic bonus fades to 0 and late training exploits. 0 = no anneal.
+    novelty_anneal_iters: int = 0
     vf_coef: float = 0.5
     max_grad_norm: float = 0.5
+
+    # --- episode start group ------------------------------------------------
+    # start_mode:
+    #   "fixed"      -> every episode starts at `start_group` (legacy behaviour).
+    #   "random"     -> every episode starts at a group drawn uniformly from
+    #                   `start_pool` (full exploration of the group axis).
+    #   "curriculum" -> start at `curriculum_base` with prob (1-frac), else a
+    #                   uniform draw from `start_pool`, where frac ramps 0->1
+    #                   linearly over `curriculum_anneal_iters`. So training
+    #                   begins anchored on an easy group and anneals to random.
     start_group: str | None = "SU3"
+    start_mode: str = "fixed"
+    start_pool: tuple[str, ...] | None = None   # None -> curated low-rank default
+    curriculum_base: str = "SU3"
+    curriculum_anneal_iters: int = 2000
 
 
 class PPO(Algorithm):
@@ -44,14 +62,57 @@ class PPO(Algorithm):
         self.iters_done = 0
         self.best_score = -float("inf")
         self.best_model = None
+        self._start_pool = self._resolve_start_pool()
 
-    def train(self, iterations: int, logger=None, ckpt_every: int = 0):
+    # ---- episode start-group scheduling -----------------------------------
+
+    def _resolve_start_pool(self) -> list[str]:
+        """Group symbols the random / curriculum schedules draw from. Explicit
+        `cfg.start_pool` wins; otherwise a curated default of the low-rank groups
+        (Lie rank <= 4) spanning every family -- the regime where 3-body singlets
+        can actually form at d_max=3, so episodes aren't wasted starting deep in
+        (say) E8 where nothing binds."""
+        if self.cfg.start_pool:
+            return list(self.cfg.start_pool)
+        pool = [s.gm for s in self.env.ladder.specs if s.lie_rank <= 4]
+        return pool or [self.env.ladder.default.gm]
+
+    def _start_group_arg(self):
+        """Resolve cfg.start_mode into the `start_group` argument collect_rollout
+        expects: a str for 'fixed', else a per-episode sampler closure. The
+        curriculum mix fraction is keyed on iters_done, so it is resume-safe and
+        constant within a single rollout."""
+        c = self.cfg
+        if c.start_mode == "fixed":
+            return c.start_group
+        pool = self._start_pool
+        if c.start_mode == "random":
+            p_base = 0.0
+        elif c.start_mode == "curriculum":
+            frac = min(1.0, self.iters_done / max(1, c.curriculum_anneal_iters))
+            p_base = 1.0 - frac            # prob of anchoring on the easy base
+        else:
+            raise ValueError(f"unknown start_mode {c.start_mode!r}")
+        base = c.curriculum_base
+
+        def sample():
+            if p_base > 0.0 and np.random.rand() < p_base:
+                return base
+            return pool[np.random.randint(len(pool))]
+        return sample
+
+    def train(self, iterations: int, logger=None, ckpt_every: int = 0,
+              memo_path: str | None = None):
         history = []
         for _ in range(iterations):
             it = self.iters_done
+            # Anneal the env's novelty bonus (keyed on iters_done -> resume-safe).
+            if self.cfg.novelty_anneal_iters and self.cfg.novelty_anneal_iters > 0:
+                self.env._novelty_scale = max(
+                    0.0, 1.0 - it / self.cfg.novelty_anneal_iters)
             roll = collect_rollout(self.env, self.policy, self.tok,
                                    self.env.cfg.env.use_cursor, self.cfg.rollout_len,
-                                   start_group=self.cfg.start_group, device=self.device)
+                                   start_group=self._start_group_arg(), device=self.device)
             stats = self._update(roll)
             stats.update(
                 iter=it,
@@ -73,6 +134,8 @@ class PPO(Algorithm):
             self.iters_done = it + 1
 
             cstats = self.env.cache.stats() if hasattr(self.env.cache, "stats") else {}
+            if hasattr(self.env.engine, "memo_stats"):
+                cstats.update(self.env.engine.memo_stats())
             if logger is not None:
                 logger.log(
                     f"iter {it:>4} mean_r={stats['mean_reward']:+.2f} "
@@ -80,7 +143,8 @@ class PPO(Algorithm):
                     f"ent={stats['entropy']:.3f} ec={stats['ent_coef']:.3f} "
                     f"pg={stats['pg_loss']:+.4f} "
                     f"vf={stats['v_loss']:.1f} eps={stats['n_episodes']} "
-                    f"exact={stats['exact_hits']} hit_rate={cstats.get('cache_hit_rate', '-')}")
+                    f"exact={stats['exact_hits']} hit_rate={cstats.get('cache_hit_rate', '-')} "
+                    f"spins_calls={cstats.get('spins_calls', '-')}")
                 logger.log_metrics({
                     "iter": it, "mean_reward": stats["mean_reward"], "ep_return": stats["ep_return"],
                     "best_score": self.best_score, "entropy": stats["entropy"],
@@ -94,6 +158,8 @@ class PPO(Algorithm):
                 self.save(os.path.join(logger.ckpt_dir, "latest.pt"))
                 if hasattr(self.env.cache, "flush"):
                     self.env.cache.flush()
+                if memo_path and hasattr(self.env.engine, "save_memo"):
+                    self.env.engine.save_memo(memo_path)
             history.append(stats)
         if hasattr(self.env.cache, "flush"):
             self.env.cache.flush()
@@ -113,6 +179,17 @@ class PPO(Algorithm):
             "numpy_rng": np.random.get_state(),
             "ppo_cfg": asdict(self.cfg),
         }, path)
+
+    def load_weights(self, path: str) -> dict:
+        """Warm-start: load ONLY the policy weights from a checkpoint, leaving
+        iters_done=0, a fresh optimizer, and best reset. Unlike `load` (which
+        resumes an interrupted run), this seeds a *new* run from another run's
+        policy -- e.g. start from a checkpoint that already discovered the SM
+        structure, then re-inflate exploration (entropy/novelty schedules restart
+        from iter 0) to search onward. Architecture must match."""
+        ck = torch.load(path, map_location=self.device, weights_only=False)
+        self.policy.load_state_dict(ck["policy"])
+        return ck
 
     def load(self, path: str) -> dict:
         ck = torch.load(path, map_location=self.device, weights_only=False)

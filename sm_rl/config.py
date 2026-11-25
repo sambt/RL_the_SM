@@ -51,6 +51,15 @@ class EngineConfig:
     spinsinglets_file: str = "spinSinglets.m"
     verbose: bool = True
 
+    # Kernel-launch robustness. wolframclient's default STARTUP_TIMEOUT is a tight
+    # 20s; on a busy cluster node -- or when two jobs land on the same node and
+    # race for a license checkout -- the kernel's ZMQ socket can miss that window
+    # and the whole run dies before iter 0. Widen it and retry the launch a few
+    # times (tearing the half-started session down between attempts).
+    startup_timeout: int = 120
+    start_retries: int = 4
+    start_retry_backoff: float = 15.0  # seconds, multiplied by attempt number
+
 
 @dataclass
 class GroupConfig:
@@ -80,6 +89,18 @@ class EnvConfig:
     # convention) while I3 moves on half-integers.
     charge_steps: tuple[float, ...] = (1.0, 1.0, 1.0, 0.5)
     charge_max: float = 6.0
+    # How charge actions address the lattice:
+    #   "step" -> CHARGE{c}_UP/DOWN move charge c by +/-charge_steps[c] (legacy;
+    #             8 actions for n_u1=4). A change of k units is a k-step path
+    #             through intermediate models, each scored -- so a multi-unit
+    #             fix whose intermediates score lower is a valley the policy
+    #             must sample end-to-end.
+    #   "set"  -> CHARGE{c}_SET{v}: one action per lattice value v in
+    #             [-charge_max, charge_max] (13+13+13+25 = 64 actions at the
+    #             defaults). Any charge value is one move away, flattening those
+    #             valleys. The lattice itself (charge_max, steps) is unchanged:
+    #             the range is NOT tightened toward SM values on purpose.
+    charge_action_mode: str = "step"
 
     # CPT: each matter field implies its conjugate (dual rep, negated charges).
     # This is how "antiparticles implied by CPT" enters the spectrum computation,
@@ -94,7 +115,64 @@ class EnvConfig:
     #   "absolute"  -> r_t = score(s_t)                       (dense, may reward stalling)
     #   "delta"     -> r_t = score(s_t) - score(s_{t-1})      (potential-based, telescopes)
     reward_mode: str = "delta"
-    terminal_bonus: float = 10.0  # added at STOP when the model exactly matches target
+
+    # Terminal reward at STOP. `terminal_mode` shapes how `terminal_bonus` is paid:
+    #   "exact"  -> +terminal_bonus iff the model exactly matches (legacy: a hard
+    #               all-or-nothing cliff, no gradient until the SM is nailed, and
+    #               ~10x the shaped [0,1] return so it dominates variance once hit).
+    #   "graded" -> +terminal_bonus * final_score for *any* STOP, turning the
+    #               cliff into a slope: partial models earn partial terminal
+    #               credit, so the gradient points toward better STOPs everywhere.
+    #   "shaped" -> graded, plus an extra +terminal_exact_bonus for an exact hit
+    #               (keeps a bump for the SM without the full cliff).
+    # Pair a smaller `terminal_bonus` (e.g. 2-3) with "graded"/"shaped" so the
+    # terminal signal stays the same order as the per-step shaped reward.
+    terminal_mode: str = "exact"
+    terminal_bonus: float = 10.0
+    terminal_exact_bonus: float = 2.0  # extra exact-match bump, "shaped" mode only
+
+    # Count-based novelty (intrinsic) reward. At each step, add
+    #   novelty_coef / sqrt(n[canonical_key(model)])
+    # where n is how many times this *physics* (order-invariant resolved field
+    # content, incl. CPT conjugates -- the same key used for spectrum caching)
+    # has been visited so far this run. 0.0 = off (default, legacy).
+    # Rationale: near the SU3 plateau the group/reps/spins are already correct,
+    # so novelty in canonical_key space == trying new U(1) charge assignments --
+    # exactly the exploration needed to cross the shallow reward valley between
+    # the plateau and an exact match (see scripts/charge_landscape.py). The bonus
+    # decays as a config is revisited (re-emitting the plateau model earns ~0),
+    # so it is self-annealing. Counts persist across episodes within a run (a
+    # global exploration signal), and reset when a fresh env is built (resume).
+    # Keep it small (~0.01) so it shapes exploration without overriding the true
+    # reward; the counter is free (canonical_key is already computed per step for
+    # the cache). NB with delta reward the extrinsic per-episode return telescopes
+    # to ~final_score, so on a long (max_steps) horizon a per-step bonus can
+    # easily dominate -- f1novel at 0.05/"count" made intrinsic ~70% of the return
+    # and the policy wandered. Prefer novelty_mode="first_visit" + a small coef.
+    novelty_coef: float = 0.0
+    # How the novelty bonus is paid (only relevant when novelty_coef > 0):
+    #   "count"       -> novelty_coef / sqrt(n) on EVERY visit (n = visit count).
+    #                    Accumulates over the horizon and, since sum 1/sqrt(n)
+    #                    diverges, keeps rewarding revisits/camping. Legacy.
+    #   "first_visit" -> novelty_coef on a config's FIRST-ever visit, 0 after.
+    #                    A one-time exploration signal that self-fades as the
+    #                    space is covered and never rewards camping. Preferred.
+    novelty_mode: str = "count"
+
+    # Whether the agent may voluntarily end an episode with the STOP action.
+    #   True  (default) -> legacy: STOP is a maskable action; the agent chooses
+    #                      when to commit, and an episode ends on STOP or at
+    #                      max_steps. `terminated` <=> the agent picked STOP.
+    #   False -> STOP is masked out entirely; the agent can never voluntarily
+    #            stop. An episode then ends ONLY at `max_steps` (truncation) or
+    #            the instant the model is an *exact* match to the target SM
+    #            (that becomes the sole `terminated` condition). This is the
+    #            fixed-horizon / absorbing-goal setup common in the literature:
+    #            it removes the early-STOP escape hatch that let the policy
+    #            commit to a mediocre basin, forcing it to keep editing the
+    #            model for the full horizon unless it actually solves the task.
+    #            Pair with reward_mode="delta" so every step still carries signal.
+    allow_stop: bool = True
 
     # Mask STOP until the model has at least this many partons. 0 = STOP anytime.
     # Kept at 0 deliberately: the "premature STOP" collapse this was added to

@@ -17,11 +17,13 @@ from typing import Optional
 
 import numpy as np
 
+import math
+
 from .actions import ActionSpace
 from .state import Model
 from ..config import Config
 from ..physics.groups import GroupLadder
-from ..physics.spectrum import spectrum_of
+from ..physics.spectrum import canonical_key, spectrum_of
 from ..reward import make_metric, build_target
 
 
@@ -50,6 +52,12 @@ class SMModelEnv:
         self._prev_score = 0.0
         self._steps = 0
         self._mask = None
+        # Persistent visit counts for the count-based novelty bonus (keyed on
+        # canonical_key, i.e. per distinct physics). Global across episodes.
+        self._visit_counts: dict = {}
+        # Multiplier on novelty_coef, driven by the learner for annealing
+        # (1.0 = full bonus, 0.0 = off). See PPO.train / novelty_anneal_iters.
+        self._novelty_scale: float = 1.0
 
     # ---- gym-like API -----------------------------------------------------
 
@@ -81,13 +89,46 @@ class SMModelEnv:
             reward = score
         self._prev_score = score
 
-        terminated = (desc.kind == "stop")
+        # Count-based novelty (intrinsic) reward on the *landed* model's physics.
+        # Decays as beta/sqrt(n), so revisiting a config earns steadily less and
+        # the policy is pushed toward unexplored (here: new-charge) models.
+        novelty = 0.0
+        if self.cfg.env.novelty_coef > 0.0:
+            key = canonical_key(self.model, self.ladder, self.cfg.env.cpt_auto_conjugate)
+            n = self._visit_counts.get(key, 0) + 1
+            self._visit_counts[key] = n
+            coef = self.cfg.env.novelty_coef * self._novelty_scale
+            if self.cfg.env.novelty_mode == "first_visit":
+                novelty = coef if n == 1 else 0.0
+            else:  # "count": decaying, paid every visit
+                novelty = coef / math.sqrt(n)
+            reward += novelty
+
+        if self.cfg.env.allow_stop:
+            terminated = (desc.kind == "stop")       # legacy: agent commits via STOP
+        else:
+            # STOP is masked away; the only voluntary end is solving the task.
+            # Reaching an exact match becomes an absorbing goal that terminates
+            # the episode (otherwise it runs to max_steps truncation).
+            terminated = match.exact
         truncated = (self._steps >= self.cfg.env.max_steps)
-        if terminated and match.exact:
-            reward += self.cfg.env.terminal_bonus
+        if terminated:
+            mode = self.cfg.env.terminal_mode
+            if mode == "exact":
+                if match.exact:
+                    reward += self.cfg.env.terminal_bonus
+            elif mode == "graded":
+                reward += self.cfg.env.terminal_bonus * score
+            elif mode == "shaped":
+                reward += self.cfg.env.terminal_bonus * score
+                if match.exact:
+                    reward += self.cfg.env.terminal_exact_bonus
+            else:
+                raise ValueError(f"unknown terminal_mode {mode!r}")
 
         self._mask = self.aspace.mask(self.model)
-        info = {"score": score, "exact": match.exact, "action": desc.name, **match.info}
+        info = {"score": score, "exact": match.exact, "action": desc.name,
+                "novelty": novelty, **match.info}
         return self._obs(), float(reward), terminated, truncated, info
 
     # ---- helpers ----------------------------------------------------------

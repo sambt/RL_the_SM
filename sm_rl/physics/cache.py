@@ -24,11 +24,18 @@ import pickle
 
 class SpectrumCache(dict):
     def __init__(self, path: str | None = None, flush_every: int = 200,
-                 merge_on_flush: bool = True):
+                 merge_on_flush: bool = True, max_entries: int | None = None):
         super().__init__()
         self.path = path
         self.flush_every = flush_every
         self.merge_on_flush = merge_on_flush
+        # Bound on in-memory entries (None = unbounded). When exceeded the cache
+        # is cleared: with the engine's charge-free GetSpins memo persisted, a
+        # spectrum miss costs only Python, so a bounded cache is a memory cap,
+        # not a throughput cliff. (Unbounded + charge-keyed is what OOM-killed
+        # f1set: ~800 novel entries/iter, a 5 GB pickle reloaded on every flush.)
+        self.max_entries = max_entries
+        self.n_evictions = 0
         self._writes_since_flush = 0
         self.n_hits = 0        # lookups that hit
         self.n_writes = 0      # distinct spectra computed & stored (i.e. misses)
@@ -47,6 +54,9 @@ class SpectrumCache(dict):
 
     def __setitem__(self, key, value) -> None:
         new = not super().__contains__(key)
+        if new and self.max_entries and len(self) >= self.max_entries:
+            super().clear()
+            self.n_evictions += 1
         super().__setitem__(key, value)
         if new:
             self.n_writes += 1

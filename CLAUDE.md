@@ -1,6 +1,8 @@
 # CLAUDE.md
 
-Guidance for working in this repo. See `README.md` for user-facing setup/usage.
+Guidance for working in this repo. See `README.md` for user-facing setup/usage,
+and `docs/experiment_log.md` for the run-by-run research chronology (what we tried,
+what happened, and why each step led to the next).
 
 ## What this is
 
@@ -19,10 +21,10 @@ The physics is a port of `GT Invariants.ipynb` / `spinSinglets.nb` (GroupMath's
 ```
 config.py              all knobs: Engine/Group/Env/Reward dataclasses (Config aggregates them)
 physics/
-  engine.py            Engine ABC + WolframEngine (cached GroupMath wrapper); Rep = Dynkin-label tuple
+  engine.py            Engine ABC + WolframEngine; canonical, PERSISTED GetSpins memo (the cache that matters)
   groups.py            GroupLadder: SU/SO/SP/EX families, type/rank stepping, dim-ordered rep index + clamp
   spectrum.py          Model -> spectrum: resolve_fields (CPT), compute_spectrum, canonical_key, normalize
-  cache.py             SpectrumCache: dict subclass, persistent pickle, auto-flush + merge across workers
+  cache.py             SpectrumCache: charge-keyed spectra, bounded in-memory; optional pickle (legacy, heavy)
 env/
   state.py             Model / Parton (ordered list; each parton has a unique `flavour` tag)
   actions.py           ActionSpace: flat maskable actions (STOP, TYPE/RANK +/-, ADD, REMOVE, SPIN, REP, CHARGE)
@@ -116,11 +118,50 @@ uv run python scripts/train.py --iters 200 --ckpt-every 10   # real run
 - `scripts/train.py` defaults reward metric to **f1**; the `RewardConfig`
   dataclass default is **count**. Metric is auto-reused from a run's
   `config.json` on resume.
+- **Two caches, only one of them matters now.** The expensive call is
+  `WolframEngine.get_spins`, a pure function of (group, reps, spins, flavour
+  pattern) -- **charge-free**. Its memo is canonicalized (`canonical_spins_args`:
+  permutation + flavour-relabel invariant, verified against the real engine by
+  `scripts/validate_spins_memo.py`) and **persisted** via `save_memo/load_memo`
+  (`train.py --spins-memo` / `$SM_RL_SPINS_MEMO`; shared file
+  `.../sm_rl_cache/spins_memo.pkl`, ~KB-MB). With it warm, a spectrum "miss" costs
+  only Python (~ms). The old charge-keyed `SpectrumCache` (`--cache` /
+  `$SM_RL_CACHE`, `.../spectra.pkl`, 2.5M entries, 5 GB on disk, ~20 GB in RAM)
+  is now optional and off by default; in-memory it is bounded by
+  `--cache-max-entries`. **Do not load the big file**: under set-charge actions
+  it grew ~800 entries/iter and its merge-on-flush reloads the whole pickle
+  (OOM-killed `f1set` attempt 1 at 24 GB, and was most of the 5 min/iter).
 - Reward changes are cheap to validate offline: `canonical_key` is pure physics,
-  so the ~156k cached spectra stay valid across reward/normalization changes.
-  Score them against the real target directly instead of burning cluster time.
+  so cached spectra stay valid across reward/normalization changes. Score them
+  against the real target directly instead of burning cluster time.
 - Episodes start at SU(2) by default (`ActionSpace`/ladder default), but
   `PPOConfig.start_group` and `train.py --start-group` default to `SU3`.
+- **Start-group scheduling** (`PPOConfig.start_mode`, `train.py --start-mode`):
+  `fixed` (legacy, always `start_group`), `random` (per-episode uniform draw from
+  `start_pool`), `curriculum` (start at `curriculum_base`, anneal p(base) 1->0
+  over `curriculum_anneal_iters`, then fully random). `start_pool` defaults to a
+  curated low-rank set (Lie rank <= 4, ~16 groups spanning families) since only
+  small groups form 3-body singlets at `d_max=3`; override with `--start-pool` or
+  `'all'`. Motivation: the SU(2)-start `f1fix` run got stuck at a 0.726 local
+  optimum (never sampled the SM in 4.6M episodes) because it committed before
+  exploring the SU(3) parton assignment; randomized/curriculum starts feed the
+  policy gradient from inside the winning basin.
+- **Terminal-bonus shaping** (`EnvConfig.terminal_mode`, `train.py --terminal-mode`):
+  `exact` (legacy: +`terminal_bonus` only on an exact match -- a sparse cliff, no
+  gradient until the SM is nailed, ~10x the shaped [0,1] return so it dominates
+  variance), `graded` (+`terminal_bonus * final_score` for any STOP -- a slope,
+  partial credit everywhere), `shaped` (graded + `terminal_exact_bonus` on exact).
+  Pair graded/shaped with a smaller `terminal_bonus` (~2-3) so the terminal signal
+  stays the same order as the per-step shaped reward.
+- **Edits hit the last parton unless `EnvConfig.use_cursor`** (`train.py --cursor`).
+  With the cursor off (every run through `f1ws`), changing parton 1 of 3 means
+  REMOVE x2 -> edit -> re-ADD + rebuild x2: a long, low-scoring detour, which is
+  why PPO never sampled the short charge-lattice fix the offline diagnostic found.
+  `EnvConfig.charge_action_mode="set"` (`--charge-actions set`) replaces the
+  +/-1 charge increments with one action per lattice value (64 for the default
+  lattice; head 18 -> 76 with cursor), so any charge value is one move. The lattice
+  range is deliberately NOT tightened toward SM values (no SM prior). Checkpoints
+  are not interchangeable across action-space settings (head shape differs).
 - `KMP_DUPLICATE_LIB_OK=TRUE` is set on import to dodge an OpenMP double-load
   abort on conda/macOS.
 - `scripts/train_ppo.py` and `scripts/trial_ppo.py` are older/short entry

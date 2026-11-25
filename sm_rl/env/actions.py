@@ -2,9 +2,11 @@
 
 Actions are small deterministic edits to the model, per the addendum:
   STOP, CHANGE_TYPE(+/-), CHANGE_RANK(+/-), ADD, REMOVE_LAST, and MODIFY of the
-  edit-target parton (spin toggle, rep +/-, each charge +/-). A movable cursor
-  (CURSOR_PREV/NEXT) is added only when EnvConfig.use_cursor is set; otherwise
-  the edit target is always the most-recently-added parton.
+  edit-target parton (spin toggle, rep +/-, each charge +/- or, with
+  EnvConfig.charge_action_mode="set", each charge SET to any lattice value).
+  A movable cursor (CURSOR_PREV/NEXT) is added only when EnvConfig.use_cursor is
+  set; otherwise the edit target is always the most-recently-added parton --
+  i.e. editing an earlier parton requires REMOVE-ing everything after it.
 
 Every transition is pure Python (no engine call). The expensive spectrum
 evaluation happens in the environment's reward, not here.
@@ -50,13 +52,28 @@ class ActionSpace:
             ActionDesc("REP_UP", "rep", +1),
             ActionDesc("REP_DOWN", "rep", -1),
         ]
-        for c in range(self.cfg.n_u1):
-            A.append(ActionDesc(f"CHARGE{c}_UP", "charge", (c, +1)))
-            A.append(ActionDesc(f"CHARGE{c}_DOWN", "charge", (c, -1)))
+        mode = getattr(self.cfg, "charge_action_mode", "step")
+        if mode == "set":
+            for c in range(self.cfg.n_u1):
+                for v in self.charge_values(c):
+                    A.append(ActionDesc(f"CHARGE{c}_SET{v:+g}", "charge_set", (c, v)))
+        elif mode == "step":
+            for c in range(self.cfg.n_u1):
+                A.append(ActionDesc(f"CHARGE{c}_UP", "charge", (c, +1)))
+                A.append(ActionDesc(f"CHARGE{c}_DOWN", "charge", (c, -1)))
+        else:
+            raise ValueError(f"unknown charge_action_mode {mode!r}")
         if self.cfg.use_cursor:
             A.append(ActionDesc("CURSOR_PREV", "cursor", -1))
             A.append(ActionDesc("CURSOR_NEXT", "cursor", +1))
         return A
+
+    def charge_values(self, c: int) -> list[float]:
+        """The admissible lattice for charge c: -charge_max..charge_max in steps
+        of charge_steps[c] (the same lattice the +/- actions walk)."""
+        step = self.cfg.charge_steps[c]
+        n = int(round(self.cfg.charge_max / step))
+        return [float(round(k * step, 6)) for k in range(-n, n + 1)]
 
     def __len__(self) -> int:
         return len(self.actions)
@@ -118,6 +135,9 @@ class ActionSpace:
             step = self.cfg.charge_steps[c]
             p.charges[c] = float(np.clip(p.charges[c] + sign * step,
                                          -self.cfg.charge_max, self.cfg.charge_max))
+        elif kind == "charge_set":
+            c, v = param
+            p.charges[c] = float(v)
 
     # ---- masking ----------------------------------------------------------
 
@@ -131,7 +151,9 @@ class ActionSpace:
         for i, d in enumerate(self.actions):
             k, prm = d.kind, d.param
             if k == "stop":
-                ok = m.n >= self.cfg.min_partons_before_stop
+                # allow_stop=False masks STOP entirely: the agent can never
+                # voluntarily end an episode (see sm_env for the alt terminal).
+                ok = self.cfg.allow_stop and (m.n >= self.cfg.min_partons_before_stop)
             elif k == "type":
                 ok = True                                  # type_step cycles
             elif k == "rank":
@@ -147,6 +169,9 @@ class ActionSpace:
             elif k == "charge":
                 c, sign = prm
                 ok = has and abs(p.charges[c] + sign * self.cfg.charge_steps[c]) <= self.cfg.charge_max + 1e-9
+            elif k == "charge_set":
+                c, v = prm
+                ok = has and abs(p.charges[c] - v) > 1e-9      # no no-op sets
             elif k == "cursor":
                 cur = p and self.cfg.use_cursor
                 if not (has and self.cfg.use_cursor):

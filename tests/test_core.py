@@ -202,6 +202,62 @@ def test_actions_apply_and_mask():
     print("ok test_actions_apply_and_mask")
 
 
+def test_set_charge_and_cursor():
+    cfg = Config()
+    cfg.env.charge_action_mode = "set"
+    cfg.env.use_cursor = True
+    ladder = _ladder()
+    aspace = ActionSpace(cfg.env, ladder)
+    idx = aspace.index
+    # 10 base + (13+13+13+25) set actions + 2 cursor = 76 at the default lattice
+    n_set = sum(len(aspace.charge_values(c)) for c in range(cfg.env.n_u1))
+    assert n_set == 64, n_set
+    assert len(aspace) == 10 + 64 + 2, len(aspace)
+    assert "CHARGE0_UP" not in idx and "CHARGE3_SET+0.5" in idx and "CHARGE0_SET-6" in idx
+    # every set action is exactly one move to the value, on the lattice
+    m = Model("SU3")
+    m = aspace.apply(m, idx["ADD"])
+    m = aspace.apply(m, idx["CHARGE0_SET+2"])
+    assert m.partons[0].charges[0] == 2.0
+    m = aspace.apply(m, idx["CHARGE3_SET-0.5"])
+    assert m.partons[0].charges[3] == -0.5
+    # setting a charge to its current value is masked (no no-op); others are open
+    mask = aspace.mask(m)
+    assert not mask[idx["CHARGE0_SET+2"]] and mask[idx["CHARGE0_SET-2"]] and mask[idx["CHARGE0_SET+6"]]
+    # cursor: edits reach an EARLIER parton without removing later ones
+    m = aspace.apply(m, idx["ADD"])
+    m = aspace.apply(m, idx["ADD"])
+    assert m.n == 3 and m.edit_index(True) == 2
+    assert not aspace.mask(m)[idx["CURSOR_NEXT"]] and aspace.mask(m)[idx["CURSOR_PREV"]]
+    m = aspace.apply(m, idx["CURSOR_PREV"]); m = aspace.apply(m, idx["CURSOR_PREV"])
+    assert m.edit_index(True) == 0
+    m = aspace.apply(m, idx["CHARGE1_SET-3"])
+    assert m.partons[0].charges[1] == -3.0 and m.partons[2].charges[1] == 0.0 and m.n == 3
+    # default config still builds the legacy 18-action space
+    assert len(ActionSpace(Config().env, ladder)) == 18
+    print("ok test_set_charge_and_cursor")
+
+
+def test_canonical_spins_args():
+    from sm_rl.physics.engine import canonical_spins_args
+    k1, r1, s1, f1 = canonical_spins_args("SU3", [(1, 0), (0, 1), (1, 0)], [2, 2, 2], [3, 5, 3])
+    k2, *_ = canonical_spins_args("SU3", [(0, 1), (1, 0), (1, 0)], [2, 2, 2], [9, 1, 1])
+    assert k1 == k2, (k1, k2)                       # permutation + relabel invariant
+    assert f1 == [1, 2, 2] and r1 == [(0, 1), (1, 0), (1, 0)], (f1, r1)
+    k3, *_ = canonical_spins_args("SU3", [(1, 0), (1, 0)], [2, 2], [1, 2])   # two distinct fields
+    k4, *_ = canonical_spins_args("SU3", [(1, 0), (1, 0)], [2, 2], [1, 1])   # same field twice
+    assert k3 != k4
+    k5, *_ = canonical_spins_args("SU2", [(1, 0), (1, 0)], [2, 2], [1, 2])
+    assert k5 != k3                                 # group is part of the key
+    # bounded spectrum cache clears instead of growing
+    from sm_rl.physics import SpectrumCache
+    c = SpectrumCache(None, max_entries=3)
+    for i in range(7):
+        c[("k", i)] = i
+    assert len(c) <= 3 and c.n_evictions == 2 and c.n_writes == 7, (len(c), c.n_evictions)
+    print("ok test_canonical_spins_args")
+
+
 def test_group_change_clamps_rep_index():
     ladder = _ladder()
     cfg = Config()

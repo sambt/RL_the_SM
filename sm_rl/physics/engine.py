@@ -107,6 +107,28 @@ class Engine(abc.ABC):
         self.stop()
 
 
+def canonical_spins_args(group: str, reps, spins, flavours):
+    """Canonical form of a GetSpins query. GetSpins is a function of the
+    *multiset* of partons, and the flavour ids only encode which entries are the
+    same field, so the result is invariant under (i) permuting the parton list
+    and (ii) relabelling flavours. Sort the (rep, spin, flavour) triples and
+    relabel flavours by first appearance. Returns (key, reps, spins, flavours)
+    with the lists in canonical order, so a memo keyed on `key` is hit by every
+    equivalent query (e.g. the same operator built from partons in a different
+    model order), which also keeps the persisted memo small.
+    Verified against the real engine by scripts/validate_spins_memo.py."""
+    triples = sorted(zip((tuple(int(x) for x in r) for r in reps),
+                         (int(s) for s in spins), (int(f) for f in flavours)))
+    relabel: dict[int, int] = {}
+    creps, cspins, cflavs = [], [], []
+    for r, sp, f in triples:
+        if f not in relabel:
+            relabel[f] = len(relabel) + 1
+        creps.append(r); cspins.append(sp); cflavs.append(relabel[f])
+    key = ("spins", group, tuple(creps), tuple(cspins), tuple(cflavs))
+    return key, creps, cspins, cflavs
+
+
 class WolframEngine(Engine):
     """Real GroupMath-backed engine."""
 
@@ -114,6 +136,8 @@ class WolframEngine(Engine):
         self.cfg = cfg or EngineConfig()
         self._session = None
         self._cache: dict[tuple, object] = {}
+        self.n_spins_calls = 0   # real GetSpins evaluations this process
+        self.n_spins_hits = 0    # GetSpins queries answered from the memo
 
     # ---- lifecycle --------------------------------------------------------
 
@@ -139,25 +163,58 @@ class WolframEngine(Engine):
         if self._session is not None:
             return self
         self._preflight()
+        import time
+
         from wolframclient.evaluation import WolframLanguageSession
         from wolframclient.language import wl, wlexpr
 
-        if self.cfg.verbose:
-            print(f"[engine] starting Wolfram kernel: {self.cfg.kernel_path}")
-        self._session = WolframLanguageSession(kernel=self.cfg.kernel_path)
         self._wlexpr = wlexpr
-        self._session.evaluate(wl.SetDirectory(self.cfg.mathematica_dir))
-        self._session.evaluate(wl.Get(self.cfg.groupmath_file))
-        # Load GetSpins DownValues exactly as the GT-Invariants notebook does.
-        self._session.evaluate(
-            wlexpr(
-                "Module[{rules}, rules = Get[\"%s\"]; DownValues[GetSpins] = rules;]"
-                % self.cfg.spinsinglets_file
-            )
+        attempts = max(1, self.cfg.start_retries)
+        last_err = None
+        for attempt in range(1, attempts + 1):
+            if self.cfg.verbose:
+                print(f"[engine] starting Wolfram kernel (attempt {attempt}/{attempts}, "
+                      f"STARTUP_TIMEOUT={self.cfg.startup_timeout}s): {self.cfg.kernel_path}")
+            try:
+                # STARTUP_TIMEOUT is forwarded to the kernel controller as a parameter.
+                self._session = WolframLanguageSession(
+                    kernel=self.cfg.kernel_path,
+                    STARTUP_TIMEOUT=self.cfg.startup_timeout,
+                )
+                # The first evaluate is what actually forces the kernel to launch,
+                # so kernel-startup failures surface here, not at construction.
+                self._session.evaluate(wl.SetDirectory(self.cfg.mathematica_dir))
+                self._session.evaluate(wl.Get(self.cfg.groupmath_file))
+                # Load GetSpins DownValues exactly as the GT-Invariants notebook does.
+                self._session.evaluate(
+                    wlexpr(
+                        "Module[{rules}, rules = Get[\"%s\"]; DownValues[GetSpins] = rules;]"
+                        % self.cfg.spinsinglets_file
+                    )
+                )
+                if self.cfg.verbose:
+                    print("[engine] GroupMath + spinSinglets loaded.")
+                return self
+            except Exception as e:  # kernel launch/socket timeout -> tear down + retry
+                last_err = e
+                print(f"[engine] kernel start failed on attempt {attempt}/{attempts}: {e}")
+                self._teardown_session()
+                if attempt < attempts:
+                    delay = self.cfg.start_retry_backoff * attempt
+                    print(f"[engine] retrying in {delay:.0f}s ...")
+                    time.sleep(delay)
+        raise RuntimeError(
+            f"Wolfram kernel failed to start after {attempts} attempts: {last_err}"
         )
-        if self.cfg.verbose:
-            print("[engine] GroupMath + spinSinglets loaded.")
-        return self
+
+    def _teardown_session(self) -> None:
+        """Best-effort terminate of a half-started session before a retry."""
+        if self._session is not None:
+            try:
+                self._session.terminate()
+            except Exception:
+                pass
+            self._session = None
 
     def stop(self) -> None:
         if self._session is not None:
@@ -221,17 +278,73 @@ class WolframEngine(Engine):
         return self._cache[key]
 
     def get_spins(self, group, reps, spins, flavours) -> tuple[tuple[int, int], ...]:
+        key, creps, cspins, cflavs = canonical_spins_args(group, reps, spins, flavours)
+        hit = self._cache.get(key)
+        if hit is not None:
+            self.n_spins_hits += 1
+            return hit
+        rep_str = ", ".join(to_mathematica(r) for r in creps)
+        spin_str = ", ".join(to_mathematica(int(s)) for s in cspins)
+        flav_str = ", ".join(to_mathematica(int(f)) for f in cflavs)
+        raw = self._eval(
+            f"GetSpins[{group}, {{{rep_str}}}, {{{spin_str}}}, {{{flav_str}}}]"
+        )
+        out = tuple((int(lbl), int(mult)) for lbl, mult in raw) if raw else ()
+        self._cache[key] = out
+        self.n_spins_calls += 1
+        return out
+
+    def get_spins_raw(self, group, reps, spins, flavours) -> tuple[tuple[int, int], ...]:
+        """Un-memoized, un-canonicalized GetSpins call (validation only)."""
         rep_str = ", ".join(to_mathematica(r) for r in reps)
         spin_str = ", ".join(to_mathematica(int(s)) for s in spins)
         flav_str = ", ".join(to_mathematica(int(f)) for f in flavours)
-        key = ("spins", group, rep_str, spin_str, flav_str)
-        if key not in self._cache:
-            raw = self._eval(
-                f"GetSpins[{group}, {{{rep_str}}}, {{{spin_str}}}, {{{flav_str}}}]"
-            )
-            out = tuple((int(lbl), int(mult)) for lbl, mult in raw) if raw else ()
-            self._cache[key] = out
-        return self._cache[key]
+        raw = self._eval(f"GetSpins[{group}, {{{rep_str}}}, {{{spin_str}}}, {{{flav_str}}}]")
+        return tuple((int(lbl), int(mult)) for lbl, mult in raw) if raw else ()
+
+    # ---- memo persistence ---------------------------------------------------
+    # Everything in self._cache is a pure function of (group, reps, spins) --
+    # charge-free -- so it is tiny (thousands of entries, KB-MB) and can be
+    # shared across runs. Persisting it is what makes the big charge-keyed
+    # spectrum cache unnecessary: a spectrum "miss" then costs only Python.
+
+    def memo_stats(self) -> dict:
+        n_spins = sum(1 for k in self._cache if k[0] == "spins")
+        return {"memo_size": len(self._cache), "memo_spins": n_spins,
+                "spins_calls": self.n_spins_calls, "spins_hits": self.n_spins_hits}
+
+    def load_memo(self, path: str) -> int:
+        """Merge a persisted memo into memory. Returns entries loaded (0 if absent)."""
+        import pickle
+        if not path or not os.path.exists(path):
+            return 0
+        with open(path, "rb") as f:
+            disk = pickle.load(f)
+        self._cache.update(disk)
+        return len(disk)
+
+    def save_memo(self, path: str) -> int:
+        """Atomically write the memo, merged with whatever is on disk (so several
+        workers can share one file). Returns the number of entries written."""
+        import pickle
+        if not path:
+            return 0
+        data = dict(self._cache)
+        if os.path.exists(path):
+            try:
+                with open(path, "rb") as f:
+                    disk = pickle.load(f)
+                disk.update(data)
+                data = disk
+                self._cache.update(disk)
+            except Exception:
+                pass
+        os.makedirs(os.path.dirname(os.path.abspath(path)), exist_ok=True)
+        tmp = f"{path}.tmp.{os.getpid()}"
+        with open(tmp, "wb") as f:
+            pickle.dump(data, f, protocol=pickle.HIGHEST_PROTOCOL)
+        os.replace(tmp, path)
+        return len(data)
 
     def min_copies_for_singlet(self, group: str, rep: Rep, cutoff: int = 50) -> int:
         key = ("mincopies", group, rep)
